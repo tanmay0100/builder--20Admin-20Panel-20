@@ -1,10 +1,106 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GripVertical, Crown, TrendingUp, Star, Gamepad2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
+  GripVertical,
+  ArrowUp,
+  ArrowDown,
+  RotateCcw,
+  Save,
+  AlertCircle,
+  CheckCircle,
+  Gamepad2,
+  Crown,
+  Star,
+  Target,
+} from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+
+interface GameItem {
+  id: string;
+  name: string;
+  isActive: boolean;
+  popularity: number;
+}
 
 export function GameReorder() {
-  const [games, setGames] = useState([
+  const [games, setGames] = useState<GameItem[]>([
+    {
+      id: "1",
+      name: "SRIDEVI MORNING",
+      isActive: true,
+      popularity: 95,
+    },
+    {
+      id: "2",
+      name: "MILAN MORNING",
+      isActive: true,
+      popularity: 88,
+    },
+    {
+      id: "3",
+      name: "SRIDEVI",
+      isActive: true,
+      popularity: 92,
+    },
+    {
+      id: "4",
+      name: "TIME BAZAR MORNING",
+      isActive: true,
+      popularity: 75,
+    },
+    {
+      id: "5",
+      name: "MADHURI",
+      isActive: false,
+      popularity: 82,
+    },
+    {
+      id: "6",
+      name: "TIME BAZAR",
+      isActive: true,
+      popularity: 89,
+    },
+    {
+      id: "7",
+      name: "TARA MUMBAI DAY",
+      isActive: true,
+      popularity: 78,
+    },
+    {
+      id: "8",
+      name: "MADHUR DAY",
+      isActive: true,
+      popularity: 84,
+    },
+    {
+      id: "9",
+      name: "MILAN DAY",
+      isActive: true,
+      popularity: 91,
+    },
+    {
+      id: "10",
+      name: "RAJDHANI DAY",
+      isActive: true,
+      popularity: 86,
+    },
+    {
+      id: "11",
+      name: "KALYAN",
+      isActive: true,
+      popularity: 97,
+    },
+  ]);
+
+  const [draggedItem, setDraggedItem] = useState<number | null>(null);
+  const [hasChanges, setHasChanges] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  const originalOrder = [
     "SRIDEVI MORNING",
     "MILAN MORNING",
     "SRIDEVI",
@@ -16,48 +112,12 @@ export function GameReorder() {
     "MILAN DAY",
     "RAJDHANI DAY",
     "KALYAN",
-  ]);
-
-  const [draggedItem, setDraggedItem] = useState<number | null>(null);
-
-  const getGameColor = (index: number) => {
-    const colors = [
-      "from-purple-100 to-pink-100 border-purple-200",
-      "from-blue-100 to-cyan-100 border-blue-200",
-      "from-green-100 to-emerald-100 border-green-200",
-      "from-orange-100 to-red-100 border-orange-200",
-      "from-indigo-100 to-purple-100 border-indigo-200",
-      "from-pink-100 to-rose-100 border-pink-200",
-      "from-teal-100 to-green-100 border-teal-200",
-      "from-yellow-100 to-orange-100 border-yellow-200",
-      "from-red-100 to-pink-100 border-red-200",
-      "from-cyan-100 to-blue-100 border-cyan-200",
-      "from-emerald-100 to-teal-100 border-emerald-200",
-    ];
-    return colors[index % colors.length];
-  };
+  ];
 
   const getGameIcon = (index: number) => {
-    const icons = [Crown, Star, TrendingUp, Gamepad2];
-    const IconComponent = icons[index % icons.length];
-    const iconColors = [
-      "text-purple-600",
-      "text-blue-600",
-      "text-green-600",
-      "text-orange-600",
-      "text-indigo-600",
-      "text-pink-600",
-      "text-teal-600",
-      "text-yellow-600",
-      "text-red-600",
-      "text-cyan-600",
-      "text-emerald-600",
-    ];
-    return (
-      <IconComponent
-        className={`w-4 h-4 ${iconColors[index % iconColors.length]}`}
-      />
-    );
+    if (index === 0) return <Crown className="w-4 h-4 text-yellow-600" />;
+    if (index < 3) return <Star className="w-4 h-4 text-orange-500" />;
+    return <Target className="w-4 h-4 text-blue-500" />;
   };
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
@@ -82,173 +142,319 @@ export function GameReorder() {
 
     setGames(newGames);
     setDraggedItem(null);
+    setHasChanges(true);
   };
 
   const handleDragEnd = () => {
     setDraggedItem(null);
   };
 
-  const moveToTop = (index: number) => {
+  const moveGame = (index: number, direction: "up" | "down") => {
     const newGames = [...games];
-    const game = newGames.splice(index, 1)[0];
-    newGames.unshift(game);
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+
+    if (targetIndex < 0 || targetIndex >= newGames.length) return;
+
+    [newGames[index], newGames[targetIndex]] = [
+      newGames[targetIndex],
+      newGames[index],
+    ];
+
     setGames(newGames);
+    setHasChanges(true);
   };
 
-  const moveToBottom = (index: number) => {
+  const moveToPosition = (index: number, position: "top" | "bottom") => {
     const newGames = [...games];
     const game = newGames.splice(index, 1)[0];
-    newGames.push(game);
+
+    if (position === "top") {
+      newGames.unshift(game);
+    } else {
+      newGames.push(game);
+    }
+
     setGames(newGames);
+    setHasChanges(true);
   };
 
-  const handleSave = () => {
-    console.log("Game order saved:", games);
-    // Add API call here to save the new order
+  const handleSave = async () => {
+    setIsSaving(true);
+    setSaveSuccess(false);
+
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      console.log(
+        "Game order saved:",
+        games.map((g) => g.name),
+      );
+      setHasChanges(false);
+      setSaveSuccess(true);
+
+      // Hide success message after 3 seconds
+      setTimeout(() => setSaveSuccess(false), 3000);
+    } catch (error) {
+      console.error("Failed to save game order:", error);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const resetOrder = () => {
-    setGames([
-      "SRIDEVI MORNING",
-      "MILAN MORNING",
-      "SRIDEVI",
-      "TIME BAZAR MORNING",
-      "MADHURI",
-      "TIME BAZAR",
-      "TARA MUMBAI DAY",
-      "MADHUR DAY",
-      "MILAN DAY",
-      "RAJDHANI DAY",
-      "KALYAN",
-    ]);
+    const resetGames = originalOrder.map((name, index) => ({
+      id: (index + 1).toString(),
+      name,
+      isActive: name !== "MADHURI", // Example: MADHURI is inactive
+      popularity: Math.floor(Math.random() * 30) + 70, // Random popularity between 70-100
+    }));
+
+    setGames(resetGames);
+    setHasChanges(true);
   };
 
   return (
-    <div className="p-6 bg-gradient-light min-h-screen">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-foreground bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-          Game Reorder
-        </h1>
-        <p className="text-muted-foreground">
-          Drag and drop or use quick controls to reorder games as they appear on
-          the homepage
-        </p>
-      </div>
-
-      <Card className="max-w-3xl shadow-soft border-0 bg-white/80 backdrop-blur-sm">
-        <CardHeader className="bg-gradient-blue text-white rounded-t-lg">
-          <CardTitle className="flex items-center gap-2">
-            <Gamepad2 className="w-6 h-6" />
-            Game Order Management
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="space-y-4">
-            {games.map((game, index) => (
-              <div
-                key={game}
-                draggable
-                onDragStart={(e) => handleDragStart(e, index)}
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, index)}
-                onDragEnd={handleDragEnd}
-                className={`group relative flex items-center gap-4 p-4 rounded-xl border-2 transition-all duration-200 cursor-move ${
-                  draggedItem === index
-                    ? "opacity-50 scale-95"
-                    : "hover:shadow-lg hover:scale-[1.02]"
-                } bg-gradient-to-r ${getGameColor(index)} text-gray-800 shadow-md hover:shadow-xl`}
-              >
-                <div className="flex items-center gap-3">
-                  <GripVertical className="w-5 h-5 text-gray-400 opacity-70 group-hover:opacity-100" />
-                  <div className="w-8 h-8 bg-white/80 rounded-lg flex items-center justify-center shadow-sm">
-                    {getGameIcon(index)}
-                  </div>
-                </div>
-
-                <div className="flex-1">
-                  <span className="font-semibold text-lg text-gray-800">
-                    {game}
-                  </span>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-sm bg-white/80 text-gray-600 px-2 py-1 rounded-full shadow-sm">
-                      Position #{index + 1}
-                    </span>
-                    {index < 3 && (
-                      <span className="text-xs bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full font-medium shadow-sm">
-                        TOP 3
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    onClick={() => moveToTop(index)}
-                    disabled={index === 0}
-                    className="bg-white/80 hover:bg-white text-gray-700 border-gray-200 shadow-sm"
-                  >
-                    Move to Top
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    onClick={() => moveToBottom(index)}
-                    disabled={index === games.length - 1}
-                    className="bg-white/80 hover:bg-white text-gray-700 border-gray-200 shadow-sm"
-                  >
-                    Move to Bottom
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex gap-4 mt-8 pt-6 border-t border-gray-200">
-            <Button
-              onClick={handleSave}
-              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold px-6 py-2 shadow-lg"
-            >
-              💾 Save Order
-            </Button>
-            <Button
-              onClick={resetOrder}
-              variant="outline"
-              className="border-2 border-orange-300 text-orange-600 hover:bg-orange-50 font-semibold px-6 py-2"
-            >
-              🔄 Reset to Default
-            </Button>
-          </div>
-
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-white text-xs font-bold">💡</span>
-              </div>
-              <div>
-                <p className="font-medium text-blue-900 text-sm">
-                  How to reorder:
-                </p>
-                <ul className="text-sm text-blue-700 mt-1 space-y-1">
-                  <li>
-                    • <strong>Drag & Drop:</strong> Click and drag any game card
-                    to reorder
-                  </li>
-                  <li>
-                    • <strong>Quick Controls:</strong> Use "Move to Top" or
-                    "Move to Bottom" buttons
-                  </li>
-                  <li>
-                    • <strong>Top 3 Priority:</strong> First 3 positions get
-                    special highlighting
-                  </li>
-                </ul>
-              </div>
+    <div className="p-6 min-h-screen bg-background">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="mb-6">
+          <div className="flex items-center space-x-3">
+            <div className="p-2 bg-primary rounded-lg">
+              <Gamepad2 className="w-5 h-5 text-primary-foreground" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold text-foreground">
+                Game Reorder
+              </h1>
+              <p className="text-muted-foreground">
+                Drag and drop or use controls to reorder games as they appear on
+                the homepage
+              </p>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+
+        {/* Success Alert */}
+        {saveSuccess && (
+          <Alert className="mb-6 border-green-200 bg-green-50">
+            <CheckCircle className="h-4 w-4 text-green-600" />
+            <AlertDescription className="text-green-800">
+              Game order saved successfully!
+            </AlertDescription>
+          </Alert>
+        )}
+
+        {/* Changes Alert */}
+        {hasChanges && !saveSuccess && (
+          <Alert className="mb-6 border-orange-200 bg-orange-50">
+            <AlertCircle className="h-4 w-4 text-orange-600" />
+            <AlertDescription className="text-orange-800">
+              You have unsaved changes. Remember to save your new game order.
+            </AlertDescription>
+          </Alert>
+        )}
+
+        <div className="space-y-6">
+          {/* Actions */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span>Actions</span>
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="text-xs">
+                    {games.length} games total
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    {games.filter((g) => g.isActive).length} active
+                  </Badge>
+                </div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-4">
+                <Button
+                  onClick={handleSave}
+                  disabled={!hasChanges || isSaving}
+                  className="min-w-[120px]"
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  {isSaving ? "Saving..." : "Save Order"}
+                </Button>
+                <Button
+                  onClick={resetOrder}
+                  variant="outline"
+                  className="min-w-[120px]"
+                >
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Reset to Default
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Game List */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Game Order Management</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {games.map((game, index) => (
+                  <div
+                    key={game.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, index)}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, index)}
+                    onDragEnd={handleDragEnd}
+                    className={`group relative flex items-center gap-4 p-4 border rounded-lg transition-all duration-200 cursor-move hover:shadow-md ${
+                      draggedItem === index
+                        ? "opacity-50 scale-95"
+                        : "hover:border-primary/20"
+                    } ${
+                      game.isActive
+                        ? "bg-card border-border"
+                        : "bg-muted border-muted-foreground/20"
+                    }`}
+                  >
+                    {/* Drag Handle */}
+                    <div className="flex items-center gap-2">
+                      <GripVertical className="w-4 h-4 text-muted-foreground" />
+                      <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center">
+                        {getGameIcon(index)}
+                      </div>
+                    </div>
+
+                    {/* Game Info */}
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-semibold text-foreground">
+                          {game.name}
+                        </span>
+                        {!game.isActive && (
+                          <Badge variant="secondary" className="text-xs">
+                            Inactive
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <span>Position #{index + 1}</span>
+                        <span>•</span>
+                        <span>{game.popularity}% popularity</span>
+                        {index < 3 && (
+                          <>
+                            <span>•</span>
+                            <Badge
+                              className="text-xs bg-yellow-100 text-yellow-800"
+                              variant="outline"
+                            >
+                              TOP 3
+                            </Badge>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Controls */}
+                    <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => moveGame(index, "up")}
+                        disabled={index === 0}
+                        className="w-8 h-8 p-0"
+                      >
+                        <ArrowUp className="w-3 h-3" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => moveGame(index, "down")}
+                        disabled={index === games.length - 1}
+                        className="w-8 h-8 p-0"
+                      >
+                        <ArrowDown className="w-3 h-3" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => moveToPosition(index, "top")}
+                        disabled={index === 0}
+                        className="text-xs px-2"
+                      >
+                        Top
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => moveToPosition(index, "bottom")}
+                        disabled={index === games.length - 1}
+                        className="text-xs px-2"
+                      >
+                        Bottom
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Help Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <AlertCircle className="w-4 h-4" />
+                How to Reorder
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-muted-foreground">
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">
+                    Drag & Drop
+                  </h4>
+                  <p>
+                    Click and drag any game card to reorder it to your preferred
+                    position.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">
+                    Quick Controls
+                  </h4>
+                  <p>
+                    Use arrow buttons for single steps or "Top/Bottom" for quick
+                    positioning.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">
+                    Priority Positions
+                  </h4>
+                  <p>
+                    First 3 positions get special highlighting and appear
+                    prominently on homepage.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">
+                    Inactive Games
+                  </h4>
+                  <p>
+                    Inactive games are shown in muted style but can still be
+                    reordered.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }
