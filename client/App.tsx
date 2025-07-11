@@ -16,6 +16,10 @@ import { Market } from "./pages/Market";
 import { Reports } from "./pages/Reports";
 import { Analytics } from "./pages/Analytics";
 import { Settings } from "./pages/Settings";
+import { AddGame } from "./pages/AddGame";
+import { UpdateGameResult } from "./pages/UpdateGameResult";
+import { GameReorder } from "./pages/GameReorder";
+import { RemoveGame } from "./pages/RemoveGame";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
