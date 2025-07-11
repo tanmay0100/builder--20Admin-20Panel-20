@@ -44,6 +44,17 @@ const gameManagementItems = [
   { name: "Remove Game", href: "/games/management/remove" },
 ];
 
+const websiteManagementItems = [
+  { name: "Content Update", href: "/website/content-update" },
+  { name: "Download Links Update", href: "/website/download-links" },
+];
+
+const userManagementItems = [
+  { name: "View Users & Participation", href: "/user-management/view-users" },
+  { name: "Manage Wallet Balances", href: "/user-management/wallet-balances" },
+  { name: "Add/Remove Users", href: "/user-management/add-remove" },
+];
+
 const navigationItems = [
   {
     title: "Dashboard",
