@@ -23,6 +23,8 @@ import {
   UserMinus,
   Eye,
   LogOut,
+  Sparkles,
+  Plus,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -36,6 +38,10 @@ const gameItems = [
   { name: "Roll the Dice", href: "/games/roll-dice" },
   { name: "Lucky Numbers", href: "/games/lucky-numbers" },
   { name: "Card Master", href: "/games/card-master" },
+];
+
+const luckyNumberItems = [
+  { name: "Add New Lucky Number", href: "/lucky-numbers/add" },
 ];
 
 const gameManagementItems = [
@@ -66,6 +72,11 @@ const navigationItems = [
     title: "Games Revenue Analytics",
     icon: Gamepad2,
     children: gameItems,
+  },
+  {
+    title: "Lucky Numbers",
+    icon: Sparkles,
+    children: luckyNumberItems,
   },
   {
     title: "Game Management",
