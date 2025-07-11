@@ -152,11 +152,11 @@ export function GameReorder() {
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, index)}
                 onDragEnd={handleDragEnd}
-                className={`group relative flex items-center gap-4 p-4 rounded-xl border-2 border-transparent transition-all duration-200 cursor-move ${
+                className={`group relative flex items-center gap-4 p-4 rounded-xl border-2 transition-all duration-200 cursor-move ${
                   draggedItem === index
                     ? "opacity-50 scale-95"
-                    : "hover:border-primary/20 hover:shadow-lg hover:scale-[1.02]"
-                } bg-gradient-to-r ${getGameColor(index)} text-white shadow-md hover:shadow-xl`}
+                    : "hover:shadow-lg hover:scale-[1.02]"
+                } bg-gradient-to-r ${getGameColor(index)} text-gray-800 shadow-md hover:shadow-xl`}
               >
                 <div className="flex items-center gap-3">
                   <GripVertical className="w-5 h-5 opacity-70 group-hover:opacity-100" />
