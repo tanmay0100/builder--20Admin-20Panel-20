@@ -245,10 +245,10 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
           {/* Logout Button */}
           <button
             onClick={handleLogout}
-            className="w-full flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors text-left hover:bg-destructive/10 hover:text-destructive text-sidebar-foreground/80"
+            className="w-full flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 text-left bg-destructive/10 hover:bg-destructive hover:text-destructive-foreground text-destructive border border-destructive/20 hover:border-destructive hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
           >
             <LogOut className="w-5 h-5 flex-shrink-0" />
-            <span className="ml-3">Logout</span>
+            <span className="ml-3 font-semibold">Logout</span>
           </button>
         </div>
       )}
@@ -258,7 +258,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
         <div className="p-2 border-t border-sidebar-border">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center p-2.5 text-sm font-medium rounded-lg transition-colors hover:bg-destructive/10 hover:text-destructive text-sidebar-foreground/80"
+            className="w-full flex items-center justify-center p-2.5 text-sm font-medium rounded-lg transition-all duration-200 bg-destructive/10 hover:bg-destructive hover:text-destructive-foreground text-destructive border border-destructive/20 hover:border-destructive hover:shadow-lg hover:scale-110 active:scale-95"
             title="Logout"
           >
             <LogOut className="w-5 h-5" />
