@@ -22,6 +22,7 @@ import {
   UserPlus,
   UserMinus,
   Eye,
+  LogOut,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -96,6 +97,16 @@ const navigationItems = [
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const location = useLocation();
+
+  const handleLogout = () => {
+    // Clear any stored authentication data
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userSession");
+    sessionStorage.clear();
+
+    // Redirect to login page or home
+    window.location.href = "/login";
+  };
 
   const toggleExpanded = (title: string) => {
     setExpandedItems((prev) =>
@@ -221,7 +232,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
 
       {/* Footer */}
       {!collapsed && (
-        <div className="p-4 border-t border-sidebar-border">
+        <div className="p-4 border-t border-sidebar-border space-y-3">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-sidebar-primary rounded-full flex items-center justify-center">
               <UserCheck className="w-4 h-4 text-sidebar-primary-foreground" />
@@ -235,6 +246,28 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               </p>
             </div>
           </div>
+
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors text-left hover:bg-destructive/10 hover:text-destructive text-sidebar-foreground/80"
+          >
+            <LogOut className="w-5 h-5 flex-shrink-0" />
+            <span className="ml-3">Logout</span>
+          </button>
+        </div>
+      )}
+
+      {/* Collapsed Logout Button */}
+      {collapsed && (
+        <div className="p-2 border-t border-sidebar-border">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center justify-center p-2.5 text-sm font-medium rounded-lg transition-colors hover:bg-destructive/10 hover:text-destructive text-sidebar-foreground/80"
+            title="Logout"
+          >
+            <LogOut className="w-5 h-5" />
+          </button>
         </div>
       )}
     </div>
