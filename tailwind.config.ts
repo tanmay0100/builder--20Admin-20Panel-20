@@ -69,6 +69,18 @@ export default {
           DEFAULT: "hsl(var(--info))",
           foreground: "hsl(var(--info-foreground))",
         },
+        satta: {
+          gold: "hsl(var(--satta-gold))",
+          "gold-foreground": "hsl(var(--satta-gold-foreground))",
+          amber: "hsl(var(--satta-amber))",
+          "amber-foreground": "hsl(var(--satta-amber-foreground))",
+          royal: "hsl(var(--satta-royal))",
+          "royal-foreground": "hsl(var(--satta-royal-foreground))",
+          emerald: "hsl(var(--satta-emerald))",
+          "emerald-foreground": "hsl(var(--satta-emerald-foreground))",
+          crimson: "hsl(var(--satta-crimson))",
+          "crimson-foreground": "hsl(var(--satta-crimson-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
