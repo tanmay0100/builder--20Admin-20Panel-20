@@ -24,6 +24,10 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/games/satta-matka" element={<SattaMatka />} />
+        <Route
+          path="/games/satta-matka/:marketName"
+          element={<SattaMatkaDetails />}
+        />
         <Route path="/games/color-king" element={<ColorKing />} />
         <Route path="/games/roll-dice" element={<RollDice />} />
         <Route path="/games/lucky-numbers" element={<LuckyNumbers />} />
