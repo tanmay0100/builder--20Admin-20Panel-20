@@ -157,4 +157,54 @@
       0 2px 15px -3px rgba(0, 0, 0, 0.07),
       0 10px 20px -2px rgba(0, 0, 0, 0.04);
   }
+
+  .shadow-luxury {
+    box-shadow:
+      0 4px 20px -4px rgba(255, 215, 0, 0.25),
+      0 8px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .bg-gradient-satta {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-gold)) 0%,
+      hsl(var(--satta-amber)) 50%,
+      hsl(var(--satta-royal)) 100%
+    );
+  }
+
+  .bg-gradient-market-open {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-emerald)) 0%,
+      hsl(160 84% 45%) 100%
+    );
+  }
+
+  .bg-gradient-market-closed {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-crimson)) 0%,
+      hsl(348 83% 42%) 100%
+    );
+  }
+
+  .border-gradient-gold {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(white, white) padding-box,
+      linear-gradient(135deg, hsl(var(--satta-gold)), hsl(var(--satta-amber)))
+        border-box;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-gold)),
+      hsl(var(--satta-amber))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
