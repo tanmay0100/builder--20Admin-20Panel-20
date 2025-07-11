@@ -178,27 +178,39 @@ export function Settings() {
       </div>
 
       <Tabs defaultValue="profile" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="profile" className="flex items-center gap-2">
+        <TabsList className="grid w-full grid-cols-5 bg-muted/50 p-1 rounded-xl">
+          <TabsTrigger
+            value="profile"
+            className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-200"
+          >
             <User className="w-4 h-4" />
             Profile
           </TabsTrigger>
-          <TabsTrigger value="security" className="flex items-center gap-2">
+          <TabsTrigger
+            value="security"
+            className="flex items-center gap-2 data-[state=active]:bg-success data-[state=active]:text-success-foreground transition-all duration-200"
+          >
             <Shield className="w-4 h-4" />
             Security
           </TabsTrigger>
           <TabsTrigger
             value="notifications"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 data-[state=active]:bg-info data-[state=active]:text-info-foreground transition-all duration-200"
           >
             <Bell className="w-4 h-4" />
             Notifications
           </TabsTrigger>
-          <TabsTrigger value="platform" className="flex items-center gap-2">
+          <TabsTrigger
+            value="platform"
+            className="flex items-center gap-2 data-[state=active]:bg-warning data-[state=active]:text-warning-foreground transition-all duration-200"
+          >
             <Globe className="w-4 h-4" />
             Platform
           </TabsTrigger>
-          <TabsTrigger value="system" className="flex items-center gap-2">
+          <TabsTrigger
+            value="system"
+            className="flex items-center gap-2 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground transition-all duration-200"
+          >
             <Server className="w-4 h-4" />
             System
           </TabsTrigger>
@@ -263,7 +275,7 @@ export function Settings() {
               <div className="flex justify-end">
                 <Button
                   onClick={() => handleSave("Profile")}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg hover:shadow-primary/25 transition-all duration-200"
                 >
                   <Save className="w-4 h-4" />
                   Save Profile
@@ -363,7 +375,7 @@ export function Settings() {
               <div className="flex justify-end">
                 <Button
                   onClick={handlePasswordChange}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success/70 shadow-lg hover:shadow-success/25 transition-all duration-200"
                 >
                   <Lock className="w-4 h-4" />
                   Change Password
@@ -437,7 +449,7 @@ export function Settings() {
               <div className="flex justify-end">
                 <Button
                   onClick={() => handleSave("Security")}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success/70 shadow-lg hover:shadow-success/25 transition-all duration-200"
                 >
                   <Save className="w-4 h-4" />
                   Save Security Settings
@@ -526,7 +538,7 @@ export function Settings() {
               <div className="flex justify-end">
                 <Button
                   onClick={() => handleSave("Notifications")}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-gradient-to-r from-info to-info/80 hover:from-info/90 hover:to-info/70 shadow-lg hover:shadow-info/25 transition-all duration-200"
                 >
                   <Save className="w-4 h-4" />
                   Save Notification Settings
@@ -668,7 +680,7 @@ export function Settings() {
               <div className="flex justify-end">
                 <Button
                   onClick={() => handleSave("Platform")}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-gradient-to-r from-warning to-warning/80 hover:from-warning/90 hover:to-warning/70 shadow-lg hover:shadow-warning/25 transition-all duration-200"
                 >
                   <Save className="w-4 h-4" />
                   Save Platform Settings
@@ -756,7 +768,7 @@ export function Settings() {
                   <div className="space-y-3">
                     <Button
                       onClick={() => handleSystemAction("backup")}
-                      className="w-full justify-start"
+                      className="w-full justify-start border-success/30 hover:bg-success/10 hover:border-success hover:text-success transition-all duration-200"
                       variant="outline"
                     >
                       <Database className="w-4 h-4 mr-2" />
@@ -764,7 +776,7 @@ export function Settings() {
                     </Button>
                     <Button
                       onClick={() => handleSystemAction("cache")}
-                      className="w-full justify-start"
+                      className="w-full justify-start border-info/30 hover:bg-info/10 hover:border-info hover:text-info transition-all duration-200"
                       variant="outline"
                     >
                       <RefreshCw className="w-4 h-4 mr-2" />
@@ -772,7 +784,7 @@ export function Settings() {
                     </Button>
                     <Button
                       onClick={() => handleSystemAction("logs")}
-                      className="w-full justify-start"
+                      className="w-full justify-start border-warning/30 hover:bg-warning/10 hover:border-warning hover:text-warning transition-all duration-200"
                       variant="outline"
                     >
                       <AlertTriangle className="w-4 h-4 mr-2" />
@@ -780,7 +792,7 @@ export function Settings() {
                     </Button>
                     <Button
                       onClick={() => handleSystemAction("restart")}
-                      className="w-full justify-start"
+                      className="w-full justify-start bg-gradient-to-r from-destructive to-destructive/80 hover:from-destructive/90 hover:to-destructive/70 shadow-lg hover:shadow-destructive/25 transition-all duration-200"
                       variant="destructive"
                     >
                       <Server className="w-4 h-4 mr-2" />
@@ -792,7 +804,7 @@ export function Settings() {
               <div className="flex justify-end">
                 <Button
                   onClick={() => handleSave("System")}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-gradient-to-r from-destructive to-destructive/80 hover:from-destructive/90 hover:to-destructive/70 shadow-lg hover:shadow-destructive/25 transition-all duration-200"
                 >
                   <Save className="w-4 h-4" />
                   Save System Settings
