@@ -34,6 +34,82 @@ const bettingTypeData = [
   { label: "Full Sangam", value: 15000, color: "bg-orange-500" },
 ];
 
+// Generate Jodi data (00-99)
+const generateJodiData = () => {
+  const data = [];
+  for (let i = 0; i <= 99; i++) {
+    const numberStr = i.toString().padStart(2, "0");
+    const amount = Math.floor(Math.random() * 25000) + 1000;
+    const users = Math.floor(amount / 1500) + 1;
+    data.push({ number: numberStr, amount, users });
+  }
+  return data.sort((a, b) => b.amount - a.amount);
+};
+
+// Generate popular Patti numbers (220 total, showing top ones)
+const generatePattiData = () => {
+  const popularPattis = [
+    "128",
+    "137",
+    "146",
+    "236",
+    "245",
+    "289",
+    "234",
+    "567",
+    "678",
+    "789",
+    "012",
+    "123",
+    "234",
+    "345",
+    "456",
+    "890",
+    "901",
+    "013",
+    "024",
+    "035",
+    "046",
+    "057",
+    "068",
+    "079",
+    "189",
+    "278",
+    "367",
+    "456",
+    "145",
+    "029",
+    "138",
+    "247",
+    "356",
+    "689",
+    "578",
+    "467",
+    "129",
+    "038",
+    "147",
+    "256",
+    "134",
+    "025",
+    "016",
+    "789",
+    "678",
+    "567",
+    "456",
+    "345",
+    "234",
+    "123",
+  ];
+
+  return popularPattis
+    .map((patti) => ({
+      number: patti,
+      amount: Math.floor(Math.random() * 30000) + 5000,
+      users: Math.floor(Math.random() * 20) + 3,
+    }))
+    .sort((a, b) => b.amount - a.amount);
+};
+
 const mockNumberData = {
   "Single Ank": [
     { number: "0", amount: 15000, users: 12 },
@@ -47,19 +123,10 @@ const mockNumberData = {
     { number: "8", amount: 11000, users: 9 },
     { number: "9", amount: 7800, users: 7 },
   ],
-  Jodi: [
-    { number: "12", amount: 18000, users: 12 },
-    { number: "25", amount: 22000, users: 15 },
-    { number: "37", amount: 15000, users: 10 },
-    { number: "48", amount: 12000, users: 8 },
-    { number: "59", amount: 8500, users: 6 },
-  ],
-  "Single Patti": [
-    { number: "125", amount: 15000, users: 8 },
-    { number: "238", amount: 12000, users: 6 },
-    { number: "457", amount: 18000, users: 10 },
-    { number: "689", amount: 9500, users: 5 },
-  ],
+  Jodi: generateJodiData(),
+  "Single Patti": generatePattiData(),
+  "Double Patti": generatePattiData().slice(0, 30),
+  "Triple Patti": generatePattiData().slice(0, 20),
 };
 
 const liveBets = [
