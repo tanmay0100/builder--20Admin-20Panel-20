@@ -445,23 +445,16 @@ export function UpdateGameResult() {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-background">
+    <div className="p-6 bg-gradient-light min-h-screen">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-6">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-primary rounded-lg">
-              <BarChart3 className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-foreground">
-                Update Game Result
-              </h1>
-              <p className="text-muted-foreground">
-                Update results for existing games
-              </p>
-            </div>
-          </div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            📊 Update Game Result
+          </h1>
+          <p className="text-muted-foreground">
+            Update results for existing games
+          </p>
         </div>
 
         {submitSuccess && (
@@ -476,11 +469,10 @@ export function UpdateGameResult() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Form Section */}
           <div>
-            <Card>
-              <CardHeader>
+            <Card className="shadow-soft border-0 bg-white/80 backdrop-blur-sm">
+              <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg">
                 <CardTitle className="flex items-center gap-2">
-                  <Target className="w-5 h-5" />
-                  Result Entry
+                  🎯 Result Entry
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -615,10 +607,9 @@ export function UpdateGameResult() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="min-w-[120px]"
+                      className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold shadow-lg min-w-[120px]"
                     >
-                      <Save className="w-4 h-4 mr-2" />
-                      {isSubmitting ? "Updating..." : "Update Result"}
+                      💾 {isSubmitting ? "Updating..." : "Update Result"}
                     </Button>
                     <Button
                       type="button"
@@ -635,9 +626,9 @@ export function UpdateGameResult() {
                         });
                         setErrors({});
                       }}
+                      className="border-2 border-gray-300 text-gray-600 hover:bg-gray-50 font-semibold"
                     >
-                      <RefreshCw className="w-4 h-4 mr-2" />
-                      Reset Form
+                      ❌ Reset Form
                     </Button>
                   </div>
                 </form>
