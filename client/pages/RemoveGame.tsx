@@ -66,10 +66,13 @@ export function RemoveGame() {
               {games.map((game) => (
                 <div
                   key={game}
-                  className="flex items-center justify-between p-3 border rounded-lg bg-card hover:bg-accent/50 transition-colors"
+                  className="flex items-center justify-between p-4 border-2 border-red-100 rounded-lg bg-gradient-to-r from-white to-red-50 hover:from-red-50 hover:to-red-100 transition-all duration-200 shadow-sm hover:shadow-md"
                 >
-                  <div>
-                    <span className="font-medium">{game}</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
+                      <span className="text-white text-sm font-bold">🎮</span>
+                    </div>
+                    <span className="font-semibold text-gray-800">{game}</span>
                   </div>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
