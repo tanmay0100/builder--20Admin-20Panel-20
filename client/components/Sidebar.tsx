@@ -83,11 +83,6 @@ const navigationItems = [
     children: userManagementItems,
   },
   {
-    title: "Reports",
-    href: "/reports",
-    icon: FileText,
-  },
-  {
     title: "Settings",
     href: "/settings",
     icon: Settings,
