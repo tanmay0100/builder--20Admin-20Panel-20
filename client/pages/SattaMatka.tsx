@@ -336,14 +336,14 @@ export function SattaMatka() {
                 </div>
               </div>
               <div className="col-span-2 flex items-center">
-                <div
-                  className={`px-3 py-1 rounded-full text-xs font-bold ${
-                    market.status === "open"
-                      ? "bg-satta-emerald/20 text-satta-emerald"
-                      : "bg-satta-crimson/20 text-satta-crimson"
-                  }`}
-                >
-                  {market.status.toUpperCase()}
+                <div className="px-3 py-1 rounded-lg bg-satta-gold/10 border border-satta-gold/30">
+                  <div className="text-xs font-bold text-satta-gold">
+                    {new Date().toLocaleDateString("en-IN", {
+                      day: "2-digit",
+                      month: "short",
+                    })}
+                  </div>
+                  <div className="text-xs text-muted-foreground">Today</div>
                 </div>
               </div>
               <div className="col-span-2 flex items-center">
