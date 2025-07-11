@@ -130,11 +130,9 @@ export function GameReorder() {
     <div className="p-6 min-h-screen bg-background">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            Game Reorder
-          </h1>
-          <p className="text-muted-foreground">
+        <div className="mb-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white shadow-lg">
+          <h1 className="text-3xl font-bold mb-2">🎮 Game Reorder</h1>
+          <p className="text-blue-100">
             Drag and drop games to change their order on the homepage
           </p>
         </div>
