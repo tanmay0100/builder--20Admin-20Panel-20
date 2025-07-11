@@ -205,89 +205,133 @@ export function SattaMatka() {
           {mockMarkets.map((market, index) => (
             <div
               key={index}
-              className="group bg-card rounded-xl shadow-soft border border-border p-4 hover:shadow-luxury transition-all duration-300 hover:scale-105"
+              className="group relative bg-card rounded-xl shadow-soft border border-border overflow-hidden hover:shadow-luxury transition-all duration-300 hover:scale-105"
             >
-              {/* Compact Header */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center space-x-2">
-                  <div className="p-1.5 bg-satta-gold/10 rounded-lg">
-                    <Trophy className="w-3 h-3 text-satta-gold" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-foreground group-hover:text-satta-gold transition-colors">
-                      {market.name}
-                    </h3>
-                    <div className="flex items-center space-x-1">
-                      {getTrendIcon(market.trend)}
-                      <span className="text-xs text-muted-foreground">
-                        {market.popularity}%
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`px-2 py-1 rounded-full text-xs font-bold ${
-                    market.status === "open"
-                      ? "bg-satta-emerald/20 text-satta-emerald"
-                      : "bg-satta-crimson/20 text-satta-crimson"
-                  }`}
-                >
-                  {market.status.toUpperCase()}
-                </div>
-              </div>
+              {/* Background Pattern */}
+              <div className="absolute inset-0 bg-gradient-to-br from-satta-gold/5 via-transparent to-satta-royal/5"></div>
 
-              {/* Compact Stats */}
-              <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="bg-satta-gold/5 rounded-lg p-2">
-                  <p className="text-xs text-muted-foreground">Bets</p>
-                  <p className="text-sm font-bold text-foreground">
-                    {market.totalBets}
-                  </p>
-                </div>
-                <div className="bg-satta-emerald/5 rounded-lg p-2">
-                  <p className="text-xs text-muted-foreground">Amount</p>
-                  <p className="text-sm font-bold text-foreground">
-                    ₹{(market.totalAmount / 1000).toFixed(0)}K
-                  </p>
-                </div>
-              </div>
+              {/* Corner accent */}
+              <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-satta-gold/20 to-transparent"></div>
 
-              {/* Progress Bar */}
-              <div className="mb-3">
-                <Progress
-                  value={(market.totalAmount / market.maxAmount) * 100}
-                  className="h-1.5 bg-muted/30"
-                />
-              </div>
-
-              {/* Top Number */}
-              <div className="mb-3">
-                <div className="flex justify-between items-center p-2 bg-gradient-to-r from-satta-gold/5 to-transparent rounded-lg">
+              <div className="relative p-4">
+                {/* Compact Header */}
+                <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <div className="w-5 h-5 rounded-full bg-satta-gold text-black text-xs font-bold flex items-center justify-center">
-                      1
+                    <div className="p-2 bg-gradient-to-br from-satta-gold to-satta-amber rounded-lg shadow-sm">
+                      <Trophy className="w-3 h-3 text-black" />
                     </div>
-                    <span className="text-xs font-bold text-satta-gold">
-                      {market.topNumbers[0].number}
+                    <div>
+                      <h3 className="text-sm font-bold text-foreground group-hover:text-satta-gold transition-colors">
+                        {market.name}
+                      </h3>
+                      <div className="flex items-center space-x-1">
+                        {getTrendIcon(market.trend)}
+                        <span className="text-xs text-muted-foreground font-medium">
+                          {market.popularity}% popular
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`px-2 py-1 rounded-full text-xs font-bold shadow-sm ${
+                      market.status === "open"
+                        ? "bg-gradient-to-r from-satta-emerald to-green-400 text-white"
+                        : "bg-gradient-to-r from-satta-crimson to-red-400 text-white"
+                    }`}
+                  >
+                    ● {market.status.toUpperCase()}
+                  </div>
+                </div>
+
+                {/* Enhanced Stats with Icons */}
+                <div className="grid grid-cols-2 gap-2 mb-3">
+                  <div className="bg-gradient-to-br from-satta-gold/10 to-satta-amber/5 rounded-lg p-2 border border-satta-gold/20">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <Users className="w-3 h-3 text-satta-gold" />
+                      <p className="text-xs text-muted-foreground font-medium">
+                        Bets
+                      </p>
+                    </div>
+                    <p className="text-sm font-bold text-foreground">
+                      {market.totalBets}
+                    </p>
+                  </div>
+                  <div className="bg-gradient-to-br from-satta-emerald/10 to-green-400/5 rounded-lg p-2 border border-satta-emerald/20">
+                    <div className="flex items-center space-x-1 mb-1">
+                      <DollarSign className="w-3 h-3 text-satta-emerald" />
+                      <p className="text-xs text-muted-foreground font-medium">
+                        Amount
+                      </p>
+                    </div>
+                    <p className="text-sm font-bold text-foreground">
+                      ₹{(market.totalAmount / 1000).toFixed(0)}K
+                    </p>
+                  </div>
+                </div>
+
+                {/* Enhanced Progress Bar */}
+                <div className="mb-3">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-xs text-muted-foreground font-medium">
+                      Target Progress
+                    </span>
+                    <span className="text-xs text-satta-gold font-bold">
+                      {Math.round(
+                        (market.totalAmount / market.maxAmount) * 100,
+                      )}
+                      %
                     </span>
                   </div>
-                  <span className="text-xs font-bold text-satta-emerald">
-                    ₹{(market.topNumbers[0].amount / 1000).toFixed(0)}K
-                  </span>
+                  <div className="relative">
+                    <Progress
+                      value={(market.totalAmount / market.maxAmount) * 100}
+                      className="h-2 bg-muted/30"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-satta-gold/20 via-satta-amber/20 to-satta-emerald/20 rounded-full"></div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Action Button */}
-              <Link to={`/games/satta-matka/${market.name.toLowerCase()}`}>
-                <Button
-                  size="sm"
-                  className="w-full bg-gradient-to-r from-satta-gold to-satta-amber hover:from-satta-amber hover:to-satta-gold text-black font-bold text-xs rounded-lg"
-                  variant="default"
-                >
-                  <Eye className="w-3 h-3 mr-1" />
-                  View Details
-                </Button>
-              </Link>
+                {/* Top Number with more context */}
+                <div className="mb-3">
+                  <div className="flex items-center space-x-1 mb-1">
+                    <Star className="w-3 h-3 text-satta-gold" />
+                    <span className="text-xs text-muted-foreground font-medium">
+                      Hot Number
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center p-2 bg-gradient-to-r from-satta-gold/10 via-satta-amber/5 to-transparent rounded-lg border border-satta-gold/20">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-satta-gold to-satta-amber text-black text-xs font-bold flex items-center justify-center shadow-sm">
+                        {market.topNumbers[0].number}
+                      </div>
+                      <div>
+                        <span className="text-xs text-muted-foreground block">
+                          {market.topNumbers[0].type}
+                        </span>
+                        <span className="text-xs font-bold text-satta-emerald">
+                          ₹{(market.topNumbers[0].amount / 1000).toFixed(0)}K
+                        </span>
+                      </div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      #{index + 1} trending
+                    </div>
+                  </div>
+                </div>
+
+                {/* Enhanced Action Button */}
+                <Link to={`/games/satta-matka/${market.name.toLowerCase()}`}>
+                  <Button
+                    size="sm"
+                    className="w-full bg-gradient-to-r from-satta-gold via-satta-amber to-satta-gold hover:from-satta-amber hover:via-satta-gold hover:to-satta-amber text-black font-bold text-xs rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                    variant="default"
+                  >
+                    <Eye className="w-3 h-3 mr-1" />
+                    View Market Details
+                    <Crown className="w-3 h-3 ml-1" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
