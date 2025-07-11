@@ -156,10 +156,12 @@ export function SattaMatka() {
                 </div>
               </div>
 
-              <Button className="w-full" variant="outline">
-                <Eye className="w-4 h-4 mr-2" />
-                View Details
-              </Button>
+              <Link to={`/games/satta-matka/${market.name.toLowerCase()}`}>
+                <Button className="w-full" variant="outline">
+                  <Eye className="w-4 h-4 mr-2" />
+                  View Details
+                </Button>
+              </Link>
             </div>
           </div>
         ))}
