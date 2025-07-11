@@ -171,18 +171,12 @@ export function SattaMatka() {
       </div>
 
       {/* Overview Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <StatsCard
           title="Total Markets"
           value="12"
           icon={<CircleDot className="w-4 h-4 text-satta-royal" />}
           className="border-gradient-gold"
-        />
-        <StatsCard
-          title="Active Markets"
-          value="8"
-          change={{ value: 2, type: "increase" }}
-          icon={<Clock className="w-4 h-4 text-satta-emerald" />}
         />
         <StatsCard
           title="Total Bets"
@@ -232,14 +226,14 @@ export function SattaMatka() {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={`px-2 py-1 rounded-full text-xs font-bold shadow-sm ${
-                      market.status === "open"
-                        ? "bg-gradient-to-r from-satta-emerald to-green-400 text-white"
-                        : "bg-gradient-to-r from-satta-crimson to-red-400 text-white"
-                    }`}
-                  >
-                    ● {market.status.toUpperCase()}
+                  <div className="px-2 py-1 rounded-lg bg-satta-gold/10 border border-satta-gold/30">
+                    <div className="text-xs font-bold text-satta-gold">
+                      {new Date().toLocaleDateString("en-IN", {
+                        day: "2-digit",
+                        month: "short",
+                      })}
+                    </div>
+                    <div className="text-xs text-muted-foreground">Today</div>
                   </div>
                 </div>
 
@@ -266,28 +260,6 @@ export function SattaMatka() {
                     <p className="text-sm font-bold text-foreground">
                       ₹{(market.totalAmount / 1000).toFixed(0)}K
                     </p>
-                  </div>
-                </div>
-
-                {/* Enhanced Progress Bar */}
-                <div className="mb-3">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs text-muted-foreground font-medium">
-                      Target Progress
-                    </span>
-                    <span className="text-xs text-satta-gold font-bold">
-                      {Math.round(
-                        (market.totalAmount / market.maxAmount) * 100,
-                      )}
-                      %
-                    </span>
-                  </div>
-                  <div className="relative">
-                    <Progress
-                      value={(market.totalAmount / market.maxAmount) * 100}
-                      className="h-2 bg-muted/30"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-satta-gold/20 via-satta-amber/20 to-satta-emerald/20 rounded-full"></div>
                   </div>
                 </div>
 
