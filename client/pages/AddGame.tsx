@@ -31,7 +31,6 @@ interface GameFormData {
   endTime: string;
   featured: boolean;
   active: boolean;
-  betTypes: string[];
   frequency: string;
 }
 
@@ -43,7 +42,6 @@ export function AddGame() {
     endTime: "",
     featured: false,
     active: true,
-    betTypes: [],
     frequency: "",
   });
 
@@ -64,16 +62,6 @@ export function AddGame() {
     "RAJDHANI DAY",
     "KALYAN",
     "CUSTOM",
-  ];
-
-  const betTypeOptions = [
-    "Single Ank",
-    "Jodi",
-    "Single Patti",
-    "Double Patti",
-    "Triple Patti",
-    "Half Sangam",
-    "Full Sangam",
   ];
 
   const validateForm = (): boolean => {
@@ -101,10 +89,6 @@ export function AddGame() {
       formData.startTime >= formData.endTime
     ) {
       newErrors.endTime = "End time must be after start time";
-    }
-
-    if (formData.betTypes.length === 0) {
-      newErrors.betTypes = "At least one bet type must be selected";
     }
 
     if (!formData.frequency) {
@@ -141,7 +125,6 @@ export function AddGame() {
           endTime: "",
           featured: false,
           active: true,
-          betTypes: [],
           frequency: "",
         });
         setSubmitSuccess(false);
@@ -151,15 +134,6 @@ export function AddGame() {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleBetTypeToggle = (betType: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      betTypes: prev.betTypes.includes(betType)
-        ? prev.betTypes.filter((type) => type !== betType)
-        : [...prev.betTypes, betType],
-    }));
   };
 
   return (
@@ -346,35 +320,6 @@ export function AddGame() {
                     </div>
                   </div>
 
-                  <Separator />
-
-                  {/* Bet Types */}
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Allowed Bet Types</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      {betTypeOptions.map((betType) => (
-                        <div
-                          key={betType}
-                          className="flex items-center space-x-2"
-                        >
-                          <Checkbox
-                            id={betType}
-                            checked={formData.betTypes.includes(betType)}
-                            onCheckedChange={() => handleBetTypeToggle(betType)}
-                          />
-                          <Label htmlFor={betType} className="text-sm">
-                            {betType}
-                          </Label>
-                        </div>
-                      ))}
-                    </div>
-                    {errors.betTypes && (
-                      <p className="text-red-500 text-sm">{errors.betTypes}</p>
-                    )}
-                  </div>
-
-                  <Separator />
-
                   {/* Game Options */}
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Game Options</h3>
@@ -436,7 +381,6 @@ export function AddGame() {
                           endTime: "",
                           featured: false,
                           active: true,
-                          betTypes: [],
                           frequency: "",
                         });
                         setErrors({});
@@ -484,23 +428,6 @@ export function AddGame() {
                   </p>
                 </div>
 
-                {formData.betTypes.length > 0 && (
-                  <div>
-                    <Label className="text-sm font-medium">Bet Types:</Label>
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {formData.betTypes.map((type) => (
-                        <Badge
-                          key={type}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {type}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 <div className="flex gap-2 mt-3">
                   {formData.featured && (
                     <Badge className="text-xs bg-yellow-100 text-yellow-800">
@@ -534,13 +461,6 @@ export function AddGame() {
                 <div>
                   <p className="font-medium">Featured Games:</p>
                   <p>Featured games appear prominently on the homepage.</p>
-                </div>
-
-                <div>
-                  <p className="font-medium">Bet Types:</p>
-                  <p>
-                    Select which betting options are available for this game.
-                  </p>
                 </div>
 
                 <div>
