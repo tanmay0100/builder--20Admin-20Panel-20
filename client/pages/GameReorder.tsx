@@ -159,20 +159,22 @@ export function GameReorder() {
                 } bg-gradient-to-r ${getGameColor(index)} text-gray-800 shadow-md hover:shadow-xl`}
               >
                 <div className="flex items-center gap-3">
-                  <GripVertical className="w-5 h-5 opacity-70 group-hover:opacity-100" />
-                  <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                  <GripVertical className="w-5 h-5 text-gray-400 opacity-70 group-hover:opacity-100" />
+                  <div className="w-8 h-8 bg-white/80 rounded-lg flex items-center justify-center shadow-sm">
                     {getGameIcon(index)}
                   </div>
                 </div>
 
                 <div className="flex-1">
-                  <span className="font-semibold text-lg">{game}</span>
+                  <span className="font-semibold text-lg text-gray-800">
+                    {game}
+                  </span>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-sm bg-white/20 px-2 py-1 rounded-full">
+                    <span className="text-sm bg-white/80 text-gray-600 px-2 py-1 rounded-full shadow-sm">
                       Position #{index + 1}
                     </span>
                     {index < 3 && (
-                      <span className="text-xs bg-yellow-400/90 text-yellow-900 px-2 py-1 rounded-full font-medium">
+                      <span className="text-xs bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full font-medium shadow-sm">
                         TOP 3
                       </span>
                     )}
@@ -185,7 +187,7 @@ export function GameReorder() {
                     variant="secondary"
                     onClick={() => moveToTop(index)}
                     disabled={index === 0}
-                    className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+                    className="bg-white/80 hover:bg-white text-gray-700 border-gray-200 shadow-sm"
                   >
                     Move to Top
                   </Button>
@@ -194,7 +196,7 @@ export function GameReorder() {
                     variant="secondary"
                     onClick={() => moveToBottom(index)}
                     disabled={index === games.length - 1}
-                    className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+                    className="bg-white/80 hover:bg-white text-gray-700 border-gray-200 shadow-sm"
                   >
                     Move to Bottom
                   </Button>
