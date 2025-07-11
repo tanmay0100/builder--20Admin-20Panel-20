@@ -194,63 +194,132 @@ export function SattaMatkaDetails() {
       </div>
 
       {/* Betting Analysis Section */}
-      <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-        <h2 className="text-xl font-semibold text-foreground mb-6">
-          Betting Analysis by Type
-        </h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <BarChart
+          data={bettingTypeData}
+          title="Betting Analysis by Type"
+          className="lg:col-span-1"
+        />
 
-        {/* Tabs */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {betTypes.map((type) => (
-            <button
-              key={type}
-              onClick={() => setActiveTab(type)}
-              className={cn(
-                "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-                activeTab === type
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80",
-              )}
-            >
-              {type}
-            </button>
-          ))}
+        <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+          <h3 className="text-lg font-semibold text-foreground mb-4">
+            Betting Type Details
+          </h3>
+          <div className="space-y-3">
+            {bettingTypeData.map((type, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveTab(type.label)}
+                className={cn(
+                  "w-full flex justify-between items-center p-3 rounded-lg transition-all hover:scale-[1.02]",
+                  activeTab === type.label
+                    ? "bg-primary/10 border-2 border-primary"
+                    : "bg-muted/50 border-2 border-transparent hover:bg-muted/70",
+                )}
+              >
+                <span className="font-medium text-foreground">
+                  {type.label}
+                </span>
+                <span className="font-semibold text-primary">
+                  ₹{type.value.toLocaleString()}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
+      </div>
 
-        {/* Number-wise Heatmap */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium text-foreground">
-            {activeTab} - Number-wise Total Amount
+      {/* Number-wise Analysis for Selected Type */}
+      {activeTab && (
+        <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+          <h3 className="text-lg font-semibold text-foreground mb-6">
+            {activeTab} - Number-wise Analysis
           </h3>
 
-          {mockBettingData[activeTab as keyof typeof mockBettingData] ? (
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-              {mockBettingData[activeTab as keyof typeof mockBettingData].map(
-                (item, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedNumber(item.number)}
-                    className={cn(
-                      "p-4 rounded-lg border-2 transition-all hover:scale-105",
-                      item.amount > 15000
-                        ? "bg-destructive/10 border-destructive text-destructive"
-                        : item.amount > 10000
-                          ? "bg-warning/10 border-warning text-warning"
-                          : "bg-success/10 border-success text-success",
-                    )}
-                  >
-                    <div className="text-lg font-bold">{item.number}</div>
-                    <div className="text-sm">
-                      ₹{item.amount.toLocaleString()}
-                    </div>
-                  </button>
-                ),
-              )}
+          {mockNumberData[activeTab as keyof typeof mockNumberData] ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-md font-medium text-foreground mb-4">
+                  Top Numbers by Amount
+                </h4>
+                <div className="space-y-3">
+                  {mockNumberData[activeTab as keyof typeof mockNumberData]
+                    .sort((a, b) => b.amount - a.amount)
+                    .slice(0, 5)
+                    .map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedNumber(item.number)}
+                        className={cn(
+                          "w-full flex justify-between items-center p-3 rounded-lg border-2 transition-all hover:scale-[1.02]",
+                          item.amount > 15000
+                            ? "bg-destructive/10 border-destructive"
+                            : item.amount > 10000
+                              ? "bg-warning/10 border-warning"
+                              : "bg-success/10 border-success",
+                        )}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div
+                            className={cn(
+                              "w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm",
+                              item.amount > 15000
+                                ? "bg-destructive text-destructive-foreground"
+                                : item.amount > 10000
+                                  ? "bg-warning text-warning-foreground"
+                                  : "bg-success text-success-foreground",
+                            )}
+                          >
+                            {item.number}
+                          </div>
+                          <div className="text-left">
+                            <div className="font-medium text-foreground">
+                              ₹{item.amount.toLocaleString()}
+                            </div>
+                            <div className="text-sm text-muted-foreground">
+                              {item.users} users
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Click for details
+                        </div>
+                      </button>
+                    ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-md font-medium text-foreground mb-4">
+                  Complete Number Grid
+                </h4>
+                <div className="grid grid-cols-5 gap-2">
+                  {mockNumberData[activeTab as keyof typeof mockNumberData].map(
+                    (item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedNumber(item.number)}
+                        className={cn(
+                          "aspect-square p-2 rounded-lg border-2 transition-all hover:scale-105 text-xs",
+                          item.amount > 15000
+                            ? "bg-destructive/10 border-destructive text-destructive"
+                            : item.amount > 10000
+                              ? "bg-warning/10 border-warning text-warning"
+                              : "bg-success/10 border-success text-success",
+                        )}
+                      >
+                        <div className="font-bold">{item.number}</div>
+                        <div>₹{(item.amount / 1000).toFixed(0)}K</div>
+                      </button>
+                    ),
+                  )}
+                </div>
+              </div>
             </div>
           ) : (
             <div className="text-center p-8 bg-muted/30 rounded-lg">
               <p className="text-muted-foreground">
-                No data available for {activeTab}
+                No detailed data available for {activeTab}
               </p>
             </div>
           )}
@@ -283,12 +352,12 @@ export function SattaMatkaDetails() {
                 onClick={() => setSelectedNumber(null)}
                 className="mt-3 text-sm text-primary hover:text-primary/80"
               >
-                Close
+                Close Details
               </button>
             </div>
           )}
         </div>
-      </div>
+      )}
     </div>
   );
 }
