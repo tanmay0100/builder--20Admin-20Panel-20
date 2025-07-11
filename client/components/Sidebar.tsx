@@ -46,6 +46,7 @@ const gameManagementItems = [
 ];
 
 const websiteManagementItems = [
+  { name: "Lucky Numbers", href: "/lucky-numbers/add" },
   { name: "Content Update", href: "/website/content-update" },
   { name: "Download Links Update", href: "/website/download-links" },
 ];

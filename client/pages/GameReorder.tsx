@@ -1,10 +1,44 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GripVertical, Crown, TrendingUp, Star, Gamepad2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  GripVertical,
+  ArrowUp,
+  ArrowDown,
+  Save,
+  RotateCcw,
+  CheckCircle,
+} from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+
+interface GameItem {
+  id: string;
+  name: string;
+  isActive: boolean;
+}
 
 export function GameReorder() {
-  const [games, setGames] = useState([
+  const [games, setGames] = useState<GameItem[]>([
+    { id: "1", name: "SRIDEVI MORNING", isActive: true },
+    { id: "2", name: "MILAN MORNING", isActive: true },
+    { id: "3", name: "SRIDEVI", isActive: true },
+    { id: "4", name: "TIME BAZAR MORNING", isActive: true },
+    { id: "5", name: "MADHURI", isActive: false },
+    { id: "6", name: "TIME BAZAR", isActive: true },
+    { id: "7", name: "TARA MUMBAI DAY", isActive: true },
+    { id: "8", name: "MADHUR DAY", isActive: true },
+    { id: "9", name: "MILAN DAY", isActive: true },
+    { id: "10", name: "RAJDHANI DAY", isActive: true },
+    { id: "11", name: "KALYAN", isActive: true },
+  ]);
+
+  const [draggedItem, setDraggedItem] = useState<number | null>(null);
+  const [hasChanges, setHasChanges] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  const originalOrder = [
     "SRIDEVI MORNING",
     "MILAN MORNING",
     "SRIDEVI",
@@ -16,49 +50,7 @@ export function GameReorder() {
     "MILAN DAY",
     "RAJDHANI DAY",
     "KALYAN",
-  ]);
-
-  const [draggedItem, setDraggedItem] = useState<number | null>(null);
-
-  const getGameColor = (index: number) => {
-    const colors = [
-      "from-purple-100 to-pink-100 border-purple-200",
-      "from-blue-100 to-cyan-100 border-blue-200",
-      "from-green-100 to-emerald-100 border-green-200",
-      "from-orange-100 to-red-100 border-orange-200",
-      "from-indigo-100 to-purple-100 border-indigo-200",
-      "from-pink-100 to-rose-100 border-pink-200",
-      "from-teal-100 to-green-100 border-teal-200",
-      "from-yellow-100 to-orange-100 border-yellow-200",
-      "from-red-100 to-pink-100 border-red-200",
-      "from-cyan-100 to-blue-100 border-cyan-200",
-      "from-emerald-100 to-teal-100 border-emerald-200",
-    ];
-    return colors[index % colors.length];
-  };
-
-  const getGameIcon = (index: number) => {
-    const icons = [Crown, Star, TrendingUp, Gamepad2];
-    const IconComponent = icons[index % icons.length];
-    const iconColors = [
-      "text-purple-600",
-      "text-blue-600",
-      "text-green-600",
-      "text-orange-600",
-      "text-indigo-600",
-      "text-pink-600",
-      "text-teal-600",
-      "text-yellow-600",
-      "text-red-600",
-      "text-cyan-600",
-      "text-emerald-600",
-    ];
-    return (
-      <IconComponent
-        className={`w-4 h-4 ${iconColors[index % iconColors.length]}`}
-      />
-    );
-  };
+  ];
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
     setDraggedItem(index);
@@ -82,173 +74,188 @@ export function GameReorder() {
 
     setGames(newGames);
     setDraggedItem(null);
+    setHasChanges(true);
   };
 
   const handleDragEnd = () => {
     setDraggedItem(null);
   };
 
-  const moveToTop = (index: number) => {
+  const moveGame = (index: number, direction: "up" | "down") => {
     const newGames = [...games];
-    const game = newGames.splice(index, 1)[0];
-    newGames.unshift(game);
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+
+    if (targetIndex < 0 || targetIndex >= newGames.length) return;
+
+    [newGames[index], newGames[targetIndex]] = [
+      newGames[targetIndex],
+      newGames[index],
+    ];
+
     setGames(newGames);
+    setHasChanges(true);
   };
 
-  const moveToBottom = (index: number) => {
-    const newGames = [...games];
-    const game = newGames.splice(index, 1)[0];
-    newGames.push(game);
-    setGames(newGames);
-  };
+  const handleSave = async () => {
+    setIsSaving(true);
+    setSaveSuccess(false);
 
-  const handleSave = () => {
-    console.log("Game order saved:", games);
-    // Add API call here to save the new order
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log(
+        "Game order saved:",
+        games.map((g) => g.name),
+      );
+      setHasChanges(false);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    } catch (error) {
+      console.error("Failed to save game order:", error);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const resetOrder = () => {
-    setGames([
-      "SRIDEVI MORNING",
-      "MILAN MORNING",
-      "SRIDEVI",
-      "TIME BAZAR MORNING",
-      "MADHURI",
-      "TIME BAZAR",
-      "TARA MUMBAI DAY",
-      "MADHUR DAY",
-      "MILAN DAY",
-      "RAJDHANI DAY",
-      "KALYAN",
-    ]);
+    const resetGames = originalOrder.map((name, index) => ({
+      id: (index + 1).toString(),
+      name,
+      isActive: name !== "MADHURI",
+    }));
+    setGames(resetGames);
+    setHasChanges(true);
   };
 
   return (
-    <div className="p-6 bg-gradient-light min-h-screen">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-foreground bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-          Game Reorder
-        </h1>
-        <p className="text-muted-foreground">
-          Drag and drop or use quick controls to reorder games as they appear on
-          the homepage
-        </p>
-      </div>
+    <div className="p-6 min-h-screen bg-background">
+      <div className="max-w-2xl mx-auto">
+        {/* Header */}
+        <div className="mb-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white shadow-lg">
+          <h1 className="text-3xl font-bold mb-2">🎮 Game Reorder</h1>
+          <p className="text-blue-100">
+            Drag and drop games to change their order on the homepage
+          </p>
+        </div>
 
-      <Card className="max-w-3xl shadow-soft border-0 bg-white/80 backdrop-blur-sm">
-        <CardHeader className="bg-gradient-blue text-white rounded-t-lg">
-          <CardTitle className="flex items-center gap-2">
-            <Gamepad2 className="w-6 h-6" />
-            Game Order Management
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="space-y-4">
+        {/* Success Alert */}
+        {saveSuccess && (
+          <Alert className="mb-6 border-green-200 bg-green-50">
+            <CheckCircle className="h-4 w-4 text-green-600" />
+            <AlertDescription className="text-green-800">
+              Game order saved successfully!
+            </AlertDescription>
+          </Alert>
+        )}
+
+        {/* Main Card */}
+        <Card className="mb-6">
+          <CardHeader className="pb-4">
+            <div className="flex items-center justify-between">
+              <CardTitle>Games ({games.length})</CardTitle>
+              <div className="flex gap-2">
+                <Button
+                  onClick={handleSave}
+                  disabled={!hasChanges || isSaving}
+                  size="sm"
+                >
+                  <Save className="w-4 h-4 mr-2" />
+                  {isSaving ? "Saving..." : "Save Order"}
+                </Button>
+                <Button onClick={resetOrder} variant="outline" size="sm">
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Reset
+                </Button>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-2">
             {games.map((game, index) => (
               <div
-                key={game}
+                key={game.id}
                 draggable
                 onDragStart={(e) => handleDragStart(e, index)}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, index)}
                 onDragEnd={handleDragEnd}
-                className={`group relative flex items-center gap-4 p-4 rounded-xl border-2 transition-all duration-200 cursor-move ${
+                className={`group flex items-center gap-3 p-3 border rounded-lg cursor-move transition-all hover:shadow-sm ${
                   draggedItem === index
                     ? "opacity-50 scale-95"
-                    : "hover:shadow-lg hover:scale-[1.02]"
-                } bg-gradient-to-r ${getGameColor(index)} text-gray-800 shadow-md hover:shadow-xl`}
+                    : "hover:border-primary/30"
+                } ${
+                  game.isActive
+                    ? "bg-card border-border"
+                    : "bg-muted border-muted-foreground/20"
+                }`}
               >
-                <div className="flex items-center gap-3">
-                  <GripVertical className="w-5 h-5 text-gray-400 opacity-70 group-hover:opacity-100" />
-                  <div className="w-8 h-8 bg-white/80 rounded-lg flex items-center justify-center shadow-sm">
-                    {getGameIcon(index)}
-                  </div>
+                {/* Drag Handle */}
+                <GripVertical className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+
+                {/* Position Number */}
+                <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-medium flex items-center justify-center flex-shrink-0">
+                  {index + 1}
                 </div>
 
-                <div className="flex-1">
-                  <span className="font-semibold text-lg text-gray-800">
-                    {game}
-                  </span>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-sm bg-white/80 text-gray-600 px-2 py-1 rounded-full shadow-sm">
-                      Position #{index + 1}
+                {/* Game Name */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-foreground truncate">
+                      {game.name}
                     </span>
+                    {!game.isActive && (
+                      <Badge variant="secondary" className="text-xs">
+                        Inactive
+                      </Badge>
+                    )}
                     {index < 3 && (
-                      <span className="text-xs bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full font-medium shadow-sm">
+                      <Badge className="text-xs bg-yellow-100 text-yellow-800">
                         TOP 3
-                      </span>
+                      </Badge>
                     )}
                   </div>
                 </div>
 
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                {/* Move Buttons */}
+                <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Button
                     size="sm"
-                    variant="secondary"
-                    onClick={() => moveToTop(index)}
+                    variant="ghost"
+                    onClick={() => moveGame(index, "up")}
                     disabled={index === 0}
-                    className="bg-white/80 hover:bg-white text-gray-700 border-gray-200 shadow-sm"
+                    className="w-8 h-8 p-0"
                   >
-                    Move to Top
+                    <ArrowUp className="w-3 h-3" />
                   </Button>
                   <Button
                     size="sm"
-                    variant="secondary"
-                    onClick={() => moveToBottom(index)}
+                    variant="ghost"
+                    onClick={() => moveGame(index, "down")}
                     disabled={index === games.length - 1}
-                    className="bg-white/80 hover:bg-white text-gray-700 border-gray-200 shadow-sm"
+                    className="w-8 h-8 p-0"
                   >
-                    Move to Bottom
+                    <ArrowDown className="w-3 h-3" />
                   </Button>
                 </div>
               </div>
             ))}
-          </div>
+          </CardContent>
+        </Card>
 
-          <div className="flex gap-4 mt-8 pt-6 border-t border-gray-200">
-            <Button
-              onClick={handleSave}
-              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold px-6 py-2 shadow-lg"
-            >
-              💾 Save Order
-            </Button>
-            <Button
-              onClick={resetOrder}
-              variant="outline"
-              className="border-2 border-orange-300 text-orange-600 hover:bg-orange-50 font-semibold px-6 py-2"
-            >
-              🔄 Reset to Default
-            </Button>
+        {/* Help Text */}
+        {hasChanges && (
+          <div className="text-center">
+            <p className="text-sm text-orange-600 bg-orange-50 border border-orange-200 rounded-lg py-2 px-4 inline-block">
+              ⚠️ You have unsaved changes. Remember to save your new order.
+            </p>
           </div>
+        )}
 
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-white text-xs font-bold">💡</span>
-              </div>
-              <div>
-                <p className="font-medium text-blue-900 text-sm">
-                  How to reorder:
-                </p>
-                <ul className="text-sm text-blue-700 mt-1 space-y-1">
-                  <li>
-                    • <strong>Drag & Drop:</strong> Click and drag any game card
-                    to reorder
-                  </li>
-                  <li>
-                    • <strong>Quick Controls:</strong> Use "Move to Top" or
-                    "Move to Bottom" buttons
-                  </li>
-                  <li>
-                    • <strong>Top 3 Priority:</strong> First 3 positions get
-                    special highlighting
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+        <div className="text-center text-sm text-muted-foreground mt-6">
+          <p>
+            💡 <strong>Tip:</strong> Drag games to reorder them, or use the
+            arrow buttons to move one position at a time.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
