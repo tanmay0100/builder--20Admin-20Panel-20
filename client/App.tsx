@@ -53,6 +53,17 @@ const App = () => (
         />
         <Route path="/games/management/reorder" element={<GameReorder />} />
         <Route path="/games/management/remove" element={<RemoveGame />} />
+        <Route path="/website/content-update" element={<ContentUpdate />} />
+        <Route path="/website/download-links" element={<DownloadLinks />} />
+        <Route path="/user-management/view-users" element={<ViewUsers />} />
+        <Route
+          path="/user-management/wallet-balances"
+          element={<WalletBalances />}
+        />
+        <Route
+          path="/user-management/add-remove"
+          element={<AddRemoveUsers />}
+        />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
