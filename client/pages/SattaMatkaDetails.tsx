@@ -367,13 +367,13 @@ export function SattaMatkaDetails() {
                 title="Top 15 Jodi by Betting Amount"
               />
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                  <h4 className="text-md font-semibold text-foreground mb-4">
-                    🔥 Hot Jodi
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
+                  <h4 className="text-md font-semibold text-foreground mb-3">
+                    🔥 Hot Jodi (Top Earners)
                   </h4>
                   <div className="space-y-2">
-                    {mockNumberData["Jodi"].slice(0, 12).map((item, idx) => (
+                    {mockNumberData["Jodi"].slice(0, 8).map((item, idx) => (
                       <button
                         key={idx}
                         onClick={() => setSelectedNumber(item.number)}
@@ -390,12 +390,12 @@ export function SattaMatkaDetails() {
                   </div>
                 </div>
 
-                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                  <h4 className="text-md font-semibold text-foreground mb-4">
+                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
+                  <h4 className="text-md font-semibold text-foreground mb-3">
                     📊 Medium Range
                   </h4>
                   <div className="space-y-2">
-                    {mockNumberData["Jodi"].slice(12, 24).map((item, idx) => (
+                    {mockNumberData["Jodi"].slice(8, 16).map((item, idx) => (
                       <button
                         key={idx}
                         onClick={() => setSelectedNumber(item.number)}
@@ -412,11 +412,39 @@ export function SattaMatkaDetails() {
                   </div>
                 </div>
 
-                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                  <h4 className="text-md font-semibold text-foreground mb-4">
-                    📈 All Jodi Grid (00-99)
+                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
+                  <h4 className="text-md font-semibold text-foreground mb-3">
+                    🎯 Popular Pairs
                   </h4>
-                  <div className="grid grid-cols-8 gap-1 max-h-64 overflow-y-auto">
+                  <div className="space-y-2">
+                    {mockNumberData["Jodi"]
+                      .filter((item) => {
+                        const digits = item.number.split("");
+                        return digits[0] === digits[1]; // Same digits like 11, 22, 33
+                      })
+                      .slice(0, 8)
+                      .map((item, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setSelectedNumber(item.number)}
+                          className="w-full flex justify-between items-center p-2 rounded-lg bg-info/10 border border-info/20 hover:bg-info/20 transition-colors"
+                        >
+                          <span className="font-bold text-info">
+                            {item.number}
+                          </span>
+                          <span className="text-sm font-medium">
+                            ₹{(item.amount / 1000).toFixed(0)}K
+                          </span>
+                        </button>
+                      ))}
+                  </div>
+                </div>
+
+                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
+                  <h4 className="text-md font-semibold text-foreground mb-3">
+                    📈 Quick Grid (00-99)
+                  </h4>
+                  <div className="grid grid-cols-10 gap-0.5 max-h-48 overflow-y-auto">
                     {Array.from({ length: 100 }, (_, i) => {
                       const numberStr = i.toString().padStart(2, "0");
                       const data = mockNumberData["Jodi"].find(
@@ -428,14 +456,14 @@ export function SattaMatkaDetails() {
                           key={i}
                           onClick={() => setSelectedNumber(numberStr)}
                           className={cn(
-                            "p-1 text-xs font-bold rounded transition-all hover:scale-105",
+                            "aspect-square text-xs font-bold rounded transition-all hover:scale-110",
                             amount > 20000
-                              ? "bg-destructive/20 text-destructive border border-destructive/30"
+                              ? "bg-destructive text-destructive-foreground"
                               : amount > 15000
-                                ? "bg-warning/20 text-warning border border-warning/30"
+                                ? "bg-warning text-warning-foreground"
                                 : amount > 10000
-                                  ? "bg-success/20 text-success border border-success/30"
-                                  : "bg-muted/20 text-muted-foreground border border-muted/30",
+                                  ? "bg-success text-success-foreground"
+                                  : "bg-muted/50 text-muted-foreground hover:bg-muted",
                           )}
                           title={`${numberStr}: ₹${amount.toLocaleString()}`}
                         >
@@ -444,17 +472,17 @@ export function SattaMatkaDetails() {
                       );
                     })}
                   </div>
-                  <div className="mt-3 flex items-center justify-center space-x-4 text-xs">
+                  <div className="mt-2 flex items-center justify-center space-x-2 text-xs">
                     <div className="flex items-center space-x-1">
-                      <div className="w-3 h-3 bg-destructive rounded"></div>
+                      <div className="w-2 h-2 bg-destructive rounded"></div>
                       <span>₹20K+</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <div className="w-3 h-3 bg-warning rounded"></div>
+                      <div className="w-2 h-2 bg-warning rounded"></div>
                       <span>₹15K+</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <div className="w-3 h-3 bg-success rounded"></div>
+                      <div className="w-2 h-2 bg-success rounded"></div>
                       <span>₹10K+</span>
                     </div>
                   </div>
