@@ -72,6 +72,16 @@ const navigationItems = [
     children: gameManagementItems,
   },
   {
+    title: "Website Management",
+    icon: Globe,
+    children: websiteManagementItems,
+  },
+  {
+    title: "User Management",
+    icon: UserCheck,
+    children: userManagementItems,
+  },
+  {
     title: "Users",
     href: "/users",
     icon: Users,
