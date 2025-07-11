@@ -231,131 +231,139 @@ export function SattaMatkaDetails() {
 
       {/* Number-wise Analysis for Selected Type */}
       {activeTab && (
-        <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-          <h3 className="text-lg font-semibold text-foreground mb-6">
-            {activeTab} - Number-wise Analysis
-          </h3>
-
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Bar Chart for Numbers */}
           {mockNumberData[activeTab as keyof typeof mockNumberData] ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-md font-medium text-foreground mb-4">
-                  Top Numbers by Amount
-                </h4>
-                <div className="space-y-3">
-                  {mockNumberData[activeTab as keyof typeof mockNumberData]
-                    .sort((a, b) => b.amount - a.amount)
-                    .slice(0, 5)
-                    .map((item, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedNumber(item.number)}
-                        className={cn(
-                          "w-full flex justify-between items-center p-3 rounded-lg border-2 transition-all hover:scale-[1.02]",
-                          item.amount > 15000
-                            ? "bg-destructive/10 border-destructive"
-                            : item.amount > 10000
-                              ? "bg-warning/10 border-warning"
-                              : "bg-success/10 border-success",
-                        )}
-                      >
-                        <div className="flex items-center space-x-3">
-                          <div
-                            className={cn(
-                              "w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm",
-                              item.amount > 15000
-                                ? "bg-destructive text-destructive-foreground"
-                                : item.amount > 10000
-                                  ? "bg-warning text-warning-foreground"
-                                  : "bg-success text-success-foreground",
-                            )}
-                          >
-                            {item.number}
-                          </div>
-                          <div className="text-left">
-                            <div className="font-medium text-foreground">
-                              ₹{item.amount.toLocaleString()}
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {item.users} users
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Click for details
-                        </div>
-                      </button>
-                    ))}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-md font-medium text-foreground mb-4">
-                  Complete Number Grid
-                </h4>
-                <div className="grid grid-cols-5 gap-2">
-                  {mockNumberData[activeTab as keyof typeof mockNumberData].map(
-                    (item, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedNumber(item.number)}
-                        className={cn(
-                          "aspect-square p-2 rounded-lg border-2 transition-all hover:scale-105 text-xs",
-                          item.amount > 15000
-                            ? "bg-destructive/10 border-destructive text-destructive"
-                            : item.amount > 10000
-                              ? "bg-warning/10 border-warning text-warning"
-                              : "bg-success/10 border-success text-success",
-                        )}
-                      >
-                        <div className="font-bold">{item.number}</div>
-                        <div>₹{(item.amount / 1000).toFixed(0)}K</div>
-                      </button>
-                    ),
-                  )}
-                </div>
-              </div>
-            </div>
+            <BarChart
+              data={mockNumberData[activeTab as keyof typeof mockNumberData]
+                .map((item) => ({
+                  label: `Number ${item.number}`,
+                  value: item.amount,
+                  color:
+                    item.amount > 15000
+                      ? "bg-destructive"
+                      : item.amount > 10000
+                        ? "bg-warning"
+                        : "bg-success",
+                }))
+                .sort((a, b) => b.value - a.value)}
+              title={`${activeTab} - Numbers by Betting Amount`}
+              className="lg:col-span-1"
+            />
           ) : (
-            <div className="text-center p-8 bg-muted/30 rounded-lg">
-              <p className="text-muted-foreground">
-                No detailed data available for {activeTab}
-              </p>
+            <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                {activeTab} - Number Analysis
+              </h3>
+              <div className="text-center p-8 bg-muted/30 rounded-lg">
+                <p className="text-muted-foreground">
+                  No data available for {activeTab}
+                </p>
+              </div>
             </div>
           )}
 
-          {/* User-wise Breakdown */}
-          {selectedNumber && (
-            <div className="mt-6 p-4 bg-muted/30 rounded-lg">
-              <h4 className="text-md font-medium text-foreground mb-3">
-                Users who bet on {activeTab}: {selectedNumber}
-              </h4>
-              <div className="space-y-2">
-                {getUsersForNumber(selectedNumber).map((user, idx) => (
-                  <div
-                    key={idx}
-                    className="flex justify-between items-center p-2 bg-card rounded"
-                  >
-                    <span className="font-medium">{user.username}</span>
-                    <div className="text-right">
-                      <span className="font-semibold text-primary">
-                        ₹{user.amount}
-                      </span>
-                      <p className="text-xs text-muted-foreground">
-                        {user.time}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+          {/* Clickable Number Details */}
+          <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              {activeTab} - Click Numbers for Details
+            </h3>
+
+            {mockNumberData[activeTab as keyof typeof mockNumberData] ? (
+              <div className="space-y-3">
+                {mockNumberData[activeTab as keyof typeof mockNumberData]
+                  .sort((a, b) => b.amount - a.amount)
+                  .map((item, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedNumber(item.number)}
+                      className={cn(
+                        "w-full flex justify-between items-center p-3 rounded-lg border-2 transition-all hover:scale-[1.02]",
+                        item.amount > 15000
+                          ? "bg-destructive/10 border-destructive"
+                          : item.amount > 10000
+                            ? "bg-warning/10 border-warning"
+                            : "bg-success/10 border-success",
+                      )}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div
+                          className={cn(
+                            "w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg",
+                            item.amount > 15000
+                              ? "bg-destructive text-destructive-foreground"
+                              : item.amount > 10000
+                                ? "bg-warning text-warning-foreground"
+                                : "bg-success text-success-foreground",
+                          )}
+                        >
+                          {item.number}
+                        </div>
+                        <div className="text-left">
+                          <div className="font-semibold text-foreground">
+                            ₹{item.amount.toLocaleString()}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {item.users} users • Rank #{idx + 1}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        View Users →
+                      </div>
+                    </button>
+                  ))}
               </div>
-              <button
-                onClick={() => setSelectedNumber(null)}
-                className="mt-3 text-sm text-primary hover:text-primary/80"
-              >
-                Close Details
-              </button>
-            </div>
-          )}
+            ) : (
+              <div className="text-center p-4 bg-muted/30 rounded-lg">
+                <p className="text-muted-foreground">
+                  No detailed data available
+                </p>
+              </div>
+            )}
+
+            {/* User-wise Breakdown */}
+            {selectedNumber && (
+              <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+                <h4 className="text-md font-medium text-foreground mb-3">
+                  Users who bet on {activeTab}: {selectedNumber}
+                </h4>
+                <div className="space-y-2">
+                  {getUsersForNumber(selectedNumber).map((user, idx) => (
+                    <div
+                      key={idx}
+                      className="flex justify-between items-center p-3 bg-card rounded-lg"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                          <span className="text-xs font-medium text-primary">
+                            {idx + 1}
+                          </span>
+                        </div>
+                        <span className="font-medium text-foreground">
+                          {user.username}
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="font-semibold text-primary">
+                          ₹{user.amount}
+                        </span>
+                        <p className="text-xs text-muted-foreground">
+                          {user.time}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={() => setSelectedNumber(null)}
+                  className="mt-3 text-sm text-primary hover:text-primary/80 font-medium"
+                >
+                  ✕ Close Details
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
