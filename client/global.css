@@ -54,6 +54,18 @@
     --warning-foreground: 26 83.3% 14.1%;
     --info: 217.2 91.2% 59.8%;
     --info-foreground: 0 0% 100%;
+
+    /* Satta Matka Luxury Theme */
+    --satta-gold: 45 100% 51%;
+    --satta-gold-foreground: 0 0% 0%;
+    --satta-amber: 43 96% 56%;
+    --satta-amber-foreground: 0 0% 0%;
+    --satta-royal: 264 83% 20%;
+    --satta-royal-foreground: 0 0% 100%;
+    --satta-emerald: 160 84% 39%;
+    --satta-emerald-foreground: 0 0% 100%;
+    --satta-crimson: 348 83% 47%;
+    --satta-crimson-foreground: 0 0% 100%;
   }
 
   .dark {
