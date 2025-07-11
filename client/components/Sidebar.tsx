@@ -15,6 +15,13 @@ import {
   Calendar,
   Menu,
   X,
+  Globe,
+  Download,
+  Edit,
+  Wallet,
+  UserPlus,
+  UserMinus,
+  Eye,
 } from "lucide-react";
 
 interface SidebarProps {
