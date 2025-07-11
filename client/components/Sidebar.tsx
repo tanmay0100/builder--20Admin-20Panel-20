@@ -15,6 +15,14 @@ import {
   Calendar,
   Menu,
   X,
+  Globe,
+  Download,
+  Edit,
+  Wallet,
+  UserPlus,
+  UserMinus,
+  Eye,
+  LogOut,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -30,6 +38,24 @@ const gameItems = [
   { name: "Card Master", href: "/games/card-master" },
 ];
 
+const gameManagementItems = [
+  { name: "Add Game", href: "/games/management/add" },
+  { name: "Update Game Result", href: "/games/management/update-result" },
+  { name: "Game Reorder", href: "/games/management/reorder" },
+  { name: "Remove Game", href: "/games/management/remove" },
+];
+
+const websiteManagementItems = [
+  { name: "Content Update", href: "/website/content-update" },
+  { name: "Download Links Update", href: "/website/download-links" },
+];
+
+const userManagementItems = [
+  { name: "View Users & Participation", href: "/user-management/view-users" },
+  { name: "Manage Wallet Balances", href: "/user-management/wallet-balances" },
+  { name: "Add/Remove Users", href: "/user-management/add-remove" },
+];
+
 const navigationItems = [
   {
     title: "Dashboard",
@@ -37,29 +63,24 @@ const navigationItems = [
     icon: Home,
   },
   {
-    title: "Games",
+    title: "Games Revenue Analytics",
     icon: Gamepad2,
     children: gameItems,
   },
   {
-    title: "Users",
-    href: "/users",
-    icon: Users,
+    title: "Game Management",
+    icon: Settings,
+    children: gameManagementItems,
   },
   {
-    title: "Market Management",
-    href: "/market",
-    icon: TrendingUp,
+    title: "Website Management",
+    icon: Globe,
+    children: websiteManagementItems,
   },
   {
-    title: "Reports",
-    href: "/reports",
-    icon: FileText,
-  },
-  {
-    title: "Analytics",
-    href: "/analytics",
-    icon: BarChart3,
+    title: "User Management",
+    icon: UserCheck,
+    children: userManagementItems,
   },
   {
     title: "Settings",
@@ -69,8 +90,18 @@ const navigationItems = [
 ];
 
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
-  const [expandedItems, setExpandedItems] = useState<string[]>(["Games"]);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const location = useLocation();
+
+  const handleLogout = () => {
+    // Clear any stored authentication data
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userSession");
+    sessionStorage.clear();
+
+    // Redirect to login page or home
+    window.location.href = "/login";
+  };
 
   const toggleExpanded = (title: string) => {
     setExpandedItems((prev) =>
@@ -196,7 +227,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
 
       {/* Footer */}
       {!collapsed && (
-        <div className="p-4 border-t border-sidebar-border">
+        <div className="p-4 border-t border-sidebar-border space-y-3">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-sidebar-primary rounded-full flex items-center justify-center">
               <UserCheck className="w-4 h-4 text-sidebar-primary-foreground" />
@@ -210,6 +241,28 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               </p>
             </div>
           </div>
+
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 text-left bg-destructive/10 hover:bg-destructive hover:text-destructive-foreground text-destructive border border-destructive/20 hover:border-destructive hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <LogOut className="w-5 h-5 flex-shrink-0" />
+            <span className="ml-3 font-semibold">Logout</span>
+          </button>
+        </div>
+      )}
+
+      {/* Collapsed Logout Button */}
+      {collapsed && (
+        <div className="p-2 border-t border-sidebar-border">
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center justify-center p-2.5 text-sm font-medium rounded-lg transition-all duration-200 bg-destructive/10 hover:bg-destructive hover:text-destructive-foreground text-destructive border border-destructive/20 hover:border-destructive hover:shadow-lg hover:scale-110 active:scale-95"
+            title="Logout"
+          >
+            <LogOut className="w-5 h-5" />
+          </button>
         </div>
       )}
     </div>
