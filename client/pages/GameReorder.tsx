@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -224,7 +225,8 @@ export function GameReorder() {
             🎮 Game Reorder
           </h1>
           <p className="text-muted-foreground">
-            Drag and drop or use controls to reorder games as they appear on the homepage
+            Drag and drop or use controls to reorder games as they appear on the
+            homepage
           </p>
         </div>
 
@@ -310,7 +312,10 @@ export function GameReorder() {
                               {game.name}
                             </span>
                             {!game.isActive && (
-                              <Badge variant="secondary" className="text-xs bg-red-100 text-red-800">
+                              <Badge
+                                variant="secondary"
+                                className="text-xs bg-red-100 text-red-800"
+                              >
                                 Inactive
                               </Badge>
                             )}
@@ -393,8 +398,8 @@ export function GameReorder() {
                       🔄 Reset to Default
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </CardContent>
             </Card>
           </div>
 
@@ -416,12 +421,14 @@ export function GameReorder() {
                 <div>
                   <Label className="text-sm font-medium">Active Games:</Label>
                   <p className="text-sm text-muted-foreground">
-                    {games.filter(g => g.isActive).length} currently active
+                    {games.filter((g) => g.isActive).length} currently active
                   </p>
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium">Featured Positions:</Label>
+                  <Label className="text-sm font-medium">
+                    Featured Positions:
+                  </Label>
                   <p className="text-sm text-muted-foreground">
                     Top 3 positions get priority display
                   </p>
@@ -464,28 +471,34 @@ export function GameReorder() {
                 <div>
                   <p className="font-medium text-foreground">Drag & Drop:</p>
                   <p>
-                    Click and drag any game card to reorder it to your preferred position.
+                    Click and drag any game card to reorder it to your preferred
+                    position.
                   </p>
                 </div>
 
                 <div>
                   <p className="font-medium text-foreground">Quick Controls:</p>
                   <p>
-                    Use arrow buttons for single steps or "Top/Bottom" for quick positioning.
+                    Use arrow buttons for single steps or "Top/Bottom" for quick
+                    positioning.
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-medium text-foreground">Priority Positions:</p>
+                  <p className="font-medium text-foreground">
+                    Priority Positions:
+                  </p>
                   <p>
-                    First 3 positions get special highlighting and appear prominently on homepage.
+                    First 3 positions get special highlighting and appear
+                    prominently on homepage.
                   </p>
                 </div>
 
                 <div>
                   <p className="font-medium text-foreground">Save Changes:</p>
                   <p>
-                    Remember to save your changes after reordering to apply them permanently.
+                    Remember to save your changes after reordering to apply them
+                    permanently.
                   </p>
                 </div>
               </CardContent>
