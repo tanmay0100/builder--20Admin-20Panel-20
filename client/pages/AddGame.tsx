@@ -41,17 +41,21 @@ export function AddGame() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gradient-light min-h-screen">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-foreground">Add Game</h1>
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
+          ➕ Add Game
+        </h1>
         <p className="text-muted-foreground">
           Create a new game for the platform
         </p>
       </div>
 
-      <Card className="max-w-2xl">
-        <CardHeader>
-          <CardTitle>Game Details</CardTitle>
+      <Card className="max-w-2xl shadow-soft border-0 bg-white/80 backdrop-blur-sm">
+        <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-t-lg">
+          <CardTitle className="flex items-center gap-2">
+            🎮 Game Details
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
