@@ -212,23 +212,16 @@ export function AddGame() {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-background">
+    <div className="p-6 bg-gradient-light min-h-screen">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-primary rounded-lg">
-              <Plus className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-foreground">
-                Add New Game
-              </h1>
-              <p className="text-muted-foreground">
-                Create a new game for the platform
-              </p>
-            </div>
-          </div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
+            ➕ Add New Game
+          </h1>
+          <p className="text-muted-foreground">
+            Create a new game for the platform
+          </p>
         </div>
 
         {submitSuccess && (
@@ -243,11 +236,10 @@ export function AddGame() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Form */}
           <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
+            <Card className="shadow-soft border-0 bg-white/80 backdrop-blur-sm">
+              <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-t-lg">
                 <CardTitle className="flex items-center gap-2">
-                  <Gamepad2 className="w-5 h-5" />
-                  Game Configuration
+                  🎮 Game Configuration
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -580,9 +572,9 @@ export function AddGame() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="min-w-[120px]"
+                      className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold shadow-lg min-w-[120px]"
                     >
-                      {isSubmitting ? "Creating..." : "Create Game"}
+                      ✅ {isSubmitting ? "Creating..." : "Create Game"}
                     </Button>
                     <Button
                       type="button"
@@ -605,8 +597,9 @@ export function AddGame() {
                         });
                         setErrors({});
                       }}
+                      className="border-2 border-gray-300 text-gray-600 hover:bg-gray-50 font-semibold"
                     >
-                      Reset Form
+                      ❌ Reset Form
                     </Button>
                   </div>
                 </form>
