@@ -252,11 +252,18 @@ export function UpdateGameResult() {
             )}
 
             <div className="flex gap-4">
-              <Button type="submit" className="bg-primary hover:bg-primary/90">
-                Update Result
+              <Button
+                type="submit"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold shadow-lg"
+              >
+                💾 Update Result
               </Button>
-              <Button type="button" variant="outline">
-                Cancel
+              <Button
+                type="button"
+                variant="outline"
+                className="border-2 border-gray-300 text-gray-600 hover:bg-gray-50 font-semibold"
+              >
+                ❌ Cancel
               </Button>
             </div>
           </form>
