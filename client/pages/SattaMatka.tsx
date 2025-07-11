@@ -312,7 +312,7 @@ export function SattaMatka() {
         <div className="bg-card rounded-xl shadow-soft border border-border overflow-hidden">
           <div className="grid grid-cols-12 gap-4 p-4 bg-satta-gold/5 border-b border-border font-bold text-sm text-foreground">
             <div className="col-span-3">Market</div>
-            <div className="col-span-2">Status</div>
+            <div className="col-span-2">Date</div>
             <div className="col-span-2">Bets</div>
             <div className="col-span-2">Amount</div>
             <div className="col-span-2">Top Number</div>
