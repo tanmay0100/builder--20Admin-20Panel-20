@@ -298,139 +298,297 @@ export function SattaMatkaDetails() {
 
       {/* Number-wise Analysis for Selected Type */}
       {activeTab && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Bar Chart for Numbers */}
-          {mockNumberData[activeTab as keyof typeof mockNumberData] ? (
-            <BarChart
-              data={mockNumberData[activeTab as keyof typeof mockNumberData]
-                .map((item) => ({
-                  label: `Number ${item.number}`,
-                  value: item.amount,
-                  color:
-                    item.amount > 15000
-                      ? "bg-destructive"
-                      : item.amount > 10000
-                        ? "bg-warning"
-                        : "bg-success",
-                }))
-                .sort((a, b) => b.value - a.value)}
-              title={`${activeTab} - Numbers by Betting Amount`}
-              className="lg:col-span-1"
-            />
-          ) : (
-            <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-4">
-                {activeTab} - Number Analysis
-              </h3>
-              <div className="text-center p-8 bg-muted/30 rounded-lg">
-                <p className="text-muted-foreground">
-                  No data available for {activeTab}
-                </p>
+        <div className="space-y-6">
+          {/* Single Ank Layout */}
+          {activeTab === "Single Ank" && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <BarChart
+                data={mockNumberData["Single Ank"]
+                  .map((item) => ({
+                    label: `Number ${item.number}`,
+                    value: item.amount,
+                    color:
+                      item.amount > 15000
+                        ? "bg-destructive"
+                        : item.amount > 10000
+                          ? "bg-warning"
+                          : "bg-success",
+                  }))
+                  .sort((a, b) => b.value - a.value)}
+                title="Single Ank - Numbers by Betting Amount"
+                className="lg:col-span-1"
+              />
+
+              <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-4">
+                  Single Ank (0-9) - Click for Details
+                </h3>
+                <div className="grid grid-cols-5 gap-3">
+                  {mockNumberData["Single Ank"]
+                    .sort((a, b) => b.amount - a.amount)
+                    .map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedNumber(item.number)}
+                        className={cn(
+                          "aspect-square p-3 rounded-lg border-2 transition-all hover:scale-105",
+                          item.amount > 15000
+                            ? "bg-destructive/10 border-destructive"
+                            : item.amount > 10000
+                              ? "bg-warning/10 border-warning"
+                              : "bg-success/10 border-success",
+                        )}
+                      >
+                        <div className="text-2xl font-bold">{item.number}</div>
+                        <div className="text-xs mt-1">
+                          ₹{(item.amount / 1000).toFixed(0)}K
+                        </div>
+                      </button>
+                    ))}
+                </div>
               </div>
             </div>
           )}
 
-          {/* Clickable Number Details */}
-          <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              {activeTab} - Click Numbers for Details
-            </h3>
+          {/* Jodi Layout (00-99) */}
+          {activeTab === "Jodi" && (
+            <div className="space-y-6">
+              <BarChart
+                data={mockNumberData["Jodi"].slice(0, 20).map((item) => ({
+                  label: `Jodi ${item.number}`,
+                  value: item.amount,
+                  color:
+                    item.amount > 20000
+                      ? "bg-destructive"
+                      : item.amount > 15000
+                        ? "bg-warning"
+                        : "bg-success",
+                }))}
+                title="Top 20 Jodi Numbers by Betting Amount"
+              />
 
-            {mockNumberData[activeTab as keyof typeof mockNumberData] ? (
-              <div className="space-y-3">
-                {mockNumberData[activeTab as keyof typeof mockNumberData]
-                  .sort((a, b) => b.amount - a.amount)
-                  .map((item, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setSelectedNumber(item.number)}
-                      className={cn(
-                        "w-full flex justify-between items-center p-3 rounded-lg border-2 transition-all hover:scale-[1.02]",
-                        item.amount > 15000
-                          ? "bg-destructive/10 border-destructive"
-                          : item.amount > 10000
-                            ? "bg-warning/10 border-warning"
-                            : "bg-success/10 border-success",
-                      )}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div
-                          className={cn(
-                            "w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg",
-                            item.amount > 15000
-                              ? "bg-destructive text-destructive-foreground"
-                              : item.amount > 10000
-                                ? "bg-warning text-warning-foreground"
-                                : "bg-success text-success-foreground",
-                          )}
-                        >
-                          {item.number}
-                        </div>
-                        <div className="text-left">
-                          <div className="font-semibold text-foreground">
-                            ₹{item.amount.toLocaleString()}
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            {item.users} users • Rank #{idx + 1}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        View Users →
-                      </div>
-                    </button>
-                  ))}
-              </div>
-            ) : (
-              <div className="text-center p-4 bg-muted/30 rounded-lg">
-                <p className="text-muted-foreground">
-                  No detailed data available
-                </p>
-              </div>
-            )}
-
-            {/* User-wise Breakdown */}
-            {selectedNumber && (
-              <div className="mt-6 p-4 bg-muted/30 rounded-lg">
-                <h4 className="text-md font-medium text-foreground mb-3">
-                  Users who bet on {activeTab}: {selectedNumber}
-                </h4>
-                <div className="space-y-2">
-                  {getUsersForNumber(selectedNumber).map((user, idx) => (
-                    <div
-                      key={idx}
-                      className="flex justify-between items-center p-3 bg-card rounded-lg"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                          <span className="text-xs font-medium text-primary">
-                            {idx + 1}
-                          </span>
-                        </div>
-                        <span className="font-medium text-foreground">
-                          {user.username}
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="font-semibold text-primary">
-                          ₹{user.amount}
-                        </span>
-                        <p className="text-xs text-muted-foreground">
-                          {user.time}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+              <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-4">
+                  Jodi Heatmap (00-99) - Click any number for details
+                </h3>
+                <div className="grid grid-cols-10 gap-1">
+                  {Array.from({ length: 100 }, (_, i) => {
+                    const numberStr = i.toString().padStart(2, "0");
+                    const data = mockNumberData["Jodi"].find(
+                      (item) => item.number === numberStr,
+                    );
+                    const amount = data?.amount || 0;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => setSelectedNumber(numberStr)}
+                        className={cn(
+                          "aspect-square text-xs font-bold rounded transition-all hover:scale-110",
+                          amount > 20000
+                            ? "bg-destructive text-destructive-foreground"
+                            : amount > 15000
+                              ? "bg-warning text-warning-foreground"
+                              : amount > 10000
+                                ? "bg-success text-success-foreground"
+                                : "bg-muted text-muted-foreground",
+                        )}
+                        title={`${numberStr}: ₹${amount.toLocaleString()}`}
+                      >
+                        {numberStr}
+                      </button>
+                    );
+                  })}
                 </div>
-                <button
-                  onClick={() => setSelectedNumber(null)}
-                  className="mt-3 text-sm text-primary hover:text-primary/80 font-medium"
-                >
-                  ✕ Close Details
-                </button>
+                <div className="mt-4 flex items-center justify-center space-x-6 text-xs">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-destructive rounded"></div>
+                    <span>₹20K+</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-warning rounded"></div>
+                    <span>₹15-20K</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-success rounded"></div>
+                    <span>₹10-15K</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-4 h-4 bg-muted rounded"></div>
+                    <span>Below ₹10K</span>
+                  </div>
+                </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
+
+          {/* Patti Layout */}
+          {(activeTab === "Single Patti" ||
+            activeTab === "Double Patti" ||
+            activeTab === "Triple Patti") && (
+            <div className="space-y-6">
+              <BarChart
+                data={
+                  mockNumberData[activeTab as keyof typeof mockNumberData]
+                    ?.slice(0, 15)
+                    .map((item) => ({
+                      label: `${item.number}`,
+                      value: item.amount,
+                      color:
+                        item.amount > 25000
+                          ? "bg-destructive"
+                          : item.amount > 20000
+                            ? "bg-warning"
+                            : "bg-success",
+                    })) || []
+                }
+                title={`Top 15 ${activeTab} by Betting Amount`}
+              />
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                  <h4 className="text-md font-semibold text-foreground mb-4">
+                    🔥 Hot {activeTab}
+                  </h4>
+                  <div className="space-y-2">
+                    {mockNumberData[activeTab as keyof typeof mockNumberData]
+                      ?.slice(0, 10)
+                      .map((item, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setSelectedNumber(item.number)}
+                          className="w-full flex justify-between items-center p-2 rounded-lg bg-destructive/10 border border-destructive/20 hover:bg-destructive/20 transition-colors"
+                        >
+                          <span className="font-bold text-destructive">
+                            {item.number}
+                          </span>
+                          <span className="text-sm font-medium">
+                            ₹{(item.amount / 1000).toFixed(0)}K
+                          </span>
+                        </button>
+                      ))}
+                  </div>
+                </div>
+
+                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                  <h4 className="text-md font-semibold text-foreground mb-4">
+                    📊 Medium Range
+                  </h4>
+                  <div className="space-y-2">
+                    {mockNumberData[activeTab as keyof typeof mockNumberData]
+                      ?.slice(10, 20)
+                      .map((item, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setSelectedNumber(item.number)}
+                          className="w-full flex justify-between items-center p-2 rounded-lg bg-warning/10 border border-warning/20 hover:bg-warning/20 transition-colors"
+                        >
+                          <span className="font-bold text-warning">
+                            {item.number}
+                          </span>
+                          <span className="text-sm font-medium">
+                            ₹{(item.amount / 1000).toFixed(0)}K
+                          </span>
+                        </button>
+                      ))}
+                  </div>
+                </div>
+
+                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                  <h4 className="text-md font-semibold text-foreground mb-4">
+                    📈 All {activeTab} Grid
+                  </h4>
+                  <div className="grid grid-cols-4 gap-1 max-h-64 overflow-y-auto">
+                    {mockNumberData[
+                      activeTab as keyof typeof mockNumberData
+                    ]?.map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedNumber(item.number)}
+                        className={cn(
+                          "p-2 text-xs font-bold rounded transition-all hover:scale-105",
+                          item.amount > 25000
+                            ? "bg-destructive/20 text-destructive border border-destructive/30"
+                            : item.amount > 20000
+                              ? "bg-warning/20 text-warning border border-warning/30"
+                              : "bg-success/20 text-success border border-success/30",
+                        )}
+                        title={`₹${item.amount.toLocaleString()}`}
+                      >
+                        {item.number}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* User-wise Breakdown Modal */}
+          {selectedNumber && (
+            <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+              <h4 className="text-lg font-medium text-foreground mb-4">
+                👥 Users who bet on {activeTab}:{" "}
+                <span className="text-primary font-bold">{selectedNumber}</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div className="p-4 bg-primary/5 rounded-lg">
+                  <div className="text-2xl font-bold text-primary">
+                    ₹
+                    {mockNumberData[activeTab as keyof typeof mockNumberData]
+                      ?.find((item) => item.number === selectedNumber)
+                      ?.amount.toLocaleString() || "0"}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Total Amount
+                  </div>
+                </div>
+                <div className="p-4 bg-success/5 rounded-lg">
+                  <div className="text-2xl font-bold text-success">
+                    {mockNumberData[
+                      activeTab as keyof typeof mockNumberData
+                    ]?.find((item) => item.number === selectedNumber)?.users ||
+                      "0"}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Total Users
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {getUsersForNumber(selectedNumber).map((user, idx) => (
+                  <div
+                    key={idx}
+                    className="flex justify-between items-center p-3 bg-muted/30 rounded-lg"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                        <span className="text-xs font-medium text-primary">
+                          {idx + 1}
+                        </span>
+                      </div>
+                      <span className="font-medium text-foreground">
+                        {user.username}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-semibold text-primary">
+                        ₹{user.amount}
+                      </span>
+                      <p className="text-xs text-muted-foreground">
+                        {user.time}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => setSelectedNumber(null)}
+                className="mt-4 w-full py-2 px-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                ✕ Close Details
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
