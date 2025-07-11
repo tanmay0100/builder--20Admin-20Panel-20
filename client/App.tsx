@@ -20,6 +20,11 @@ import { AddGame } from "./pages/AddGame";
 import { UpdateGameResult } from "./pages/UpdateGameResult";
 import { GameReorder } from "./pages/GameReorder";
 import { RemoveGame } from "./pages/RemoveGame";
+import { ContentUpdate } from "./pages/ContentUpdate";
+import { DownloadLinks } from "./pages/DownloadLinks";
+import { ViewUsers } from "./pages/ViewUsers";
+import { WalletBalances } from "./pages/WalletBalances";
+import { AddRemoveUsers } from "./pages/AddRemoveUsers";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
