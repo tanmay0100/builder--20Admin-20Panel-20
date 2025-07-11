@@ -39,17 +39,19 @@ export function RemoveGame() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gradient-light min-h-screen">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-foreground">Remove Game</h1>
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-red-500 to-pink-600 bg-clip-text text-transparent">
+          🗑️ Remove Game
+        </h1>
         <p className="text-muted-foreground">Delete games from the platform</p>
       </div>
 
-      <Card className="max-w-2xl">
-        <CardHeader>
+      <Card className="max-w-2xl shadow-soft border-0 bg-white/80 backdrop-blur-sm">
+        <CardHeader className="bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-t-lg">
           <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-destructive" />
-            Game Removal
+            <AlertTriangle className="w-5 h-5" />
+            ⚠️ Game Removal
           </CardTitle>
         </CardHeader>
         <CardContent>
