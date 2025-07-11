@@ -37,7 +37,7 @@ const navigationItems = [
     icon: Home,
   },
   {
-    title: "Games",
+    title: "Games Revenue Analytics",
     icon: Gamepad2,
     children: gameItems,
   },
