@@ -9,124 +9,75 @@ import {
   DollarSign,
   Target,
   Clock,
-  Circle,
-  AlertCircle,
+  Star,
+  Trophy,
+  Crown,
+  TrendingUp,
+  Eye,
+  Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const betTypes = [
   "Single Ank",
-  "Jodi",
+  "Jodi", 
   "Single Patti",
   "Double Patti",
   "Triple Patti",
-  "Half Sangam",
-  "Full Sangam",
 ];
 
 const bettingTypeData = [
-  { label: "Single Ank", value: 125000, color: "bg-primary" },
-  { label: "Jodi", value: 85000, color: "bg-success" },
-  { label: "Single Patti", value: 65000, color: "bg-warning" },
-  { label: "Double Patti", value: 45000, color: "bg-info" },
-  { label: "Triple Patti", value: 32000, color: "bg-destructive" },
-  { label: "Half Sangam", value: 28000, color: "bg-purple-500" },
-  { label: "Full Sangam", value: 15000, color: "bg-orange-500" },
+  { label: "Single Ank", value: 125000, color: "bg-satta-gold" },
+  { label: "Jodi", value: 85000, color: "bg-satta-emerald" },
+  { label: "Single Patti", value: 65000, color: "bg-satta-amber" },
+  { label: "Double Patti", value: 45000, color: "bg-satta-royal" },
+  { label: "Triple Patti", value: 32000, color: "bg-satta-crimson" },
 ];
-
-// Generate Jodi data (00-99)
-const generateJodiData = () => {
-  const data = [];
-  for (let i = 0; i <= 99; i++) {
-    const numberStr = i.toString().padStart(2, "0");
-    const amount = Math.floor(Math.random() * 25000) + 1000;
-    const users = Math.floor(amount / 1500) + 1;
-    data.push({ number: numberStr, amount, users });
-  }
-  return data.sort((a, b) => b.amount - a.amount);
-};
-
-// Generate popular Patti numbers (220 total, showing top ones)
-const generatePattiData = () => {
-  const popularPattis = [
-    "128",
-    "137",
-    "146",
-    "236",
-    "245",
-    "289",
-    "234",
-    "567",
-    "678",
-    "789",
-    "012",
-    "123",
-    "234",
-    "345",
-    "456",
-    "890",
-    "901",
-    "013",
-    "024",
-    "035",
-    "046",
-    "057",
-    "068",
-    "079",
-    "189",
-    "278",
-    "367",
-    "456",
-    "145",
-    "029",
-    "138",
-    "247",
-    "356",
-    "689",
-    "578",
-    "467",
-    "129",
-    "038",
-    "147",
-    "256",
-    "134",
-    "025",
-    "016",
-    "789",
-    "678",
-    "567",
-    "456",
-    "345",
-    "234",
-    "123",
-  ];
-
-  return popularPattis
-    .map((patti) => ({
-      number: patti,
-      amount: Math.floor(Math.random() * 30000) + 5000,
-      users: Math.floor(Math.random() * 20) + 3,
-    }))
-    .sort((a, b) => b.amount - a.amount);
-};
 
 const mockNumberData = {
   "Single Ank": [
-    { number: "0", amount: 15000, users: 12 },
-    { number: "1", amount: 8500, users: 8 },
-    { number: "2", amount: 12000, users: 10 },
-    { number: "3", amount: 6800, users: 6 },
-    { number: "4", amount: 9200, users: 7 },
     { number: "5", amount: 25000, users: 18 },
-    { number: "6", amount: 4500, users: 5 },
     { number: "7", amount: 18000, users: 14 },
+    { number: "0", amount: 15000, users: 12 },
+    { number: "2", amount: 12000, users: 10 },
     { number: "8", amount: 11000, users: 9 },
+    { number: "4", amount: 9200, users: 7 },
+    { number: "1", amount: 8500, users: 8 },
     { number: "9", amount: 7800, users: 7 },
+    { number: "3", number: "6800, users: 6 },
+    { number: "6", amount: 4500, users: 5 },
   ],
-  Jodi: generateJodiData(),
-  "Single Patti": generatePattiData(),
-  "Double Patti": generatePattiData().slice(0, 30),
-  "Triple Patti": generatePattiData().slice(0, 20),
+  Jodi: [
+    { number: "25", amount: 24000, users: 16 },
+    { number: "37", amount: 20000, users: 13 },
+    { number: "13", amount: 18500, users: 12 },
+    { number: "48", amount: 17200, users: 11 },
+    { number: "52", amount: 16000, users: 10 },
+    { number: "69", amount: 15800, users: 9 },
+    { number: "74", amount: 14200, users: 8 },
+    { number: "81", amount: 13500, users: 7 },
+  ],
+  "Single Patti": [
+    { number: "125", amount: 28000, users: 15 },
+    { number: "237", amount: 22000, users: 12 },
+    { number: "346", amount: 19500, users: 11 },
+    { number: "478", amount: 18000, users: 10 },
+    { number: "569", amount: 16500, users: 9 },
+    { number: "089", amount: 15200, users: 8 },
+  ],
+  "Double Patti": [
+    { number: "778", amount: 32000, users: 18 },
+    { number: "225", amount: 26000, users: 14 },
+    { number: "336", amount: 22500, users: 12 },
+    { number: "447", amount: 20000, users: 10 },
+    { number: "558", amount: 18500, users: 9 },
+  ],
+  "Triple Patti": [
+    { number: "777", amount: 45000, users: 25 },
+    { number: "222", amount: 35000, users: 20 },
+    { number: "333", amount: 28000, users: 16 },
+    { number: "555", amount: 22000, users: 12 },
+  ],
 };
 
 const liveBets = [
@@ -139,7 +90,7 @@ const liveBets = [
   },
   {
     id: 2,
-    username: "lucky777",
+    username: "lucky777", 
     amount: 1200,
     type: "Jodi (25)",
     time: "12:44 PM",
@@ -166,7 +117,6 @@ export function SattaMatkaDetails() {
   const [selectedNumber, setSelectedNumber] = useState<string | null>(null);
 
   const getUsersForNumber = (number: string) => {
-    // Mock data for users who bet on this number
     return [
       { username: "player123", amount: 500, time: "12:45 PM" },
       { username: "lucky777", amount: 800, time: "12:30 PM" },
@@ -176,91 +126,120 @@ export function SattaMatkaDetails() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center space-x-4">
-        <Link to="/games/satta-matka">
-          <Button variant="outline" size="sm">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Markets
-          </Button>
-        </Link>
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">
-            {marketName || "Market"} - Detailed View
-          </h1>
-          <p className="text-muted-foreground">
-            Complete analysis and live monitoring
-          </p>
-        </div>
-      </div>
-
-      {/* Overview Section */}
-      <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-        <h2 className="text-xl font-semibold text-foreground mb-4">Overview</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatsCard
-            title="Total Users Today"
-            value="234"
-            icon={<Users className="w-5 h-5 text-primary" />}
-          />
-          <StatsCard
-            title="Total Bets Count"
-            value="1,567"
-            icon={<Target className="w-5 h-5 text-info" />}
-          />
-          <StatsCard
-            title="Total Amount"
-            value="₹1.56L"
-            icon={<DollarSign className="w-5 h-5 text-success" />}
-          />
-          <div className="bg-card rounded-xl p-4 shadow-soft border border-border">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 bg-success/10 rounded-lg">
-                <Circle className="w-5 h-5 text-success fill-current" />
+      {/* Enhanced Header */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-satta p-6 text-white shadow-luxury">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative z-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Link to="/games/satta-matka">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="bg-white/20 border-white/30 text-white hover:bg-white/30"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Markets
+                </Button>
+              </Link>
+              <div className="flex items-center space-x-3">
+                <Crown className="w-6 h-6 text-satta-gold drop-shadow-lg" />
+                <div>
+                  <h1 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
+                    {marketName?.charAt(0).toUpperCase() + (marketName?.slice(1) || "Market")} Market
+                  </h1>
+                  <p className="text-white/90 text-sm md:text-base font-medium">
+                    Live monitoring and detailed analysis
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">
-                  Market Status
-                </p>
-                <p className="text-lg font-bold text-success">OPEN</p>
+            </div>
+            <div className="px-3 py-2 rounded-lg bg-satta-gold/20 border border-satta-gold/30">
+              <div className="flex items-center space-x-2 text-satta-gold">
+                <Calendar className="w-4 h-4" />
+                <div>
+                  <div className="text-sm font-bold">
+                    {new Date().toLocaleDateString('en-IN', { 
+                      day: '2-digit', 
+                      month: 'short'
+                    })}
+                  </div>
+                  <div className="text-xs">Today</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Overview Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <StatsCard
+          title="Total Users Today"
+          value="234"
+          change={{ value: 8.5, type: "increase" }}
+          icon={<Users className="w-4 h-4 text-satta-emerald" />}
+          className="border-gradient-gold"
+        />
+        <StatsCard
+          title="Total Bets Count"
+          value="1,567"
+          change={{ value: 12.3, type: "increase" }}
+          icon={<Target className="w-4 h-4 text-satta-amber" />}
+        />
+        <StatsCard
+          title="Total Amount"
+          value="₹1.56L"
+          change={{ value: 15.7, type: "increase" }}
+          icon={<DollarSign className="w-4 h-4 text-satta-gold" />}
+          className="border-gradient-gold"
+        />
+      </div>
+
       {/* Live Bets Section */}
-      <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-        <div className="flex items-center space-x-2 mb-4">
-          <AlertCircle className="w-5 h-5 text-primary" />
-          <h2 className="text-xl font-semibold text-foreground">
+      <div className="bg-card rounded-xl shadow-luxury border border-border p-6">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="p-2 bg-gradient-to-br from-satta-emerald to-green-400 rounded-lg">
+            <TrendingUp className="w-4 h-4 text-white" />
+          </div>
+          <h2 className="text-xl font-bold text-foreground">
             Live Bets - Real Time
           </h2>
+          <div className="w-2 h-2 bg-satta-emerald rounded-full animate-pulse"></div>
         </div>
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {liveBets.map((bet) => (
             <div
               key={bet.id}
-              className="flex justify-between items-center p-3 bg-muted/30 rounded-lg border-l-4 border-l-primary"
+              className="relative overflow-hidden bg-gradient-to-r from-satta-gold/5 via-transparent to-satta-amber/5 rounded-lg border border-satta-gold/20 p-4"
             >
-              <div>
-                <span className="font-medium text-foreground">
-                  {bet.username}
-                </span>
-                <p className="text-sm text-muted-foreground">{bet.type}</p>
-              </div>
-              <div className="text-right">
-                <span className="font-semibold text-primary">
-                  ₹{bet.amount}
-                </span>
-                <p className="text-xs text-muted-foreground">{bet.time}</p>
+              <div className="flex justify-between items-center">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-satta-gold to-satta-amber rounded-full flex items-center justify-center">
+                    <span className="text-xs font-bold text-black">
+                      {bet.username.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-bold text-foreground">
+                      {bet.username}
+                    </span>
+                    <p className="text-sm text-muted-foreground">{bet.type}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <span className="font-bold text-satta-emerald text-lg">
+                    ₹{bet.amount}
+                  </span>
+                  <p className="text-xs text-muted-foreground">{bet.time}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Betting Analysis Section */}
+      {/* Betting Types Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <BarChart
           data={bettingTypeData}
@@ -268,9 +247,10 @@ export function SattaMatkaDetails() {
           className="lg:col-span-1"
         />
 
-        <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-          <h3 className="text-lg font-semibold text-foreground mb-4">
-            Betting Type Details
+        <div className="bg-card rounded-xl shadow-luxury border border-border p-6">
+          <h3 className="text-lg font-bold text-foreground mb-4 flex items-center">
+            <Trophy className="w-5 h-5 text-satta-gold mr-2" />
+            Select Betting Type
           </h3>
           <div className="space-y-3">
             {bettingTypeData.map((type, idx) => (
@@ -278,17 +258,20 @@ export function SattaMatkaDetails() {
                 key={idx}
                 onClick={() => setActiveTab(type.label)}
                 className={cn(
-                  "w-full flex justify-between items-center p-3 rounded-lg transition-all hover:scale-[1.02]",
+                  "w-full flex justify-between items-center p-4 rounded-lg transition-all duration-300 hover:scale-[1.02]",
                   activeTab === type.label
-                    ? "bg-primary/10 border-2 border-primary"
-                    : "bg-muted/50 border-2 border-transparent hover:bg-muted/70",
+                    ? "bg-gradient-to-r from-satta-gold/10 to-satta-amber/10 border-2 border-satta-gold shadow-md"
+                    : "bg-muted/30 border-2 border-transparent hover:bg-muted/50",
                 )}
               >
-                <span className="font-medium text-foreground">
-                  {type.label}
-                </span>
-                <span className="font-semibold text-primary">
-                  ₹{type.value.toLocaleString()}
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-satta-gold rounded-full"></div>
+                  <span className="font-bold text-foreground">
+                    {type.label}
+                  </span>
+                </div>
+                <span className="font-bold text-satta-emerald">
+                  ₹{(type.value/1000).toFixed(0)}K
                 </span>
               </button>
             ))}
@@ -296,352 +279,112 @@ export function SattaMatkaDetails() {
         </div>
       </div>
 
-      {/* Number-wise Analysis for Selected Type */}
+      {/* Number-wise Analysis */}
       {activeTab && (
         <div className="space-y-6">
-          {/* Single Ank Layout */}
-          {activeTab === "Single Ank" && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <BarChart
-                data={mockNumberData["Single Ank"]
-                  .map((item) => ({
-                    label: `Number ${item.number}`,
-                    value: item.amount,
-                    color:
-                      item.amount > 15000
-                        ? "bg-destructive"
-                        : item.amount > 10000
-                          ? "bg-warning"
-                          : "bg-success",
-                  }))
-                  .sort((a, b) => b.value - a.value)}
-                title="Single Ank - Numbers by Betting Amount"
-                className="lg:col-span-1"
-              />
-
-              <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Single Ank (0-9) - Click for Details
-                </h3>
-                <div className="grid grid-cols-5 gap-3">
-                  {mockNumberData["Single Ank"]
-                    .sort((a, b) => b.amount - a.amount)
-                    .map((item, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedNumber(item.number)}
-                        className={cn(
-                          "aspect-square p-3 rounded-lg border-2 transition-all hover:scale-105",
-                          item.amount > 15000
-                            ? "bg-destructive/10 border-destructive"
-                            : item.amount > 10000
-                              ? "bg-warning/10 border-warning"
-                              : "bg-success/10 border-success",
-                        )}
-                      >
-                        <div className="text-2xl font-bold">{item.number}</div>
-                        <div className="text-xs mt-1">
-                          ₹{(item.amount / 1000).toFixed(0)}K
-                        </div>
-                      </button>
-                    ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Jodi Layout (00-99) */}
-          {activeTab === "Jodi" && (
-            <div className="space-y-6">
-              <BarChart
-                data={mockNumberData["Jodi"].slice(0, 15).map((item) => ({
-                  label: `${item.number}`,
-                  value: item.amount,
-                  color:
-                    item.amount > 20000
-                      ? "bg-destructive"
-                      : item.amount > 15000
-                        ? "bg-warning"
-                        : "bg-success",
-                }))}
-                title="Top 15 Jodi by Betting Amount"
-              />
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
-                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
-                  <h4 className="text-md font-semibold text-foreground mb-3">
-                    🔥 Hot Jodi (Top Earners)
-                  </h4>
-                  <div className="space-y-2">
-                    {mockNumberData["Jodi"].slice(0, 8).map((item, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedNumber(item.number)}
-                        className="w-full flex justify-between items-center p-2 rounded-lg bg-destructive/10 border border-destructive/20 hover:bg-destructive/20 transition-colors"
-                      >
-                        <span className="font-bold text-destructive">
-                          {item.number}
-                        </span>
-                        <span className="text-sm font-medium">
-                          ₹{(item.amount / 1000).toFixed(0)}K
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
-                  <h4 className="text-md font-semibold text-foreground mb-3">
-                    📊 Medium Range
-                  </h4>
-                  <div className="space-y-2">
-                    {mockNumberData["Jodi"].slice(8, 16).map((item, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedNumber(item.number)}
-                        className="w-full flex justify-between items-center p-2 rounded-lg bg-warning/10 border border-warning/20 hover:bg-warning/20 transition-colors"
-                      >
-                        <span className="font-bold text-warning">
-                          {item.number}
-                        </span>
-                        <span className="text-sm font-medium">
-                          ₹{(item.amount / 1000).toFixed(0)}K
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
-                  <h4 className="text-md font-semibold text-foreground mb-3">
-                    🎯 Popular Pairs
-                  </h4>
-                  <div className="space-y-2">
-                    {mockNumberData["Jodi"]
-                      .filter((item) => {
-                        const digits = item.number.split("");
-                        return digits[0] === digits[1]; // Same digits like 11, 22, 33
-                      })
-                      .slice(0, 8)
-                      .map((item, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setSelectedNumber(item.number)}
-                          className="w-full flex justify-between items-center p-2 rounded-lg bg-info/10 border border-info/20 hover:bg-info/20 transition-colors"
-                        >
-                          <span className="font-bold text-info">
-                            {item.number}
-                          </span>
-                          <span className="text-sm font-medium">
-                            ₹{(item.amount / 1000).toFixed(0)}K
-                          </span>
-                        </button>
-                      ))}
-                  </div>
-                </div>
-
-                <div className="bg-card rounded-xl shadow-soft border border-border p-4">
-                  <h4 className="text-md font-semibold text-foreground mb-3">
-                    📈 Quick Grid (00-99)
-                  </h4>
-                  <div className="grid grid-cols-10 gap-0.5 max-h-48 overflow-y-auto">
-                    {Array.from({ length: 100 }, (_, i) => {
-                      const numberStr = i.toString().padStart(2, "0");
-                      const data = mockNumberData["Jodi"].find(
-                        (item) => item.number === numberStr,
-                      );
-                      const amount = data?.amount || 0;
-                      return (
-                        <button
-                          key={i}
-                          onClick={() => setSelectedNumber(numberStr)}
-                          className={cn(
-                            "aspect-square text-xs font-bold rounded transition-all hover:scale-110",
-                            amount > 20000
-                              ? "bg-destructive text-destructive-foreground"
-                              : amount > 15000
-                                ? "bg-warning text-warning-foreground"
-                                : amount > 10000
-                                  ? "bg-success text-success-foreground"
-                                  : "bg-muted/50 text-muted-foreground hover:bg-muted",
-                          )}
-                          title={`${numberStr}: ₹${amount.toLocaleString()}`}
-                        >
-                          {numberStr}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <div className="mt-2 flex items-center justify-center space-x-2 text-xs">
-                    <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-destructive rounded"></div>
-                      <span>₹20K+</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-warning rounded"></div>
-                      <span>₹15K+</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-success rounded"></div>
-                      <span>₹10K+</span>
+          <div className="bg-card rounded-xl shadow-luxury border border-border p-6">
+            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center">
+              <Star className="w-5 h-5 text-satta-gold mr-2" />
+              {activeTab} - Top Numbers
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {mockNumberData[activeTab as keyof typeof mockNumberData]?.map((item, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedNumber(item.number)}
+                  className="group relative overflow-hidden bg-gradient-to-br from-satta-gold/5 to-satta-amber/5 rounded-xl border border-satta-gold/20 p-4 hover:shadow-luxury transition-all duration-300 hover:scale-105"
+                >
+                  {/* Rank indicator */}
+                  <div className="absolute top-2 right-2">
+                    <div className={cn(
+                      "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+                      idx === 0 ? "bg-satta-gold text-black" :
+                      idx === 1 ? "bg-satta-amber text-black" :
+                      idx === 2 ? "bg-satta-royal text-white" :
+                      "bg-muted text-muted-foreground"
+                    )}>
+                      {idx + 1}
                     </div>
                   </div>
-                </div>
-              </div>
+                  
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-satta-gold mb-2">
+                      {item.number}
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm font-bold text-satta-emerald">
+                        ₹{(item.amount/1000).toFixed(0)}K
+                      </div>
+                      <div className="flex items-center justify-center space-x-1 text-xs text-muted-foreground">
+                        <Users className="w-3 h-3" />
+                        <span>{item.users} users</span>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              ))}
             </div>
-          )}
+          </div>
 
-          {/* Patti Layout */}
-          {(activeTab === "Single Patti" ||
-            activeTab === "Double Patti" ||
-            activeTab === "Triple Patti") && (
-            <div className="space-y-6">
-              <BarChart
-                data={
-                  mockNumberData[activeTab as keyof typeof mockNumberData]
-                    ?.slice(0, 15)
-                    .map((item) => ({
-                      label: `${item.number}`,
-                      value: item.amount,
-                      color:
-                        item.amount > 25000
-                          ? "bg-destructive"
-                          : item.amount > 20000
-                            ? "bg-warning"
-                            : "bg-success",
-                    })) || []
-                }
-                title={`Top 15 ${activeTab} by Betting Amount`}
-              />
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                  <h4 className="text-md font-semibold text-foreground mb-4">
-                    🔥 Hot {activeTab}
-                  </h4>
-                  <div className="space-y-2">
-                    {mockNumberData[activeTab as keyof typeof mockNumberData]
-                      ?.slice(0, 10)
-                      .map((item, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setSelectedNumber(item.number)}
-                          className="w-full flex justify-between items-center p-2 rounded-lg bg-destructive/10 border border-destructive/20 hover:bg-destructive/20 transition-colors"
-                        >
-                          <span className="font-bold text-destructive">
-                            {item.number}
-                          </span>
-                          <span className="text-sm font-medium">
-                            ₹{(item.amount / 1000).toFixed(0)}K
-                          </span>
-                        </button>
-                      ))}
-                  </div>
-                </div>
-
-                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                  <h4 className="text-md font-semibold text-foreground mb-4">
-                    📊 Medium Range
-                  </h4>
-                  <div className="space-y-2">
-                    {mockNumberData[activeTab as keyof typeof mockNumberData]
-                      ?.slice(10, 20)
-                      .map((item, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setSelectedNumber(item.number)}
-                          className="w-full flex justify-between items-center p-2 rounded-lg bg-warning/10 border border-warning/20 hover:bg-warning/20 transition-colors"
-                        >
-                          <span className="font-bold text-warning">
-                            {item.number}
-                          </span>
-                          <span className="text-sm font-medium">
-                            ₹{(item.amount / 1000).toFixed(0)}K
-                          </span>
-                        </button>
-                      ))}
-                  </div>
-                </div>
-
-                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                  <h4 className="text-md font-semibold text-foreground mb-4">
-                    📈 All {activeTab} Grid
-                  </h4>
-                  <div className="grid grid-cols-4 gap-1 max-h-64 overflow-y-auto">
-                    {mockNumberData[
-                      activeTab as keyof typeof mockNumberData
-                    ]?.map((item, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedNumber(item.number)}
-                        className={cn(
-                          "p-2 text-xs font-bold rounded transition-all hover:scale-105",
-                          item.amount > 25000
-                            ? "bg-destructive/20 text-destructive border border-destructive/30"
-                            : item.amount > 20000
-                              ? "bg-warning/20 text-warning border border-warning/30"
-                              : "bg-success/20 text-success border border-success/30",
-                        )}
-                        title={`₹${item.amount.toLocaleString()}`}
-                      >
-                        {item.number}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* User-wise Breakdown Modal */}
+          {/* Selected Number Details */}
           {selectedNumber && (
-            <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-              <h4 className="text-lg font-medium text-foreground mb-4">
-                👥 Users who bet on {activeTab}:{" "}
-                <span className="text-primary font-bold">{selectedNumber}</span>
-              </h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="p-4 bg-primary/5 rounded-lg">
-                  <div className="text-2xl font-bold text-primary">
-                    ₹
-                    {mockNumberData[activeTab as keyof typeof mockNumberData]
+            <div className="bg-gradient-to-r from-satta-gold/5 via-satta-amber/5 to-satta-royal/5 rounded-xl border border-satta-gold/30 p-6 shadow-luxury">
+              <div className="flex items-center justify-between mb-6">
+                <h4 className="text-lg font-bold text-foreground flex items-center">
+                  <Crown className="w-5 h-5 text-satta-gold mr-2" />
+                  Number {selectedNumber} - User Details
+                </h4>
+                <Button
+                  onClick={() => setSelectedNumber(null)}
+                  variant="outline"
+                  size="sm"
+                  className="border-satta-gold text-satta-gold hover:bg-satta-gold hover:text-black"
+                >
+                  ✕ Close
+                </Button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="p-4 bg-gradient-to-br from-satta-emerald/10 to-green-400/5 rounded-lg border border-satta-emerald/20">
+                  <div className="text-2xl font-bold text-satta-emerald">
+                    ₹{mockNumberData[activeTab as keyof typeof mockNumberData]
                       ?.find((item) => item.number === selectedNumber)
                       ?.amount.toLocaleString() || "0"}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground font-medium">
                     Total Amount
                   </div>
                 </div>
-                <div className="p-4 bg-success/5 rounded-lg">
-                  <div className="text-2xl font-bold text-success">
-                    {mockNumberData[
-                      activeTab as keyof typeof mockNumberData
-                    ]?.find((item) => item.number === selectedNumber)?.users ||
-                      "0"}
+                <div className="p-4 bg-gradient-to-br from-satta-gold/10 to-satta-amber/5 rounded-lg border border-satta-gold/20">
+                  <div className="text-2xl font-bold text-satta-gold">
+                    {mockNumberData[activeTab as keyof typeof mockNumberData]
+                      ?.find((item) => item.number === selectedNumber)?.users || "0"}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground font-medium">
                     Total Users
                   </div>
                 </div>
               </div>
+              
               <div className="space-y-3">
                 {getUsersForNumber(selectedNumber).map((user, idx) => (
                   <div
                     key={idx}
-                    className="flex justify-between items-center p-3 bg-muted/30 rounded-lg"
+                    className="flex justify-between items-center p-4 bg-white/50 rounded-lg border border-satta-gold/20"
                   >
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                        <span className="text-xs font-medium text-primary">
-                          {idx + 1}
+                      <div className="w-8 h-8 bg-gradient-to-br from-satta-gold to-satta-amber rounded-full flex items-center justify-center">
+                        <span className="text-xs font-bold text-black">
+                          {user.username.charAt(0).toUpperCase()}
                         </span>
                       </div>
-                      <span className="font-medium text-foreground">
+                      <span className="font-bold text-foreground">
                         {user.username}
                       </span>
                     </div>
                     <div className="text-right">
-                      <span className="font-semibold text-primary">
+                      <span className="font-bold text-satta-emerald">
                         ₹{user.amount}
                       </span>
                       <p className="text-xs text-muted-foreground">
@@ -651,12 +394,6 @@ export function SattaMatkaDetails() {
                   </div>
                 ))}
               </div>
-              <button
-                onClick={() => setSelectedNumber(null)}
-                className="mt-4 w-full py-2 px-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-              >
-                ✕ Close Details
-              </button>
             </div>
           )}
         </div>
