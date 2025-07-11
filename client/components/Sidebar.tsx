@@ -82,24 +82,9 @@ const navigationItems = [
     children: userManagementItems,
   },
   {
-    title: "Users",
-    href: "/users",
-    icon: Users,
-  },
-  {
-    title: "Market Management",
-    href: "/market",
-    icon: TrendingUp,
-  },
-  {
     title: "Reports",
     href: "/reports",
     icon: FileText,
-  },
-  {
-    title: "Analytics",
-    href: "/analytics",
-    icon: BarChart3,
   },
   {
     title: "Settings",
