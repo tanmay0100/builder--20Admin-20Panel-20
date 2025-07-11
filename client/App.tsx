@@ -25,6 +25,7 @@ import { DownloadLinks } from "./pages/DownloadLinks";
 import { ViewUsers } from "./pages/ViewUsers";
 import { WalletBalances } from "./pages/WalletBalances";
 import { AddRemoveUsers } from "./pages/AddRemoveUsers";
+import { AddLuckyNumber } from "./pages/AddLuckyNumber";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -46,6 +47,7 @@ const App = () => (
         <Route path="/reports" element={<Reports />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/lucky-numbers/add" element={<AddLuckyNumber />} />
         <Route path="/games/management/add" element={<AddGame />} />
         <Route
           path="/games/management/update-result"
