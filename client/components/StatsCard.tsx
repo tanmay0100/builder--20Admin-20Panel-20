@@ -44,18 +44,18 @@ export function StatsCard({
         {change && (
           <div
             className={cn(
-              "flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium",
+              "flex items-center space-x-1 px-1.5 sm:px-2 py-1 rounded-full text-xs font-medium flex-shrink-0",
               change.type === "increase"
                 ? "bg-success/10 text-success"
                 : "bg-destructive/10 text-destructive",
             )}
           >
             {change.type === "increase" ? (
-              <TrendingUp className="w-3 h-3" />
+              <TrendingUp className="w-3 h-3 flex-shrink-0" />
             ) : (
-              <TrendingDown className="w-3 h-3" />
+              <TrendingDown className="w-3 h-3 flex-shrink-0" />
             )}
-            <span>{Math.abs(change.value)}%</span>
+            <span className="whitespace-nowrap">{Math.abs(change.value)}%</span>
           </div>
         )}
       </div>
