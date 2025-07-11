@@ -24,31 +24,41 @@ const betTypes = [
   "Full Sangam",
 ];
 
-const mockBettingData = {
+const bettingTypeData = [
+  { label: "Single Ank", value: 125000, color: "bg-primary" },
+  { label: "Jodi", value: 85000, color: "bg-success" },
+  { label: "Single Patti", value: 65000, color: "bg-warning" },
+  { label: "Double Patti", value: 45000, color: "bg-info" },
+  { label: "Triple Patti", value: 32000, color: "bg-destructive" },
+  { label: "Half Sangam", value: 28000, color: "bg-purple-500" },
+  { label: "Full Sangam", value: 15000, color: "bg-orange-500" },
+];
+
+const mockNumberData = {
   "Single Ank": [
-    { number: "0", amount: 15000 },
-    { number: "1", amount: 8500 },
-    { number: "2", amount: 12000 },
-    { number: "3", amount: 6800 },
-    { number: "4", amount: 9200 },
-    { number: "5", amount: 25000 },
-    { number: "6", amount: 4500 },
-    { number: "7", amount: 18000 },
-    { number: "8", amount: 11000 },
-    { number: "9", amount: 7800 },
+    { number: "0", amount: 15000, users: 12 },
+    { number: "1", amount: 8500, users: 8 },
+    { number: "2", amount: 12000, users: 10 },
+    { number: "3", amount: 6800, users: 6 },
+    { number: "4", amount: 9200, users: 7 },
+    { number: "5", amount: 25000, users: 18 },
+    { number: "6", amount: 4500, users: 5 },
+    { number: "7", amount: 18000, users: 14 },
+    { number: "8", amount: 11000, users: 9 },
+    { number: "9", amount: 7800, users: 7 },
   ],
   Jodi: [
-    { number: "12", amount: 18000 },
-    { number: "25", amount: 22000 },
-    { number: "37", amount: 15000 },
-    { number: "48", amount: 12000 },
-    { number: "59", amount: 8500 },
+    { number: "12", amount: 18000, users: 12 },
+    { number: "25", amount: 22000, users: 15 },
+    { number: "37", amount: 15000, users: 10 },
+    { number: "48", amount: 12000, users: 8 },
+    { number: "59", amount: 8500, users: 6 },
   ],
   "Single Patti": [
-    { number: "125", amount: 15000 },
-    { number: "238", amount: 12000 },
-    { number: "457", amount: 18000 },
-    { number: "689", amount: 9500 },
+    { number: "125", amount: 15000, users: 8 },
+    { number: "238", amount: 12000, users: 6 },
+    { number: "457", amount: 18000, users: 10 },
+    { number: "689", amount: 9500, users: 5 },
   ],
 };
 
