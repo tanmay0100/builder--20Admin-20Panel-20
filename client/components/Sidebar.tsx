@@ -69,7 +69,9 @@ const navigationItems = [
 ];
 
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
-  const [expandedItems, setExpandedItems] = useState<string[]>(["Games"]);
+  const [expandedItems, setExpandedItems] = useState<string[]>([
+    "Games Revenue Analytics",
+  ]);
   const location = useLocation();
 
   const toggleExpanded = (title: string) => {
