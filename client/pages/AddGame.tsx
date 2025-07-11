@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -21,7 +20,6 @@ import {
   AlertCircle,
   CheckCircle,
   Gamepad2,
-  Calendar,
   Settings,
 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -29,16 +27,11 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 interface GameFormData {
   gameName: string;
   customName: string;
-  description: string;
   startTime: string;
   endTime: string;
-  category: string;
   featured: boolean;
   active: boolean;
-  minBet: string;
-  maxBet: string;
   betTypes: string[];
-  resultPattern: string;
   frequency: string;
 }
 
@@ -46,16 +39,11 @@ export function AddGame() {
   const [formData, setFormData] = useState<GameFormData>({
     gameName: "",
     customName: "",
-    description: "",
     startTime: "",
     endTime: "",
-    category: "",
     featured: false,
     active: true,
-    minBet: "",
-    maxBet: "",
     betTypes: [],
-    resultPattern: "",
     frequency: "",
   });
 
@@ -76,14 +64,6 @@ export function AddGame() {
     "RAJDHANI DAY",
     "KALYAN",
     "CUSTOM",
-  ];
-
-  const gameCategories = [
-    "Morning Games",
-    "Day Games",
-    "Evening Games",
-    "Night Games",
-    "Special Games",
   ];
 
   const betTypeOptions = [
@@ -123,30 +103,6 @@ export function AddGame() {
       newErrors.endTime = "End time must be after start time";
     }
 
-    if (!formData.category) {
-      newErrors.category = "Category is required";
-    }
-
-    if (
-      !formData.minBet ||
-      isNaN(Number(formData.minBet)) ||
-      Number(formData.minBet) <= 0
-    ) {
-      newErrors.minBet = "Valid minimum bet amount is required";
-    }
-
-    if (
-      !formData.maxBet ||
-      isNaN(Number(formData.maxBet)) ||
-      Number(formData.maxBet) <= 0
-    ) {
-      newErrors.maxBet = "Valid maximum bet amount is required";
-    }
-
-    if (Number(formData.minBet) >= Number(formData.maxBet)) {
-      newErrors.maxBet = "Maximum bet must be greater than minimum bet";
-    }
-
     if (formData.betTypes.length === 0) {
       newErrors.betTypes = "At least one bet type must be selected";
     }
@@ -181,16 +137,11 @@ export function AddGame() {
         setFormData({
           gameName: "",
           customName: "",
-          description: "",
           startTime: "",
           endTime: "",
-          category: "",
           featured: false,
           active: true,
-          minBet: "",
-          maxBet: "",
           betTypes: [],
-          resultPattern: "",
           frequency: "",
         });
         setSubmitSuccess(false);
@@ -251,7 +202,7 @@ export function AddGame() {
                       Basic Information
                     </h3>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="gameName">Game Template</Label>
                         <Select
@@ -307,55 +258,6 @@ export function AddGame() {
                           )}
                         </div>
                       )}
-
-                      <div className="space-y-2">
-                        <Label htmlFor="category">Category</Label>
-                        <Select
-                          value={formData.category}
-                          onValueChange={(value) =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              category: value,
-                            }))
-                          }
-                        >
-                          <SelectTrigger
-                            className={errors.category ? "border-red-500" : ""}
-                          >
-                            <SelectValue placeholder="Select category" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {gameCategories.map((category) => (
-                              <SelectItem key={category} value={category}>
-                                {category}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        {errors.category && (
-                          <p className="text-red-500 text-sm">
-                            {errors.category}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="description">
-                        Description (Optional)
-                      </Label>
-                      <Textarea
-                        id="description"
-                        value={formData.description}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            description: e.target.value,
-                          }))
-                        }
-                        placeholder="Enter game description"
-                        rows={3}
-                      />
                     </div>
                   </div>
 
@@ -438,59 +340,6 @@ export function AddGame() {
                         {errors.frequency && (
                           <p className="text-red-500 text-sm">
                             {errors.frequency}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <Separator />
-
-                  {/* Betting Limits */}
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Betting Limits</h3>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="minBet">Minimum Bet (₹)</Label>
-                        <Input
-                          id="minBet"
-                          type="number"
-                          value={formData.minBet}
-                          onChange={(e) =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              minBet: e.target.value,
-                            }))
-                          }
-                          placeholder="Enter minimum bet amount"
-                          className={errors.minBet ? "border-red-500" : ""}
-                        />
-                        {errors.minBet && (
-                          <p className="text-red-500 text-sm">
-                            {errors.minBet}
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="maxBet">Maximum Bet (₹)</Label>
-                        <Input
-                          id="maxBet"
-                          type="number"
-                          value={formData.maxBet}
-                          onChange={(e) =>
-                            setFormData((prev) => ({
-                              ...prev,
-                              maxBet: e.target.value,
-                            }))
-                          }
-                          placeholder="Enter maximum bet amount"
-                          className={errors.maxBet ? "border-red-500" : ""}
-                        />
-                        {errors.maxBet && (
-                          <p className="text-red-500 text-sm">
-                            {errors.maxBet}
                           </p>
                         )}
                       </div>
@@ -583,16 +432,11 @@ export function AddGame() {
                         setFormData({
                           gameName: "",
                           customName: "",
-                          description: "",
                           startTime: "",
                           endTime: "",
-                          category: "",
                           featured: false,
                           active: true,
-                          minBet: "",
-                          maxBet: "",
                           betTypes: [],
-                          resultPattern: "",
                           frequency: "",
                         });
                         setErrors({});
@@ -625,13 +469,6 @@ export function AddGame() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium">Category:</Label>
-                  <p className="text-sm text-muted-foreground">
-                    {formData.category || "No category selected"}
-                  </p>
-                </div>
-
-                <div>
                   <Label className="text-sm font-medium">Timing:</Label>
                   <p className="text-sm text-muted-foreground">
                     {formData.startTime && formData.endTime
@@ -641,11 +478,9 @@ export function AddGame() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium">Bet Range:</Label>
+                  <Label className="text-sm font-medium">Frequency:</Label>
                   <p className="text-sm text-muted-foreground">
-                    {formData.minBet && formData.maxBet
-                      ? `₹${formData.minBet} - ₹${formData.maxBet}`
-                      : "No limits set"}
+                    {formData.frequency || "No frequency selected"}
                   </p>
                 </div>
 
@@ -705,6 +540,13 @@ export function AddGame() {
                   <p className="font-medium">Bet Types:</p>
                   <p>
                     Select which betting options are available for this game.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="font-medium">Frequency:</p>
+                  <p>
+                    How often this game runs - daily, weekly, or special events.
                   </p>
                 </div>
               </CardContent>
