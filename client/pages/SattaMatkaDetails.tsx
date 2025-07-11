@@ -354,8 +354,8 @@ export function SattaMatkaDetails() {
           {activeTab === "Jodi" && (
             <div className="space-y-6">
               <BarChart
-                data={mockNumberData["Jodi"].slice(0, 20).map((item) => ({
-                  label: `Jodi ${item.number}`,
+                data={mockNumberData["Jodi"].slice(0, 15).map((item) => ({
+                  label: `${item.number}`,
                   value: item.amount,
                   color:
                     item.amount > 20000
@@ -364,57 +364,99 @@ export function SattaMatkaDetails() {
                         ? "bg-warning"
                         : "bg-success",
                 }))}
-                title="Top 20 Jodi Numbers by Betting Amount"
+                title="Top 15 Jodi by Betting Amount"
               />
 
-              <div className="bg-card rounded-xl shadow-soft border border-border p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-4">
-                  Jodi Heatmap (00-99) - Click any number for details
-                </h3>
-                <div className="grid grid-cols-10 gap-1">
-                  {Array.from({ length: 100 }, (_, i) => {
-                    const numberStr = i.toString().padStart(2, "0");
-                    const data = mockNumberData["Jodi"].find(
-                      (item) => item.number === numberStr,
-                    );
-                    const amount = data?.amount || 0;
-                    return (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                  <h4 className="text-md font-semibold text-foreground mb-4">
+                    🔥 Hot Jodi
+                  </h4>
+                  <div className="space-y-2">
+                    {mockNumberData["Jodi"].slice(0, 12).map((item, idx) => (
                       <button
-                        key={i}
-                        onClick={() => setSelectedNumber(numberStr)}
-                        className={cn(
-                          "aspect-square text-xs font-bold rounded transition-all hover:scale-110",
-                          amount > 20000
-                            ? "bg-destructive text-destructive-foreground"
-                            : amount > 15000
-                              ? "bg-warning text-warning-foreground"
-                              : amount > 10000
-                                ? "bg-success text-success-foreground"
-                                : "bg-muted text-muted-foreground",
-                        )}
-                        title={`${numberStr}: ₹${amount.toLocaleString()}`}
+                        key={idx}
+                        onClick={() => setSelectedNumber(item.number)}
+                        className="w-full flex justify-between items-center p-2 rounded-lg bg-destructive/10 border border-destructive/20 hover:bg-destructive/20 transition-colors"
                       >
-                        {numberStr}
+                        <span className="font-bold text-destructive">
+                          {item.number}
+                        </span>
+                        <span className="text-sm font-medium">
+                          ₹{(item.amount / 1000).toFixed(0)}K
+                        </span>
                       </button>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-4 flex items-center justify-center space-x-6 text-xs">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-destructive rounded"></div>
-                    <span>₹20K+</span>
+
+                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                  <h4 className="text-md font-semibold text-foreground mb-4">
+                    📊 Medium Range
+                  </h4>
+                  <div className="space-y-2">
+                    {mockNumberData["Jodi"].slice(12, 24).map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedNumber(item.number)}
+                        className="w-full flex justify-between items-center p-2 rounded-lg bg-warning/10 border border-warning/20 hover:bg-warning/20 transition-colors"
+                      >
+                        <span className="font-bold text-warning">
+                          {item.number}
+                        </span>
+                        <span className="text-sm font-medium">
+                          ₹{(item.amount / 1000).toFixed(0)}K
+                        </span>
+                      </button>
+                    ))}
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-warning rounded"></div>
-                    <span>₹15-20K</span>
+                </div>
+
+                <div className="bg-card rounded-xl shadow-soft border border-border p-6">
+                  <h4 className="text-md font-semibold text-foreground mb-4">
+                    📈 All Jodi Grid (00-99)
+                  </h4>
+                  <div className="grid grid-cols-8 gap-1 max-h-64 overflow-y-auto">
+                    {Array.from({ length: 100 }, (_, i) => {
+                      const numberStr = i.toString().padStart(2, "0");
+                      const data = mockNumberData["Jodi"].find(
+                        (item) => item.number === numberStr,
+                      );
+                      const amount = data?.amount || 0;
+                      return (
+                        <button
+                          key={i}
+                          onClick={() => setSelectedNumber(numberStr)}
+                          className={cn(
+                            "p-1 text-xs font-bold rounded transition-all hover:scale-105",
+                            amount > 20000
+                              ? "bg-destructive/20 text-destructive border border-destructive/30"
+                              : amount > 15000
+                                ? "bg-warning/20 text-warning border border-warning/30"
+                                : amount > 10000
+                                  ? "bg-success/20 text-success border border-success/30"
+                                  : "bg-muted/20 text-muted-foreground border border-muted/30",
+                          )}
+                          title={`${numberStr}: ₹${amount.toLocaleString()}`}
+                        >
+                          {numberStr}
+                        </button>
+                      );
+                    })}
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-success rounded"></div>
-                    <span>₹10-15K</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 bg-muted rounded"></div>
-                    <span>Below ₹10K</span>
+                  <div className="mt-3 flex items-center justify-center space-x-4 text-xs">
+                    <div className="flex items-center space-x-1">
+                      <div className="w-3 h-3 bg-destructive rounded"></div>
+                      <span>₹20K+</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-3 h-3 bg-warning rounded"></div>
+                      <span>₹15K+</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-3 h-3 bg-success rounded"></div>
+                      <span>₹10K+</span>
+                    </div>
                   </div>
                 </div>
               </div>
