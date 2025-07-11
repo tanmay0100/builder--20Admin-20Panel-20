@@ -22,17 +22,17 @@ export function GameReorder() {
 
   const getGameColor = (index: number) => {
     const colors = [
-      "from-purple-500 to-pink-500",
-      "from-blue-500 to-cyan-500",
-      "from-green-500 to-emerald-500",
-      "from-orange-500 to-red-500",
-      "from-indigo-500 to-purple-500",
-      "from-pink-500 to-rose-500",
-      "from-teal-500 to-green-500",
-      "from-yellow-500 to-orange-500",
-      "from-red-500 to-pink-500",
-      "from-cyan-500 to-blue-500",
-      "from-emerald-500 to-teal-500",
+      "from-purple-100 to-pink-100 border-purple-200",
+      "from-blue-100 to-cyan-100 border-blue-200",
+      "from-green-100 to-emerald-100 border-green-200",
+      "from-orange-100 to-red-100 border-orange-200",
+      "from-indigo-100 to-purple-100 border-indigo-200",
+      "from-pink-100 to-rose-100 border-pink-200",
+      "from-teal-100 to-green-100 border-teal-200",
+      "from-yellow-100 to-orange-100 border-yellow-200",
+      "from-red-100 to-pink-100 border-red-200",
+      "from-cyan-100 to-blue-100 border-cyan-200",
+      "from-emerald-100 to-teal-100 border-emerald-200",
     ];
     return colors[index % colors.length];
   };
