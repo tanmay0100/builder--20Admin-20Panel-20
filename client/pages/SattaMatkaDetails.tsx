@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 
 const betTypes = [
   "Single Ank",
-  "Jodi", 
+  "Jodi",
   "Single Patti",
   "Double Patti",
   "Triple Patti",
@@ -44,7 +44,7 @@ const mockNumberData = {
     { number: "4", amount: 9200, users: 7 },
     { number: "1", amount: 8500, users: 8 },
     { number: "9", amount: 7800, users: 7 },
-    { number: "3", number: "6800, users: 6 },
+    { number: "3", amount: 6800, users: 6 },
     { number: "6", amount: 4500, users: 5 },
   ],
   Jodi: [
@@ -90,7 +90,7 @@ const liveBets = [
   },
   {
     id: 2,
-    username: "lucky777", 
+    username: "lucky777",
     amount: 1200,
     type: "Jodi (25)",
     time: "12:44 PM",
@@ -133,8 +133,8 @@ export function SattaMatkaDetails() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Link to="/games/satta-matka">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   className="bg-white/20 border-white/30 text-white hover:bg-white/30"
                 >
@@ -146,7 +146,9 @@ export function SattaMatkaDetails() {
                 <Crown className="w-6 h-6 text-satta-gold drop-shadow-lg" />
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">
-                    {marketName?.charAt(0).toUpperCase() + (marketName?.slice(1) || "Market")} Market
+                    {marketName?.charAt(0).toUpperCase() +
+                      (marketName?.slice(1) || "Market")}{" "}
+                    Market
                   </h1>
                   <p className="text-white/90 text-sm md:text-base font-medium">
                     Live monitoring and detailed analysis
@@ -159,9 +161,9 @@ export function SattaMatkaDetails() {
                 <Calendar className="w-4 h-4" />
                 <div>
                   <div className="text-sm font-bold">
-                    {new Date().toLocaleDateString('en-IN', { 
-                      day: '2-digit', 
-                      month: 'short'
+                    {new Date().toLocaleDateString("en-IN", {
+                      day: "2-digit",
+                      month: "short",
                     })}
                   </div>
                   <div className="text-xs">Today</div>
@@ -271,7 +273,7 @@ export function SattaMatkaDetails() {
                   </span>
                 </div>
                 <span className="font-bold text-satta-emerald">
-                  ₹{(type.value/1000).toFixed(0)}K
+                  ₹{(type.value / 1000).toFixed(0)}K
                 </span>
               </button>
             ))}
@@ -287,43 +289,50 @@ export function SattaMatkaDetails() {
               <Star className="w-5 h-5 text-satta-gold mr-2" />
               {activeTab} - Top Numbers
             </h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {mockNumberData[activeTab as keyof typeof mockNumberData]?.map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedNumber(item.number)}
-                  className="group relative overflow-hidden bg-gradient-to-br from-satta-gold/5 to-satta-amber/5 rounded-xl border border-satta-gold/20 p-4 hover:shadow-luxury transition-all duration-300 hover:scale-105"
-                >
-                  {/* Rank indicator */}
-                  <div className="absolute top-2 right-2">
-                    <div className={cn(
-                      "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
-                      idx === 0 ? "bg-satta-gold text-black" :
-                      idx === 1 ? "bg-satta-amber text-black" :
-                      idx === 2 ? "bg-satta-royal text-white" :
-                      "bg-muted text-muted-foreground"
-                    )}>
-                      {idx + 1}
-                    </div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-satta-gold mb-2">
-                      {item.number}
-                    </div>
-                    <div className="space-y-1">
-                      <div className="text-sm font-bold text-satta-emerald">
-                        ₹{(item.amount/1000).toFixed(0)}K
-                      </div>
-                      <div className="flex items-center justify-center space-x-1 text-xs text-muted-foreground">
-                        <Users className="w-3 h-3" />
-                        <span>{item.users} users</span>
+              {mockNumberData[activeTab as keyof typeof mockNumberData]?.map(
+                (item, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedNumber(item.number)}
+                    className="group relative overflow-hidden bg-gradient-to-br from-satta-gold/5 to-satta-amber/5 rounded-xl border border-satta-gold/20 p-4 hover:shadow-luxury transition-all duration-300 hover:scale-105"
+                  >
+                    {/* Rank indicator */}
+                    <div className="absolute top-2 right-2">
+                      <div
+                        className={cn(
+                          "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+                          idx === 0
+                            ? "bg-satta-gold text-black"
+                            : idx === 1
+                              ? "bg-satta-amber text-black"
+                              : idx === 2
+                                ? "bg-satta-royal text-white"
+                                : "bg-muted text-muted-foreground",
+                        )}
+                      >
+                        {idx + 1}
                       </div>
                     </div>
-                  </div>
-                </button>
-              ))}
+
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-satta-gold mb-2">
+                        {item.number}
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-sm font-bold text-satta-emerald">
+                          ₹{(item.amount / 1000).toFixed(0)}K
+                        </div>
+                        <div className="flex items-center justify-center space-x-1 text-xs text-muted-foreground">
+                          <Users className="w-3 h-3" />
+                          <span>{item.users} users</span>
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                ),
+              )}
             </div>
           </div>
 
@@ -344,11 +353,12 @@ export function SattaMatkaDetails() {
                   ✕ Close
                 </Button>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="p-4 bg-gradient-to-br from-satta-emerald/10 to-green-400/5 rounded-lg border border-satta-emerald/20">
                   <div className="text-2xl font-bold text-satta-emerald">
-                    ₹{mockNumberData[activeTab as keyof typeof mockNumberData]
+                    ₹
+                    {mockNumberData[activeTab as keyof typeof mockNumberData]
                       ?.find((item) => item.number === selectedNumber)
                       ?.amount.toLocaleString() || "0"}
                   </div>
@@ -358,15 +368,17 @@ export function SattaMatkaDetails() {
                 </div>
                 <div className="p-4 bg-gradient-to-br from-satta-gold/10 to-satta-amber/5 rounded-lg border border-satta-gold/20">
                   <div className="text-2xl font-bold text-satta-gold">
-                    {mockNumberData[activeTab as keyof typeof mockNumberData]
-                      ?.find((item) => item.number === selectedNumber)?.users || "0"}
+                    {mockNumberData[
+                      activeTab as keyof typeof mockNumberData
+                    ]?.find((item) => item.number === selectedNumber)?.users ||
+                      "0"}
                   </div>
                   <div className="text-sm text-muted-foreground font-medium">
                     Total Users
                   </div>
                 </div>
               </div>
-              
+
               <div className="space-y-3">
                 {getUsersForNumber(selectedNumber).map((user, idx) => (
                   <div
