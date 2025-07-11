@@ -54,6 +54,18 @@
     --warning-foreground: 26 83.3% 14.1%;
     --info: 217.2 91.2% 59.8%;
     --info-foreground: 0 0% 100%;
+
+    /* Satta Matka Luxury Theme */
+    --satta-gold: 45 100% 51%;
+    --satta-gold-foreground: 0 0% 0%;
+    --satta-amber: 43 96% 56%;
+    --satta-amber-foreground: 0 0% 0%;
+    --satta-royal: 264 83% 20%;
+    --satta-royal-foreground: 0 0% 100%;
+    --satta-emerald: 160 84% 39%;
+    --satta-emerald-foreground: 0 0% 100%;
+    --satta-crimson: 348 83% 47%;
+    --satta-crimson-foreground: 0 0% 100%;
   }
 
   .dark {
@@ -92,6 +104,18 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Satta Matka Dark Theme */
+    --satta-gold-dark: 45 86% 58%;
+    --satta-gold-dark-foreground: 0 0% 0%;
+    --satta-amber-dark: 43 74% 49%;
+    --satta-amber-dark-foreground: 0 0% 0%;
+    --satta-royal-dark: 264 67% 35%;
+    --satta-royal-dark-foreground: 0 0% 100%;
+    --satta-emerald-dark: 160 64% 50%;
+    --satta-emerald-dark-foreground: 0 0% 0%;
+    --satta-crimson-dark: 348 65% 58%;
+    --satta-crimson-dark-foreground: 0 0% 100%;
   }
 }
 
@@ -132,5 +156,55 @@
     box-shadow:
       0 2px 15px -3px rgba(0, 0, 0, 0.07),
       0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-luxury {
+    box-shadow:
+      0 4px 20px -4px rgba(255, 215, 0, 0.25),
+      0 8px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .bg-gradient-satta {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-gold)) 0%,
+      hsl(var(--satta-amber)) 50%,
+      hsl(var(--satta-royal)) 100%
+    );
+  }
+
+  .bg-gradient-market-open {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-emerald)) 0%,
+      hsl(160 84% 45%) 100%
+    );
+  }
+
+  .bg-gradient-market-closed {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-crimson)) 0%,
+      hsl(348 83% 42%) 100%
+    );
+  }
+
+  .border-gradient-gold {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(white, white) padding-box,
+      linear-gradient(135deg, hsl(var(--satta-gold)), hsl(var(--satta-amber)))
+        border-box;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--satta-gold)),
+      hsl(var(--satta-amber))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
