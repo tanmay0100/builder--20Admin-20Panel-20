@@ -167,19 +167,21 @@ export function UpdateGameResult() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gradient-light min-h-screen">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-foreground">
-          Update Game Result
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+          📊 Update Game Result
         </h1>
         <p className="text-muted-foreground">
           Update results for existing games
         </p>
       </div>
 
-      <Card className="max-w-2xl">
-        <CardHeader>
-          <CardTitle>Result Details</CardTitle>
+      <Card className="max-w-2xl shadow-soft border-0 bg-white/80 backdrop-blur-sm">
+        <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg">
+          <CardTitle className="flex items-center gap-2">
+            🎯 Result Details
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
