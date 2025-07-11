@@ -131,18 +131,18 @@ export function SattaMatka() {
 
   return (
     <div className="space-y-6">
-      {/* Simple Header */}
-      <div className="bg-card rounded-lg border p-6">
+      {/* Colorful Header */}
+      <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-xl p-6 text-white shadow-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-primary rounded-lg">
-              <CircleDot className="w-5 h-5 text-primary-foreground" />
+            <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+              <CircleDot className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-                Satta Matka Management
+              <h1 className="text-2xl md:text-3xl font-bold">
+                🎯 Satta Matka Management
               </h1>
-              <p className="text-muted-foreground text-sm md:text-base">
+              <p className="text-orange-100 text-sm md:text-base">
                 Market monitoring dashboard
               </p>
             </div>
