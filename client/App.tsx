@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Dashboard } from "./pages/Dashboard";
 import { SattaMatka } from "./pages/SattaMatka";
+import { SattaMatkaDetails } from "./pages/SattaMatkaDetails";
 import { ColorKing } from "./pages/ColorKing";
 import { RollDice } from "./pages/RollDice";
 import { LuckyNumbers } from "./pages/LuckyNumbers";
