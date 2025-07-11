@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { StatsCard } from "@/components/StatsCard";
+import { BarChart } from "@/components/Charts";
 import {
   ArrowLeft,
   Users,
