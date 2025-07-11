@@ -104,6 +104,18 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Satta Matka Dark Theme */
+    --satta-gold-dark: 45 86% 58%;
+    --satta-gold-dark-foreground: 0 0% 0%;
+    --satta-amber-dark: 43 74% 49%;
+    --satta-amber-dark-foreground: 0 0% 0%;
+    --satta-royal-dark: 264 67% 35%;
+    --satta-royal-dark-foreground: 0 0% 100%;
+    --satta-emerald-dark: 160 64% 50%;
+    --satta-emerald-dark-foreground: 0 0% 0%;
+    --satta-crimson-dark: 348 65% 58%;
+    --satta-crimson-dark-foreground: 0 0% 100%;
   }
 }
 
