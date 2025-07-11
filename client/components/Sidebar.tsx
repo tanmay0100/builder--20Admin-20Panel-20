@@ -30,6 +30,13 @@ const gameItems = [
   { name: "Card Master", href: "/games/card-master" },
 ];
 
+const gameManagementItems = [
+  { name: "Add Game", href: "/games/management/add" },
+  { name: "Update Game Result", href: "/games/management/update-result" },
+  { name: "Game Reorder", href: "/games/management/reorder" },
+  { name: "Remove Game", href: "/games/management/remove" },
+];
+
 const navigationItems = [
   {
     title: "Dashboard",
