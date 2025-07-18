@@ -52,6 +52,16 @@ const App = () => (
           }
         />
 
+        {/* Play Games Route */}
+        <Route
+          path="/user/games"
+          element={
+            <UserProtectedRoute>
+              <PlayGames />
+            </UserProtectedRoute>
+          }
+        />
+
         {/* Protected Admin Routes */}
         <Route
           path="/admin"
