@@ -104,9 +104,12 @@ export default function Home() {
               Welcome to SattaMatkaXpert
             </h2>
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-              भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मटका वेबसाइट पर आपका स्वागत
-              है। यहाँ आपको मिलेंगे सबसे सटीक परिणाम, एक्सपर्ट टिप्स, और 24/7
-              सपोर्ट। अभी जुड़ें और अपनी किस्मत आजमाएं!
+              SattaMatkaXpert is the fastest and most trusted platform for all
+              major Satta Bazar results, यहाँ मिलता है सबसे तेज़ रिज़ल्ट,
+              भरोसेमंद गेसिंग और पक्का गेम का अंदाज़ा! Har Roz Milega Best
+              Guessing, Free Tips & Live Results – Bilkul Real Time! है। यहाँ
+              आपको मिलेंगे सबसे सटीक परिणाम, एक्सपर्ट टिप्स, और 24/7 सपोर्ट। अभी
+              जुड़ें और अपनी किस्मत आजमाएं!
             </p>
           </CardContent>
         </Card>
