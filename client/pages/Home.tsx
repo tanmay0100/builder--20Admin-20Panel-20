@@ -331,12 +331,12 @@ export default function Home() {
         </Card>
 
         {/* Section 9 - Contact Experts */}
-        <Card className="bg-gradient-market-open border-2 border-satta-emerald shadow-luxury">
+        <Card className="bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
           <CardContent className="p-6 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
               हमारे एक्सपर्ट्स से बात करें
             </h3>
-            <Button className="bg-satta-gold hover:bg-satta-amber text-satta-gold-foreground font-bold text-lg px-8 py-3 h-auto">
+            <Button className="bg-white hover:bg-gray-100 text-green-600 font-bold text-lg px-8 py-3 h-auto">
               <Phone className="w-5 h-5 mr-2" />
               Call Now
             </Button>
@@ -345,40 +345,40 @@ export default function Home() {
 
         {/* Section 10 - Exclusive Gaming Zones */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="border-2 border-satta-gold shadow-luxury hover:shadow-luxury hover:scale-105 transition-all duration-300">
+          <Card className="bg-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
             <CardContent className="p-6 text-center">
-              <Target className="w-12 h-12 text-satta-gold mx-auto mb-4" />
+              <Target className="w-12 h-12 text-blue-600 mx-auto mb-4" />
               <h4 className="text-xl font-bold mb-2">Game Guessing Zone</h4>
               <p className="text-muted-foreground mb-4">
                 एक्सपर्ट टिप्स और गेम गेसिंग के लिए
               </p>
-              <Button className="w-full bg-gradient-satta text-white">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                 Enter Zone
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-satta-emerald shadow-luxury hover:shadow-luxury hover:scale-105 transition-all duration-300">
+          <Card className="bg-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
             <CardContent className="p-6 text-center">
-              <BarChart3 className="w-12 h-12 text-satta-emerald mx-auto mb-4" />
+              <BarChart3 className="w-12 h-12 text-green-600 mx-auto mb-4" />
               <h4 className="text-xl font-bold mb-2">Jodi Chart Zone</h4>
               <p className="text-muted-foreground mb-4">
                 सभी जोड़ी चार्ट्स एक जगह
               </p>
-              <Button className="w-full bg-gradient-market-open text-white">
+              <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
                 View Charts
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-satta-crimson shadow-luxury hover:shadow-luxury hover:scale-105 transition-all duration-300">
+          <Card className="bg-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
             <CardContent className="p-6 text-center">
-              <Calculator className="w-12 h-12 text-satta-crimson mx-auto mb-4" />
+              <Calculator className="w-12 h-12 text-red-600 mx-auto mb-4" />
               <h4 className="text-xl font-bold mb-2">Panna Chart Zone</h4>
               <p className="text-muted-foreground mb-4">
                 सभी पन्ना चार्ट्स देखें
               </p>
-              <Button className="w-full bg-gradient-market-closed text-white">
+              <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
                 Explore Panna
               </Button>
             </CardContent>
@@ -386,7 +386,7 @@ export default function Home() {
         </div>
 
         {/* Section 11 - Disclaimer */}
-        <Card className="border-2 border-destructive shadow-luxury">
+        <Card className="bg-white shadow-lg border-l-4 border-red-500">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-6 h-6 text-destructive flex-shrink-0 mt-1" />
@@ -415,7 +415,7 @@ export default function Home() {
         <div className="text-center">
           <Link
             to="/login"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-satta-gold transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors"
           >
             <Users className="w-4 h-4" />
             Admin Access
@@ -424,12 +424,12 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-satta border-t-4 border-satta-gold mt-12">
+      <footer className="bg-gradient-to-r from-blue-600 to-purple-700 mt-12">
         <div className="container max-w-6xl mx-auto px-4 py-6 text-center">
           <p className="text-white font-medium">
             © 2024 SattaMatka Platform. All rights reserved.
           </p>
-          <p className="text-satta-gold-foreground text-sm mt-2">
+          <p className="text-white/80 text-sm mt-2">
             सबसे तेज़ और भरोसेमंद वेबसाइट
           </p>
         </div>
