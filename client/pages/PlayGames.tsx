@@ -272,7 +272,7 @@ export default function PlayGames() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
         {/* Matka Game */}
         <Card
           className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-300 bg-gradient-to-br from-red-500 to-orange-600 border-0 shadow-2xl"
