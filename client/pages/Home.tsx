@@ -169,6 +169,24 @@ export default function Home() {
           </CardContent>
         </Card>
 
+        {/* Section 3.5 - Download PlayMatka App */}
+        <Card className="bg-gradient-to-br from-purple-600 to-pink-600 shadow-lg">
+          <CardContent className="p-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Download PlayMatka App
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-6">
+              अब मटका खेलना हुआ बेहद आसान, घर बैठे मोबाइल ऐप पर खेलो सारे गेम्स,
+              पाओ सबसे तेज़ रिज़ल्ट, लाइव अपडेट्स और फ्री गेसिंग टिप्स, अभी
+              डाउनलोड करो और शुरू करो अपनी किस्मत!
+            </p>
+            <Button className="bg-white hover:bg-gray-100 hover:shadow-lg hover:scale-105 hover:-translate-y-1 text-purple-600 font-bold text-lg px-8 py-4 h-auto transition-all duration-300">
+              <Download className="w-6 h-6 mr-3" />
+              Download App Now
+            </Button>
+          </CardContent>
+        </Card>
+
         {/* Section 4 - Live Matka Results */}
         <Card className="bg-white shadow-lg">
           <CardHeader>
