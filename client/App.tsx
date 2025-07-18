@@ -38,6 +38,7 @@ import NotFound from "./pages/NotFound";
 const App = () => (
   <BrowserRouter>
     <AuthProvider>
+      <Toaster position="top-right" />
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
