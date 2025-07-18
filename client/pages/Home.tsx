@@ -144,7 +144,7 @@ export default function Home() {
         {/* Section 3 - Live Results */}
         <Card className="bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg">
           <CardHeader>
-            <CardTitle className="flex items-center justify-center gap-2 text-gray-800 text-xl">
+            <CardTitle className="flex items-center justify-center gap-2 text-white text-xl">
               <Zap className="w-6 h-6 text-blue-600" />
               Live Results
             </CardTitle>
@@ -344,7 +344,7 @@ export default function Home() {
               <Target className="w-12 h-12 text-blue-600 mx-auto mb-4" />
               <h4 className="text-xl font-bold mb-2">Game Guessing Zone</h4>
               <p className="text-muted-foreground mb-4">
-                एक्सप���्ट टिप्स और गेम गेसिंग के लिए
+                एक्सपर्ट टिप्स और गेम गेसिंग के लिए
               </p>
               <Button className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white transition-all duration-300">
                 Enter Zone
@@ -392,7 +392,7 @@ export default function Home() {
                   <li>• यह वेबसाइट केवल मनोरंजन के उद्देश्य से है</li>
                   <li>• सट���टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
                   <li>
-                    • केवल 18 वर्ष से अध��क उम्र के व्यक्ति ही भाग ले सकते हैं
+                    • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ले सकते हैं
                   </li>
                   <li>• जिम्मेदारी से खेलें और अपनी सीमा जानें</li>
                   <li>• किसी भी नुकसान के ���िए वेबसाइट जिम्मेदार नहीं होगी</li>
