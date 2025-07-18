@@ -31,30 +31,36 @@ interface SidebarProps {
 }
 
 const gameItems = [
-  { name: "Satta Matka", href: "/games/satta-matka" },
-  { name: "Color King", href: "/games/color-king" },
-  { name: "Roll the Dice", href: "/games/roll-dice" },
-  { name: "Lucky Numbers", href: "/games/lucky-numbers" },
-  { name: "Card Master", href: "/games/card-master" },
+  { name: "Satta Matka", href: "/admin/games/satta-matka" },
+  { name: "Color King", href: "/admin/games/color-king" },
+  { name: "Roll the Dice", href: "/admin/games/roll-dice" },
+  { name: "Lucky Numbers", href: "/admin/games/lucky-numbers" },
+  { name: "Card Master", href: "/admin/games/card-master" },
 ];
 
 const gameManagementItems = [
-  { name: "Add Game", href: "/games/management/add" },
-  { name: "Update Game Result", href: "/games/management/update-result" },
-  { name: "Game Reorder", href: "/games/management/reorder" },
-  { name: "Remove Game", href: "/games/management/remove" },
+  { name: "Add Game", href: "/admin/games/management/add" },
+  { name: "Update Game Result", href: "/admin/games/management/update-result" },
+  { name: "Game Reorder", href: "/admin/games/management/reorder" },
+  { name: "Remove Game", href: "/admin/games/management/remove" },
 ];
 
 const websiteManagementItems = [
-  { name: "Lucky Numbers", href: "/lucky-numbers/add" },
-  { name: "Content Update", href: "/website/content-update" },
-  { name: "Download Links Update", href: "/website/download-links" },
+  { name: "Lucky Numbers", href: "/admin/lucky-numbers/add" },
+  { name: "Content Update", href: "/admin/website/content-update" },
+  { name: "Download Links Update", href: "/admin/website/download-links" },
 ];
 
 const userManagementItems = [
-  { name: "View Users & Participation", href: "/user-management/view-users" },
-  { name: "Manage Wallet Balances", href: "/user-management/wallet-balances" },
-  { name: "Add/Remove Users", href: "/user-management/add-remove" },
+  {
+    name: "View Users & Participation",
+    href: "/admin/user-management/view-users",
+  },
+  {
+    name: "Manage Wallet Balances",
+    href: "/admin/user-management/wallet-balances",
+  },
+  { name: "Add/Remove Users", href: "/admin/user-management/add-remove" },
 ];
 
 const navigationItems = [
