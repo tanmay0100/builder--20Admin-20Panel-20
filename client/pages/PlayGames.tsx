@@ -317,21 +317,16 @@ export default function PlayGames() {
 
         {/* Dice Game */}
         <Card
-          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-gradient-to-br from-blue-500/70 to-cyan-600/70 border border-white/30 shadow-2xl backdrop-blur-lg"
+          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-white border border-gray-200 shadow-2xl backdrop-blur-lg"
           onClick={() => setCurrentGame("dicegame")}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent backdrop-blur-sm"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/25"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-50/50 to-transparent backdrop-blur-sm"></div>
           <CardContent className="relative p-8 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm shadow-lg">
-              <Dice6 className="w-8 h-8 text-white drop-shadow-lg" />
+            <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center shadow-lg">
+              <Dice6 className="w-8 h-8 text-blue-600" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
-              Dice Game
-            </h3>
-            <p className="text-white/90 mb-4 drop-shadow-sm">
-              Roll the dice and win big
-            </p>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">Dice Game</h3>
+            <p className="text-gray-600 mb-4">Roll the dice and win big</p>
             <Button className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0">
               <Target className="w-5 h-5 mr-2" />
               Play Now
