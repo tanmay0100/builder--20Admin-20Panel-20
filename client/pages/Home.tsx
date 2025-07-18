@@ -88,7 +88,7 @@ export default function Home() {
       <div className="bg-gradient-to-r from-gray-50 to-blue-50 shadow-sm">
         <div className="container max-w-6xl mx-auto px-4 py-4 text-center">
           <Link to="/login">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 h-auto text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 h-auto text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1">
               <LogIn className="w-5 h-5 mr-2" />
               Admin Login
             </Button>
@@ -187,7 +187,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white border-orange-500 font-bold"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 hover:shadow-lg hover:scale-105 text-white border-orange-500 font-bold transition-all duration-300"
                 >
                   Jodi
                 </Button>
@@ -219,7 +219,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-600 text-white border-green-500 font-bold"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-600 hover:shadow-lg hover:scale-105 text-white border-green-500 font-bold transition-all duration-300"
                 >
                   Panna
                 </Button>
@@ -264,19 +264,19 @@ export default function Home() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full h-12 bg-blue-600 hover:bg-blue-700 hover:shadow-md text-white font-bold">
+            <Button className="w-full h-12 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
               <Target className="w-5 h-5 mr-2" />
               Guessing Form
             </Button>
-            <Button className="w-full h-12 bg-green-600 hover:bg-green-700 hover:shadow-md text-white font-bold">
+            <Button className="w-full h-12 bg-green-600 hover:bg-green-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
               <FileText className="w-5 h-5 mr-2" />
               Expert Form
             </Button>
-            <Button className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 hover:shadow-md text-white font-bold">
+            <Button className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
               <MessageSquare className="w-5 h-5 mr-2" />
               Chatting Formula
             </Button>
-            <Button className="w-full h-12 bg-red-600 hover:bg-red-700 hover:shadow-md text-white font-bold">
+            <Button className="w-full h-12 bg-red-600 hover:bg-red-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
               <PlayCircle className="w-5 h-5 mr-2" />
               Free Open to Close
             </Button>
@@ -291,11 +291,11 @@ export default function Home() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full h-12 bg-purple-600 hover:bg-purple-700 hover:shadow-md text-white font-bold text-lg">
+            <Button className="w-full h-12 bg-purple-600 hover:bg-purple-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold text-lg transition-all duration-300">
               <Download className="w-5 h-5 mr-2" />
               Download App
             </Button>
-            <Button className="w-full h-12 bg-green-600 hover:bg-green-700 hover:shadow-md text-white font-bold text-lg">
+            <Button className="w-full h-12 bg-green-600 hover:bg-green-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold text-lg transition-all duration-300">
               <PlayCircle className="w-5 h-5 mr-2" />
               Play Now
             </Button>
@@ -392,7 +392,7 @@ export default function Home() {
                   <li>• यह वेबसाइट केवल मनोरंजन के उद्देश्य से है</li>
                   <li>• सट���टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
                   <li>
-                    • केवल 18 वर्ष से अधिक उ���्र के व्यक्ति ही भाग ले सकते हैं
+                    • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ले सकते हैं
                   </li>
                   <li>• जिम्मेदारी से खेलें और अपनी सीमा जानें</li>
                   <li>• किसी भी नुकसान के ���िए वेबसाइट जिम्मेदार नहीं होगी</li>
