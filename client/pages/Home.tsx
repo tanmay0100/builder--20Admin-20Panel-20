@@ -100,8 +100,8 @@ export default function Home() {
         {/* Section 1 - Welcome Card */}
         <Card className="bg-white shadow-lg border border-gray-200">
           <CardContent className="p-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-              Welcome to SattaMatka Kingdom
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Welcome to SattaMatkaXpert
             </h2>
             <p className="text-lg md:text-xl text-satta-gold-foreground leading-relaxed drop-shadow-md">
               भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मटका वेबसाइट पर आपका स्वागत
@@ -334,7 +334,7 @@ export default function Home() {
         <Card className="bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
           <CardContent className="p-6 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
-              हमारे एक्सपर्ट्स से बात करें
+              हमारे एक्सपर्ट्स से ��ात करें
             </h3>
             <Button className="bg-white hover:bg-gray-100 text-green-600 font-bold text-lg px-8 py-3 h-auto">
               <Phone className="w-5 h-5 mr-2" />
@@ -363,7 +363,7 @@ export default function Home() {
               <BarChart3 className="w-12 h-12 text-green-600 mx-auto mb-4" />
               <h4 className="text-xl font-bold mb-2">Jodi Chart Zone</h4>
               <p className="text-muted-foreground mb-4">
-                सभी जोड़ी चार्ट्स एक जगह
+                सभी जोड़ी च��र्ट्स एक जगह
               </p>
               <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
                 View Charts
