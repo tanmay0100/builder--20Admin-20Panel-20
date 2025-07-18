@@ -19,6 +19,7 @@ import {
   PlayCircle,
   FileText,
   Calculator,
+  LogIn,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
