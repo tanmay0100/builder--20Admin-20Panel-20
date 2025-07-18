@@ -173,13 +173,27 @@ export default function Login() {
                 Demo Credentials:
               </p>
               <div className="text-sm space-y-1">
-                <p>
-                  <span className="font-medium">Email:</span>{" "}
-                  admin@sattamatka.com
-                </p>
-                <p>
-                  <span className="font-medium">Password:</span> admin123
-                </p>
+                {isUserLogin ? (
+                  <>
+                    <p>
+                      <span className="font-medium">Email:</span>{" "}
+                      user@sattamatka.com
+                    </p>
+                    <p>
+                      <span className="font-medium">Password:</span> user123
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      <span className="font-medium">Email:</span>{" "}
+                      admin@sattamatka.com
+                    </p>
+                    <p>
+                      <span className="font-medium">Password:</span> admin123
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </CardContent>
