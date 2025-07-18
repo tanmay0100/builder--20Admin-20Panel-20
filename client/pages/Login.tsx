@@ -57,14 +57,23 @@ export default function Login() {
       <div className="w-full max-w-md">
         {/* Logo Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-blue rounded-2xl shadow-luxury mb-4">
+          <div
+            className={cn(
+              "inline-flex items-center justify-center w-16 h-16 rounded-2xl shadow-luxury mb-4",
+              isUserLogin
+                ? "bg-gradient-to-r from-green-600 to-emerald-600"
+                : "bg-gradient-blue",
+            )}
+          >
             <Gamepad2 className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gradient-gold mb-2">
-            Super Admin
+            {isUserLogin ? "User Portal" : "Super Admin"}
           </h1>
           <p className="text-muted-foreground">
-            Access your SattaMatka dashboard
+            {isUserLogin
+              ? "Access your gaming account"
+              : "Access your SattaMatka dashboard"}
           </p>
         </div>
 
