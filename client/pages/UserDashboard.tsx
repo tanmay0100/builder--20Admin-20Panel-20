@@ -33,6 +33,7 @@ import {
 import { cn } from "@/lib/utils";
 
 export default function UserDashboard() {
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
