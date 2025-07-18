@@ -66,7 +66,7 @@ const userManagementItems = [
 const navigationItems = [
   {
     title: "Dashboard",
-    href: "/",
+    href: "/admin",
     icon: Home,
   },
   {
