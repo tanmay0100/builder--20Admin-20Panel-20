@@ -3,7 +3,8 @@ import "./global.css";
 
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout } from "@/components/Layout";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { AdminLayout } from "@/components/AdminLayout";
 import { Dashboard } from "./pages/Dashboard";
 import { SattaMatka } from "./pages/SattaMatka";
 import { SattaMatkaDetails } from "./pages/SattaMatkaDetails";
@@ -26,50 +27,200 @@ import { ViewUsers } from "./pages/ViewUsers";
 import { WalletBalances } from "./pages/WalletBalances";
 import { AddRemoveUsers } from "./pages/AddRemoveUsers";
 import { AddLuckyNumber } from "./pages/AddLuckyNumber";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
   <BrowserRouter>
-    <Layout>
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/games/satta-matka" element={<SattaMatka />} />
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Protected Admin Routes */}
         <Route
-          path="/games/satta-matka/:marketName"
-          element={<SattaMatkaDetails />}
-        />
-        <Route path="/games/color-king" element={<ColorKing />} />
-        <Route path="/games/roll-dice" element={<RollDice />} />
-        <Route path="/games/lucky-numbers" element={<LuckyNumbers />} />
-        <Route path="/games/card-master" element={<CardMaster />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/market" element={<Market />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/lucky-numbers/add" element={<AddLuckyNumber />} />
-        <Route path="/games/management/add" element={<AddGame />} />
-        <Route
-          path="/games/management/update-result"
-          element={<UpdateGameResult />}
-        />
-        <Route path="/games/management/reorder" element={<GameReorder />} />
-        <Route path="/games/management/remove" element={<RemoveGame />} />
-        <Route path="/website/content-update" element={<ContentUpdate />} />
-        <Route path="/website/download-links" element={<DownloadLinks />} />
-        <Route path="/user-management/view-users" element={<ViewUsers />} />
-        <Route
-          path="/user-management/wallet-balances"
-          element={<WalletBalances />}
+          path="/admin"
+          element={
+            <AdminLayout>
+              <Dashboard />
+            </AdminLayout>
+          }
         />
         <Route
-          path="/user-management/add-remove"
-          element={<AddRemoveUsers />}
+          path="/admin/games/satta-matka"
+          element={
+            <AdminLayout>
+              <SattaMatka />
+            </AdminLayout>
+          }
         />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route
+          path="/admin/games/satta-matka/:marketName"
+          element={
+            <AdminLayout>
+              <SattaMatkaDetails />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/color-king"
+          element={
+            <AdminLayout>
+              <ColorKing />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/roll-dice"
+          element={
+            <AdminLayout>
+              <RollDice />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/lucky-numbers"
+          element={
+            <AdminLayout>
+              <LuckyNumbers />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/card-master"
+          element={
+            <AdminLayout>
+              <CardMaster />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <AdminLayout>
+              <Users />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/market"
+          element={
+            <AdminLayout>
+              <Market />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/reports"
+          element={
+            <AdminLayout>
+              <Reports />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/analytics"
+          element={
+            <AdminLayout>
+              <Analytics />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/settings"
+          element={
+            <AdminLayout>
+              <Settings />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/lucky-numbers/add"
+          element={
+            <AdminLayout>
+              <AddLuckyNumber />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/management/add"
+          element={
+            <AdminLayout>
+              <AddGame />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/management/update-result"
+          element={
+            <AdminLayout>
+              <UpdateGameResult />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/management/reorder"
+          element={
+            <AdminLayout>
+              <GameReorder />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/games/management/remove"
+          element={
+            <AdminLayout>
+              <RemoveGame />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/website/content-update"
+          element={
+            <AdminLayout>
+              <ContentUpdate />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/website/download-links"
+          element={
+            <AdminLayout>
+              <DownloadLinks />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/user-management/view-users"
+          element={
+            <AdminLayout>
+              <ViewUsers />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/user-management/wallet-balances"
+          element={
+            <AdminLayout>
+              <WalletBalances />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/user-management/add-remove"
+          element={
+            <AdminLayout>
+              <AddRemoveUsers />
+            </AdminLayout>
+          }
+        />
+
+        {/* Catch-all route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Layout>
+    </AuthProvider>
   </BrowserRouter>
 );
 
