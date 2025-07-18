@@ -275,20 +275,23 @@ export default function PlayGames() {
       <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
         {/* Matka Game */}
         <Card
-          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-gradient-to-br from-red-500/80 to-orange-600/80 border border-white/20 shadow-2xl backdrop-blur-md"
+          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-gradient-to-br from-red-500/70 to-orange-600/70 border border-white/30 shadow-2xl backdrop-blur-lg"
           onClick={() => setCurrentGame("matka")}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent backdrop-blur-sm"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/25"></div>
           <CardContent className="relative p-8 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <Dice1 className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 mx-auto mb-4 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm shadow-lg">
+              <Dice1 className="w-8 h-8 text-white drop-shadow-lg" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Matka</h3>
-            <p className="text-white/80 mb-4">
+            <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+              Matka
+            </h3>
+            <p className="text-white/90 mb-4 drop-shadow-sm">
               Traditional number betting game
             </p>
-            <Button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-white/30 text-white font-bold">
+            <Button className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0">
+              <Sparkles className="w-5 h-5 mr-2" />
               Play Now
             </Button>
           </CardContent>
