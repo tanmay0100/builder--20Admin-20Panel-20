@@ -71,6 +71,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
       return true;
     }
 
+    // Demo user credentials
+    if (email === "user@sattamatka.com" && password === "user123") {
+      const userData: User = {
+        id: "USR2TM",
+        email: "user@sattamatka.com",
+        role: "user",
+        name: "TANMAY",
+      };
+
+      setUser(userData);
+      localStorage.setItem("authUser", JSON.stringify(userData));
+      setIsLoading(false);
+      return true;
+    }
+
     setIsLoading(false);
     return false;
   };
