@@ -171,28 +171,10 @@ export default function UserDashboard() {
 
         {/* Quick Play Games */}
         <Card className="bg-white shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-xl">
-              <PlayCircle className="w-6 h-6 text-green-600" />
+          <CardContent className="p-6">
+            <Button className="w-full h-16 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold text-xl transition-all duration-300">
+              <PlayCircle className="w-6 h-6 mr-3" />
               Quick Play Games
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <Button className="w-full h-12 bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
-              <Target className="w-5 h-5 mr-2" />
-              Satta Matka
-            </Button>
-            <Button className="w-full h-12 bg-green-600 hover:bg-green-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
-              <Star className="w-5 h-5 mr-2" />
-              Jodi Games
-            </Button>
-            <Button className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
-              <Gamepad2 className="w-5 h-5 mr-2" />
-              Panna Games
-            </Button>
-            <Button className="w-full h-12 bg-red-600 hover:bg-red-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold transition-all duration-300">
-              <PlayCircle className="w-5 h-5 mr-2" />
-              Quick Pick
             </Button>
           </CardContent>
         </Card>
