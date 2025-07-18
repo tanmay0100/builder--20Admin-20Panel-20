@@ -147,19 +147,19 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h4 className="text-lg font-bold text-foreground">DISAWAR</h4>
-                  <Badge variant="destructive" className="bg-red-500">
-                    LIVE
-                  </Badge>
-                </div>
-                <div className="text-right">
-                  <p className="text-2xl font-bold text-red-600">***-**-***</p>
-                  <p className="text-sm text-muted-foreground">
-                    Updated: Just now
-                  </p>
-                </div>
+              <div className="text-center">
+                <h4 className="text-xl font-bold text-foreground mb-2">
+                  DISAWAR
+                </h4>
+                <Badge variant="destructive" className="bg-red-500 mb-2">
+                  LIVE
+                </Badge>
+                <p className="text-2xl font-bold text-red-600 mb-1">
+                  ***-**-***
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Updated: Just now
+                </p>
               </div>
             </div>
           </CardContent>
@@ -393,7 +393,7 @@ export default function Home() {
                 </h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• यह वेबसाइट केवल मनोरंजन के उद्देश्य से है</li>
-                  <li>• सट��टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
+                  <li>• सट���टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
                   <li>
                     • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ले सकते हैं
                   </li>
