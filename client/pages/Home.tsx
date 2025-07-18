@@ -79,7 +79,7 @@ export default function Home() {
             :::SattaMatka:::
           </h1>
           <p className="text-xl md:text-2xl font-medium text-satta-gold-foreground mt-2 drop-shadow-md">
-            सबसे ��ेज़ और भरोसेमंद वेबसाइट
+            सबसे तेज़ और भरोसेमंद वेबसाइट
           </p>
         </div>
       </header>
@@ -104,7 +104,7 @@ export default function Home() {
               Welcome to SattaMatka Kingdom
             </h2>
             <p className="text-lg md:text-xl text-satta-gold-foreground leading-relaxed drop-shadow-md">
-              भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मट��ा वेबसाइट पर आपका स्वागत
+              भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मटका वेबसाइट पर आपका स्वागत
               है। यहाँ आपको मिलेंगे सबसे सटीक परिणाम, एक्सपर्ट टिप्स, और 24/7
               सपोर्ट। अभी जुड़ें और अपनी किस्मत आजमाएं!
             </p>
@@ -255,27 +255,27 @@ export default function Home() {
         </Card>
 
         {/* Section 6 - Daily Games Zone */}
-        <Card className="border-2 border-satta-crimson shadow-luxury">
+        <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
-              <Users className="w-6 h-6 text-satta-crimson" />
+              <Users className="w-6 h-6 text-red-600" />
               Daily Games Zone
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full h-12 bg-gradient-satta hover:shadow-luxury border-2 border-satta-gold text-white font-bold">
+            <Button className="w-full h-12 bg-blue-600 hover:bg-blue-700 hover:shadow-md text-white font-bold">
               <Target className="w-5 h-5 mr-2" />
               Guessing Form
             </Button>
-            <Button className="w-full h-12 bg-gradient-market-open hover:shadow-luxury border-2 border-satta-emerald text-white font-bold">
+            <Button className="w-full h-12 bg-green-600 hover:bg-green-700 hover:shadow-md text-white font-bold">
               <FileText className="w-5 h-5 mr-2" />
               Expert Form
             </Button>
-            <Button className="w-full h-12 bg-gradient-blue hover:shadow-luxury border-2 border-primary text-white font-bold">
+            <Button className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 hover:shadow-md text-white font-bold">
               <MessageSquare className="w-5 h-5 mr-2" />
               Chatting Formula
             </Button>
-            <Button className="w-full h-12 bg-gradient-market-closed hover:shadow-luxury border-2 border-satta-crimson text-white font-bold">
+            <Button className="w-full h-12 bg-red-600 hover:bg-red-700 hover:shadow-md text-white font-bold">
               <PlayCircle className="w-5 h-5 mr-2" />
               Free Open to Close
             </Button>
@@ -283,18 +283,18 @@ export default function Home() {
         </Card>
 
         {/* Section 7 - Download App/Play Now */}
-        <Card className="border-2 border-satta-gold shadow-luxury">
+        <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="text-center text-xl">
               जुड़ें हमारे साथ
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full h-12 bg-gradient-satta hover:shadow-luxury text-white font-bold text-lg">
+            <Button className="w-full h-12 bg-purple-600 hover:bg-purple-700 hover:shadow-md text-white font-bold text-lg">
               <Download className="w-5 h-5 mr-2" />
               Download App
             </Button>
-            <Button className="w-full h-12 bg-gradient-market-open hover:shadow-luxury text-white font-bold text-lg">
+            <Button className="w-full h-12 bg-green-600 hover:bg-green-700 hover:shadow-md text-white font-bold text-lg">
               <PlayCircle className="w-5 h-5 mr-2" />
               Play Now
             </Button>
@@ -302,10 +302,10 @@ export default function Home() {
         </Card>
 
         {/* Section 8 - Pana/Chart Zone */}
-        <Card className="border-2 border-satta-amber shadow-luxury">
+        <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
-              <BarChart3 className="w-6 h-6 text-satta-amber" />
+              <BarChart3 className="w-6 h-6 text-orange-600" />
               Chart Zone
             </CardTitle>
           </CardHeader>
@@ -313,7 +313,7 @@ export default function Home() {
             {chartGames.map((chart, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center p-3 bg-gradient-light rounded-lg border border-satta-amber/30 hover:shadow-soft transition-all"
+                className="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-sm transition-all"
               >
                 <span className="font-semibold text-foreground">
                   {chart.name}
@@ -321,7 +321,7 @@ export default function Home() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="border-satta-amber text-satta-amber hover:bg-satta-amber hover:text-satta-amber-foreground"
+                  className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white"
                 >
                   View Chart
                 </Button>
