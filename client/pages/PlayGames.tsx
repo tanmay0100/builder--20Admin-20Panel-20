@@ -757,7 +757,16 @@ export default function PlayGames() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-600 to-orange-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-pink-500 to-violet-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-green-400 to-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
+      </div>
+
+      {/* Glass overlay */}
+      <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px]"></div>
       {/* Header */}
       <header className="bg-gradient-to-r from-red-700 to-red-900 shadow-lg sticky top-0 z-50">
         <div className="container max-w-6xl mx-auto px-4 py-4">
