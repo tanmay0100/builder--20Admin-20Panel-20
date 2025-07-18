@@ -129,6 +129,26 @@ export default function UserDashboard() {
                 </div>
               </SheetContent>
             </Sheet>
+
+            {/* Center: Logo/Title */}
+            <div className="text-center">
+              <h1 className="text-2xl md:text-3xl font-bold text-white tracking-widest">
+                :::SattaMatka:::
+              </h1>
+            </div>
+
+            {/* Right: Profile Icon & Wallet Balance */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <Wallet className="w-5 h-5 text-yellow-300" />
+                <span className="text-white font-bold">
+                  ₹{walletBalance.toLocaleString()}
+                </span>
+              </div>
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-105 transition-transform">
+                <User className="w-6 h-6 text-red-600" />
+              </div>
+            </div>
           </div>
         </div>
       </header>
