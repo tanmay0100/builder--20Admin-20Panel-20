@@ -41,7 +41,12 @@ export default function Login() {
 
     const success = await login(email, password);
     if (success) {
-      navigate("/admin", { replace: true });
+      // Redirect based on user role after successful login
+      if (isUserLogin) {
+        navigate("/user/dashboard", { replace: true });
+      } else {
+        navigate("/admin", { replace: true });
+      }
     } else {
       setError("Invalid email or password");
     }
