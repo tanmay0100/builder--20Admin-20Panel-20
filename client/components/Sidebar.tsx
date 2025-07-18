@@ -104,10 +104,11 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
     // Clear any stored authentication data
     localStorage.removeItem("authToken");
     localStorage.removeItem("userSession");
+    localStorage.removeItem("authUser");
     sessionStorage.clear();
 
     // Redirect to login page or home
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const toggleExpanded = (title: string) => {
