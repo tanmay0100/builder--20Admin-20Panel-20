@@ -200,7 +200,21 @@ export default function Login() {
         </Card>
 
         {/* Footer */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-6 space-y-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/"
+              className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              ← Back to Home
+            </a>
+            <a
+              href={`/login?type=${isUserLogin ? "admin" : "user"}`}
+              className="text-sm text-green-600 hover:text-green-800 transition-colors"
+            >
+              {isUserLogin ? "Admin Login" : "User Login"} →
+            </a>
+          </div>
           <p className="text-sm text-muted-foreground">
             © 2024 SattaMatka Platform. All rights reserved.
           </p>
