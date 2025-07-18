@@ -42,7 +42,14 @@ const App = () => (
         <Route path="/login" element={<Login />} />
 
         {/* User Dashboard Route */}
-        <Route path="/user/dashboard" element={<UserDashboard />} />
+        <Route
+          path="/user/dashboard"
+          element={
+            <UserProtectedRoute>
+              <UserDashboard />
+            </UserProtectedRoute>
+          }
+        />
 
         {/* Protected Admin Routes */}
         <Route
