@@ -20,6 +20,7 @@ interface AuthContextType {
   isLoading: boolean;
   isAuthenticated: boolean;
   isAdmin: boolean;
+  isUser: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -71,6 +72,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
       return true;
     }
 
+    // Demo user credentials
+    if (email === "user@sattamatka.com" && password === "user123") {
+      const userData: User = {
+        id: "USR2TM",
+        email: "user@sattamatka.com",
+        role: "user",
+        name: "TANMAY",
+      };
+
+      setUser(userData);
+      localStorage.setItem("authUser", JSON.stringify(userData));
+      setIsLoading(false);
+      return true;
+    }
+
     setIsLoading(false);
     return false;
   };
@@ -89,6 +105,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     isLoading,
     isAuthenticated: !!user,
     isAdmin: user?.role === "admin",
+    isUser: user?.role === "user",
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

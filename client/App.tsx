@@ -5,6 +5,8 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { AdminLayout } from "@/components/AdminLayout";
+import { UserProtectedRoute } from "@/components/UserProtectedRoute";
+import { Toaster } from "sonner";
 import { Dashboard } from "./pages/Dashboard";
 import { SattaMatka } from "./pages/SattaMatka";
 import { SattaMatkaDetails } from "./pages/SattaMatkaDetails";
@@ -29,15 +31,38 @@ import { AddRemoveUsers } from "./pages/AddRemoveUsers";
 import { AddLuckyNumber } from "./pages/AddLuckyNumber";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import UserDashboard from "./pages/UserDashboard";
+import PlayGames from "./pages/PlayGames";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
   <BrowserRouter>
     <AuthProvider>
+      <Toaster position="top-right" />
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+
+        {/* User Dashboard Route */}
+        <Route
+          path="/user/dashboard"
+          element={
+            <UserProtectedRoute>
+              <UserDashboard />
+            </UserProtectedRoute>
+          }
+        />
+
+        {/* Play Games Route */}
+        <Route
+          path="/user/games"
+          element={
+            <UserProtectedRoute>
+              <PlayGames />
+            </UserProtectedRoute>
+          }
+        />
 
         {/* Protected Admin Routes */}
         <Route

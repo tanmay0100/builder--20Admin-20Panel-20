@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,16 +10,24 @@ import { Lock, Mail, LogIn, Eye, EyeOff, Gamepad2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Login() {
+  const [searchParams] = useSearchParams();
+  const loginType = searchParams.get("type") || "admin";
+  const isUserLogin = loginType === "user";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const { login, isLoading, isAuthenticated } = useAuth();
+  const { login, isLoading, isAuthenticated, isAdmin, isUser } = useAuth();
   const navigate = useNavigate();
 
   // Redirect if already authenticated
   if (isAuthenticated) {
-    return <Navigate to="/admin" replace />;
+    if (isAdmin) {
+      return <Navigate to="/admin" replace />;
+    } else if (isUser) {
+      return <Navigate to="/user/dashboard" replace />;
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -33,7 +41,12 @@ export default function Login() {
 
     const success = await login(email, password);
     if (success) {
-      navigate("/admin", { replace: true });
+      // Redirect based on user role after successful login
+      if (isUserLogin) {
+        navigate("/user/dashboard", { replace: true });
+      } else {
+        navigate("/admin", { replace: true });
+      }
     } else {
       setError("Invalid email or password");
     }
@@ -44,14 +57,23 @@ export default function Login() {
       <div className="w-full max-w-md">
         {/* Logo Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-blue rounded-2xl shadow-luxury mb-4">
+          <div
+            className={cn(
+              "inline-flex items-center justify-center w-16 h-16 rounded-2xl shadow-luxury mb-4",
+              isUserLogin
+                ? "bg-gradient-to-r from-green-600 to-emerald-600"
+                : "bg-gradient-blue",
+            )}
+          >
             <Gamepad2 className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gradient-gold mb-2">
-            Super Admin
+            {isUserLogin ? "User Portal" : "Super Admin"}
           </h1>
           <p className="text-muted-foreground">
-            Access your SattaMatka dashboard
+            {isUserLogin
+              ? "Access your gaming account"
+              : "Access your SattaMatka dashboard"}
           </p>
         </div>
 
@@ -60,7 +82,7 @@ export default function Login() {
           <CardHeader className="text-center pb-4">
             <CardTitle className="text-2xl font-bold flex items-center justify-center gap-2">
               <Lock className="w-6 h-6 text-satta-gold" />
-              Admin Login
+              {isUserLogin ? "User Login" : "Admin Login"}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -80,7 +102,11 @@ export default function Login() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="admin@sattamatka.com"
+                    placeholder={
+                      isUserLogin
+                        ? "user@sattamatka.com"
+                        : "admin@sattamatka.com"
+                    }
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10 h-12 border-2 focus:border-satta-gold"
@@ -147,20 +173,48 @@ export default function Login() {
                 Demo Credentials:
               </p>
               <div className="text-sm space-y-1">
-                <p>
-                  <span className="font-medium">Email:</span>{" "}
-                  admin@sattamatka.com
-                </p>
-                <p>
-                  <span className="font-medium">Password:</span> admin123
-                </p>
+                {isUserLogin ? (
+                  <>
+                    <p>
+                      <span className="font-medium">Email:</span>{" "}
+                      user@sattamatka.com
+                    </p>
+                    <p>
+                      <span className="font-medium">Password:</span> user123
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      <span className="font-medium">Email:</span>{" "}
+                      admin@sattamatka.com
+                    </p>
+                    <p>
+                      <span className="font-medium">Password:</span> admin123
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Footer */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-6 space-y-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/"
+              className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              ← Back to Home
+            </a>
+            <a
+              href={`/login?type=${isUserLogin ? "admin" : "user"}`}
+              className="text-sm text-green-600 hover:text-green-800 transition-colors"
+            >
+              {isUserLogin ? "Admin Login" : "User Login"} →
+            </a>
+          </div>
           <p className="text-sm text-muted-foreground">
             © 2024 SattaMatka Platform. All rights reserved.
           </p>
