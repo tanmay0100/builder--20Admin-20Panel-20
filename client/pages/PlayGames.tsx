@@ -793,7 +793,7 @@ export default function PlayGames() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-white hover:bg-white/20"
+                  className="text-gray-700 hover:bg-pink-100/50"
                 >
                   <Menu className="w-6 h-6" />
                 </Button>
