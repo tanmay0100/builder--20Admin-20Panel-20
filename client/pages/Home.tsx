@@ -142,10 +142,10 @@ export default function Home() {
         </Card>
 
         {/* Section 3 - Live Results */}
-        <Card className="bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg">
+        <Card className="bg-white shadow-lg border border-gray-200">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-white text-xl">
-              <Zap className="w-6 h-6 text-yellow-300" />
+            <CardTitle className="flex items-center justify-center gap-2 text-gray-800 text-xl">
+              <Zap className="w-6 h-6 text-blue-600" />
               Live Results
             </CardTitle>
           </CardHeader>
@@ -169,12 +169,12 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        {/* Section 4 - Game Results */}
+        {/* Section 4 - Live Matka Results */}
         <Card className="bg-white shadow-lg">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-xl">
+            <CardTitle className="flex items-center justify-center gap-2 text-xl">
               <TrendingUp className="w-6 h-6 text-blue-600" />
-              Game Results
+              Live Matka Results
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
