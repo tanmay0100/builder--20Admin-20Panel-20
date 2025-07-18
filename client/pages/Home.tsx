@@ -71,9 +71,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-light">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-gradient-satta border-b-4 border-satta-gold shadow-luxury">
+      <header className="bg-gradient-to-r from-blue-600 to-purple-700 shadow-lg">
         <div className="container max-w-6xl mx-auto px-4 py-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-widest drop-shadow-lg">
             :::SattaMatka:::
@@ -85,10 +85,10 @@ export default function Home() {
       </header>
 
       {/* Login Button Row */}
-      <div className="bg-gradient-blue border-b-2 border-primary shadow-soft">
+      <div className="bg-gradient-to-r from-gray-50 to-blue-50 shadow-sm">
         <div className="container max-w-6xl mx-auto px-4 py-4 text-center">
           <Link to="/login">
-            <Button className="bg-satta-gold hover:bg-satta-amber text-satta-gold-foreground font-bold px-8 py-3 h-auto text-lg shadow-luxury hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 h-auto text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
               <LogIn className="w-5 h-5 mr-2" />
               Admin Login
             </Button>
@@ -98,7 +98,7 @@ export default function Home() {
 
       <main className="container max-w-6xl mx-auto px-4 py-8 space-y-6">
         {/* Section 1 - Welcome Card */}
-        <Card className="bg-gradient-satta border-2 border-satta-gold shadow-luxury">
+        <Card className="bg-gradient-to-br from-blue-600 to-purple-700 shadow-lg">
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
               Welcome to SattaMatka Kingdom
@@ -112,24 +112,24 @@ export default function Home() {
         </Card>
 
         {/* Section 2 - Today's Lucky Number */}
-        <Card className="bg-gradient-market-open border-2 border-satta-emerald shadow-luxury">
+        <Card className="bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
           <CardContent className="p-6 text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Star className="w-6 h-6 text-satta-gold" />
+              <Star className="w-6 h-6 text-yellow-300" />
               <h3 className="text-2xl font-bold text-white">
                 Today's Lucky Number
               </h3>
-              <Star className="w-6 h-6 text-satta-gold" />
+              <Star className="w-6 h-6 text-yellow-300" />
             </div>
             <div className="flex items-center justify-center gap-4">
-              <span className="text-4xl md:text-5xl font-bold text-satta-gold">
+              <span className="text-4xl md:text-5xl font-bold text-yellow-300">
                 7-8-0
               </span>
               <span className="text-xl md:text-2xl font-semibold text-white">
                 Ank (शुभांक)
               </span>
             </div>
-            <p className="text-sm text-satta-emerald-foreground mt-2">
+            <p className="text-sm text-white/80 mt-2">
               {new Date().toLocaleDateString("hi-IN", {
                 weekday: "long",
                 year: "numeric",
@@ -141,15 +141,15 @@ export default function Home() {
         </Card>
 
         {/* Section 3 - Live Results */}
-        <Card className="bg-gradient-blue border-2 border-primary shadow-luxury">
+        <Card className="bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-white text-xl">
-              <Zap className="w-6 h-6 text-satta-gold" />
+              <Zap className="w-6 h-6 text-yellow-300" />
               Live Results
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-gradient-light p-4 rounded-lg border-2 border-satta-gold">
+            <div className="bg-white p-4 rounded-lg shadow-sm">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="text-lg font-bold text-foreground">DISAWAR</h4>
@@ -158,9 +158,7 @@ export default function Home() {
                   </Badge>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-satta-royal">
-                    ***-**-***
-                  </p>
+                  <p className="text-2xl font-bold text-red-600">***-**-***</p>
                   <p className="text-sm text-muted-foreground">
                     Updated: Just now
                   </p>
@@ -352,7 +350,7 @@ export default function Home() {
               <Target className="w-12 h-12 text-satta-gold mx-auto mb-4" />
               <h4 className="text-xl font-bold mb-2">Game Guessing Zone</h4>
               <p className="text-muted-foreground mb-4">
-                एक्सपर्ट टिप्स और गेम गेसिंग के लिए
+                एक्सपर्ट ��िप्स और गेम गेसिंग के लिए
               </p>
               <Button className="w-full bg-gradient-satta text-white">
                 Enter Zone
@@ -400,7 +398,7 @@ export default function Home() {
                   <li>• यह वेबसाइट केवल मनोरंजन के उद्देश्य से है</li>
                   <li>• सट��टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
                   <li>
-                    • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ले सकते हैं
+                    • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ���े सकते हैं
                   </li>
                   <li>• जिम्मेदारी से खेलें और अपनी सीमा जानें</li>
                   <li>• किसी भी नुकसान के ���िए वेबसाइट जिम्मेदार नहीं होगी</li>
