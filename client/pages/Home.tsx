@@ -225,7 +225,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-600 hover:shadow-lg hover:scale-105 text-white border-green-500 font-bold transition-all duration-300"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-600 hover:shadow-lg hover:scale-105 text-white border-green-500 font-bold transition-all duration-300 rounded-full"
                 >
                   Panna
                 </Button>
@@ -334,7 +334,7 @@ export default function Home() {
         <Card className="bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
           <CardContent className="p-6 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
-              हमारे एक्सपर्ट्स से ��ात करें
+              हमारे एक्सपर्���्स से ��ात करें
             </h3>
             <Button className="bg-white hover:bg-gray-100 hover:shadow-lg hover:scale-105 hover:-translate-y-1 text-green-600 font-bold text-lg px-8 py-3 h-auto transition-all duration-300">
               <Phone className="w-5 h-5 mr-2" />
