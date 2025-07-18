@@ -145,7 +145,7 @@ export default function Home() {
         <Card className="bg-gradient-to-br from-indigo-500 to-blue-600 shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center justify-center gap-2 text-white text-xl">
-              <Zap className="w-6 h-6 text-blue-600" />
+              <Zap className="w-6 h-6 text-yellow-300" />
               Live Results
             </CardTitle>
           </CardHeader>
