@@ -773,7 +773,7 @@ export default function PlayGames() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white via-pink-200 to-orange-300 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-40">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-pink-400 to-violet-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
