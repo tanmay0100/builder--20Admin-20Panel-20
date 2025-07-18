@@ -102,7 +102,7 @@ export default function UserDashboard() {
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
+              <SheetContent side="left" className="w-80">
                 <SheetHeader>
                   <SheetTitle className="text-left">Menu</SheetTitle>
                 </SheetHeader>
