@@ -275,10 +275,11 @@ export default function PlayGames() {
       <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
         {/* Matka Game */}
         <Card
-          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-300 bg-gradient-to-br from-red-500 to-orange-600 border-0 shadow-2xl"
+          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-gradient-to-br from-red-500/80 to-orange-600/80 border border-white/20 shadow-2xl backdrop-blur-md"
           onClick={() => setCurrentGame("matka")}
         >
-          <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
           <CardContent className="relative p-8 text-center">
             <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
               <Dice1 className="w-8 h-8 text-white" />
