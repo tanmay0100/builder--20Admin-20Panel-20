@@ -328,9 +328,9 @@ export default function Home() {
         <Card className="bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
           <CardContent className="p-6 text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
-              हमारे एक्सपर्ट्स से ��ात करें
+              ह��ारे एक्सपर्ट्स से ��ात करें
             </h3>
-            <Button className="bg-white hover:bg-gray-100 text-green-600 font-bold text-lg px-8 py-3 h-auto">
+            <Button className="bg-white hover:bg-gray-100 hover:shadow-lg hover:scale-105 hover:-translate-y-1 text-green-600 font-bold text-lg px-8 py-3 h-auto transition-all duration-300">
               <Phone className="w-5 h-5 mr-2" />
               Call Now
             </Button>
@@ -346,7 +346,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-4">
                 एक्सपर्ट टिप्स और गेम गेसिंग के लिए
               </p>
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white transition-all duration-300">
                 Enter Zone
               </Button>
             </CardContent>
@@ -359,7 +359,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-4">
                 सभी जोड़ी च��र्ट्स एक जगह
               </p>
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
+              <Button className="w-full bg-green-600 hover:bg-green-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white transition-all duration-300">
                 View Charts
               </Button>
             </CardContent>
@@ -372,7 +372,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-4">
                 सभी पन्ना चार्ट्स देखें
               </p>
-              <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
+              <Button className="w-full bg-red-600 hover:bg-red-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white transition-all duration-300">
                 Explore Panna
               </Button>
             </CardContent>
