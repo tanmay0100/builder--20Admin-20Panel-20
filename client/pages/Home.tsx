@@ -103,7 +103,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
               Welcome to SattaMatkaXpert
             </h2>
-            <p className="text-lg md:text-xl text-satta-gold-foreground leading-relaxed drop-shadow-md">
+            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
               भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मटका वेबसाइट पर आपका स्वागत
               है। यहाँ आपको मिलेंगे सबसे सटीक परिणाम, एक्सपर्ट टिप्स, और 24/7
               सपोर्ट। अभी जुड़ें और अपनी किस्मत आजमाएं!
