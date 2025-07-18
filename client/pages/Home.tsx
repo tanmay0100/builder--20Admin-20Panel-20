@@ -98,7 +98,7 @@ export default function Home() {
 
       <main className="container max-w-6xl mx-auto px-4 py-8 space-y-6">
         {/* Section 1 - Welcome Card */}
-        <Card className="bg-gradient-to-br from-blue-600 to-purple-700 shadow-lg">
+        <Card className="bg-white shadow-lg border border-gray-200">
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
               Welcome to SattaMatka Kingdom
