@@ -275,19 +275,16 @@ export default function PlayGames() {
       <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
         {/* Matka Game */}
         <Card
-          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-gradient-to-br from-red-500/70 to-orange-600/70 border border-white/30 shadow-2xl backdrop-blur-lg"
+          className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-white border border-gray-200 shadow-2xl backdrop-blur-lg"
           onClick={() => setCurrentGame("matka")}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent backdrop-blur-sm"></div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/25"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-50/50 to-transparent backdrop-blur-sm"></div>
           <CardContent className="relative p-8 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm shadow-lg">
-              <Dice1 className="w-8 h-8 text-white drop-shadow-lg" />
+            <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center shadow-lg">
+              <Dice1 className="w-8 h-8 text-red-600" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
-              Matka
-            </h3>
-            <p className="text-white/90 mb-4 drop-shadow-sm">
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">Matka</h3>
+            <p className="text-gray-600 mb-4">
               Traditional number betting game
             </p>
             <Button className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0">
