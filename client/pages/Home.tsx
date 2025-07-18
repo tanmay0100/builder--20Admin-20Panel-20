@@ -84,6 +84,18 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Login Button Row */}
+      <div className="bg-gradient-blue border-b-2 border-primary shadow-soft">
+        <div className="container max-w-6xl mx-auto px-4 py-4 text-center">
+          <Link to="/login">
+            <Button className="bg-satta-gold hover:bg-satta-amber text-satta-gold-foreground font-bold px-8 py-3 h-auto text-lg shadow-luxury hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <LogIn className="w-5 h-5 mr-2" />
+              Admin Login
+            </Button>
+          </Link>
+        </div>
+      </div>
+
       <main className="container max-w-6xl mx-auto px-4 py-8 space-y-6">
         {/* Section 1 - Welcome Card */}
         <Card className="bg-gradient-satta border-2 border-satta-gold shadow-luxury">
@@ -92,7 +104,7 @@ export default function Home() {
               Welcome to SattaMatka Kingdom
             </h2>
             <p className="text-lg md:text-xl text-satta-gold-foreground leading-relaxed drop-shadow-md">
-              भारत की सबसे तेज़ और भरोसेमंद सट्टा मटका वेबसाइट पर आपका स्वागत
+              भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मटका वेबसाइट पर आपका स्वागत
               है। यहाँ आपको मिलेंगे सबसे सटीक परिणाम, एक्सपर्ट टिप्स, और 24/7
               सपोर्ट। अभी जुड़ें और अपनी किस्मत आजमाएं!
             </p>
@@ -386,7 +398,7 @@ export default function Home() {
                 </h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• यह वेबसाइट केवल मनोरंजन के उद्देश्य से है</li>
-                  <li>• सट्टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
+                  <li>• सट��टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
                   <li>
                     • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ले सकते हैं
                   </li>
