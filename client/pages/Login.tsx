@@ -102,7 +102,11 @@ export default function Login() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="admin@sattamatka.com"
+                    placeholder={
+                      isUserLogin
+                        ? "user@sattamatka.com"
+                        : "admin@sattamatka.com"
+                    }
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10 h-12 border-2 focus:border-satta-gold"
