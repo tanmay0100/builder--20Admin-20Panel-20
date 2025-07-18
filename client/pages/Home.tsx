@@ -121,12 +121,9 @@ export default function Home() {
               </h3>
               <Star className="w-6 h-6 text-yellow-300" />
             </div>
-            <div className="flex items-center justify-center gap-4">
-              <span className="text-4xl md:text-5xl font-bold text-yellow-300">
-                7-8-0
-              </span>
-              <span className="text-xl md:text-2xl font-semibold text-white">
-                Ank (शुभांक)
+            <div className="flex items-center justify-center">
+              <span className="text-4xl md:text-5xl font-bold text-gray-800">
+                Ank (शुभांक) 7-8-0
               </span>
             </div>
             <p className="text-sm text-white/80 mt-2">
