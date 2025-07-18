@@ -174,7 +174,10 @@ export default function UserDashboard() {
         {/* Quick Play Games */}
         <Card className="bg-white shadow-lg">
           <CardContent className="p-6">
-            <Button className="w-full h-16 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold text-xl transition-all duration-300">
+            <Button
+              onClick={() => navigate("/user/games")}
+              className="w-full h-16 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 text-white font-bold text-xl transition-all duration-300"
+            >
               <PlayCircle className="w-6 h-6 mr-3" />
               Quick Play Games
             </Button>
