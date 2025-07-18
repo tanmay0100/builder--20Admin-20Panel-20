@@ -40,6 +40,9 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
+        {/* User Dashboard Route */}
+        <Route path="/user/dashboard" element={<UserDashboard />} />
+
         {/* Protected Admin Routes */}
         <Route
           path="/admin"
