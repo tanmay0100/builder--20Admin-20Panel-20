@@ -91,7 +91,7 @@ const navigationItems = [
   },
   {
     title: "Settings",
-    href: "/settings",
+    href: "/admin/settings",
     icon: Settings,
   },
 ];
