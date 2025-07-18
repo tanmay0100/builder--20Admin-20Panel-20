@@ -771,7 +771,7 @@ export default function PlayGames() {
       {/* Glass overlay */}
       <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px]"></div>
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-800/90 to-indigo-900/90 backdrop-blur-md shadow-2xl sticky top-0 z-50 border-b border-white/10">
+      <header className="bg-gradient-to-r from-purple-700/90 to-indigo-800/90 backdrop-blur-md shadow-2xl sticky top-0 z-50 border-b border-white/20">
         <div className="container max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Left: Menu */}
