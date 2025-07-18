@@ -86,13 +86,21 @@ export default function Home() {
 
       {/* Login Button Row */}
       <div className="bg-gradient-to-r from-gray-50 to-blue-50 shadow-sm">
-        <div className="container max-w-6xl mx-auto px-4 py-4 text-center">
-          <Link to="/login">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 h-auto text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1">
-              <LogIn className="w-5 h-5 mr-2" />
-              Admin Login
-            </Button>
-          </Link>
+        <div className="container max-w-6xl mx-auto px-4 py-4 text-center space-y-3">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/login?type=user">
+              <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-3 h-auto text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1">
+                <LogIn className="w-5 h-5 mr-2" />
+                User Login
+              </Button>
+            </Link>
+            <Link to="/login?type=admin">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 h-auto text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1">
+                <LogIn className="w-5 h-5 mr-2" />
+                Admin Login
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
