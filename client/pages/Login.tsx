@@ -10,16 +10,24 @@ import { Lock, Mail, LogIn, Eye, EyeOff, Gamepad2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Login() {
+  const [searchParams] = useSearchParams();
+  const loginType = searchParams.get("type") || "admin";
+  const isUserLogin = loginType === "user";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const { login, isLoading, isAuthenticated } = useAuth();
+  const { login, isLoading, isAuthenticated, isAdmin, isUser } = useAuth();
   const navigate = useNavigate();
 
   // Redirect if already authenticated
   if (isAuthenticated) {
-    return <Navigate to="/admin" replace />;
+    if (isAdmin) {
+      return <Navigate to="/admin" replace />;
+    } else if (isUser) {
+      return <Navigate to="/user/dashboard" replace />;
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
