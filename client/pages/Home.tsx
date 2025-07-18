@@ -112,7 +112,7 @@ export default function Home() {
         </Card>
 
         {/* Section 2 - Today's Lucky Number */}
-        <Card className="bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
+        <Card className="bg-gradient-to-br from-yellow-400 to-amber-600 shadow-lg">
           <CardContent className="p-6 text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Star className="w-6 h-6 text-yellow-300" />
