@@ -176,9 +176,9 @@ export default function Home() {
               Download PlayMatka App
             </h2>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-6">
-              अब मटका खेलना हुआ बेहद आसान, घर बैठे मोबाइल ऐप पर खेलो सारे गेम्स,
-              पाओ सबसे तेज़ रिज़ल्ट, लाइव अपडेट्स और फ्री गेसिंग टिप्स, अभी
-              डाउनलोड करो और शुरू करो अपनी किस्मत!
+              अब मटका खेलना हुआ बेहद आसान, घर बैठे ��ोबाइल ऐप पर खेलो सारे
+              गेम्स, पाओ सबसे तेज़ रिज़ल्ट, लाइव अपडेट्स और फ्री गेसिंग टिप्स,
+              अभी डाउनलोड करो और शुरू करो अपनी किस्मत!
             </p>
             <Button className="bg-white hover:bg-gray-100 hover:shadow-lg hover:scale-105 hover:-translate-y-1 text-purple-600 font-bold text-lg px-8 py-4 h-auto transition-all duration-300">
               <Download className="w-6 h-6 mr-3" />
@@ -212,21 +212,9 @@ export default function Home() {
 
                 {/* Center Content */}
                 <div className="text-center px-20">
-                  <h4 className="text-xl font-bold text-foreground mb-2">
+                  <h4 className="text-xl font-bold text-foreground mb-4">
                     {game.name}
                   </h4>
-                  <Badge
-                    variant={
-                      game.status === "live"
-                        ? "destructive"
-                        : game.status === "completed"
-                          ? "default"
-                          : "secondary"
-                    }
-                    className="mb-2"
-                  >
-                    {game.badge}
-                  </Badge>
                   <p className="text-2xl font-bold text-indigo-600 mb-1">
                     {game.result}
                   </p>
