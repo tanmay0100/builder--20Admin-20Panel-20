@@ -312,21 +312,14 @@ export default function Home() {
           </CardHeader>
           <CardContent className="space-y-3">
             {chartGames.map((chart, index) => (
-              <div
+              <button
                 key={index}
-                className="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-sm transition-all"
+                className="w-full p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-orange-50 hover:border-orange-300 hover:shadow-md transition-all duration-300 text-left group"
               >
-                <span className="font-semibold text-foreground">
+                <span className="font-semibold text-foreground group-hover:text-orange-600 transition-colors">
                   {chart.name}
                 </span>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white"
-                >
-                  View Chart
-                </Button>
-              </div>
+              </button>
             ))}
           </CardContent>
         </Card>
@@ -399,7 +392,7 @@ export default function Home() {
                   <li>• यह वेबसाइट केवल मनोरंजन के उद्देश्य से है</li>
                   <li>• सट���टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
                   <li>
-                    • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ले सकते हैं
+                    • केवल 18 वर्ष से अधिक उ���्र के व्यक्ति ही भाग ले सकते हैं
                   </li>
                   <li>• जिम्मेदारी से खेलें और अपनी सीमा जानें</li>
                   <li>• किसी भी नुकसान के ���िए वेबसाइट जिम्मेदार नहीं होगी</li>
