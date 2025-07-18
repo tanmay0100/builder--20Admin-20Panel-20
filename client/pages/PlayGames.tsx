@@ -818,7 +818,7 @@ export default function PlayGames() {
         </div>
       </header>
 
-      <main className="container max-w-6xl mx-auto px-4 py-8">
+      <main className="relative container max-w-6xl mx-auto px-4 py-8 z-10">
         {currentGame === "selection" && renderGameSelection()}
         {currentGame === "matka" && renderMatkaGame()}
         {currentGame === "colorking" && renderColorKing()}
