@@ -136,7 +136,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               </div>
               <div>
                 <h1 className="text-lg font-bold text-sidebar-foreground">
-                  BetAdmin
+                  Super Admin Dashboard
                 </h1>
                 <p className="text-xs text-sidebar-foreground/60">
                   Gaming Platform
