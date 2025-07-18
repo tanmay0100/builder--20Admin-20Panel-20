@@ -274,7 +274,7 @@ export default function PlayGames() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
+      <div className="grid grid-cols-1 gap-6">
         {/* Matka Game */}
         <Card
           className="relative overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-500 bg-white border border-gray-200 shadow-2xl backdrop-blur-lg"
