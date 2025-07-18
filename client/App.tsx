@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { AdminLayout } from "@/components/AdminLayout";
+import { UserProtectedRoute } from "@/components/UserProtectedRoute";
 import { Dashboard } from "./pages/Dashboard";
 import { SattaMatka } from "./pages/SattaMatka";
 import { SattaMatkaDetails } from "./pages/SattaMatkaDetails";
