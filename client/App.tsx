@@ -29,6 +29,7 @@ import { AddRemoveUsers } from "./pages/AddRemoveUsers";
 import { AddLuckyNumber } from "./pages/AddLuckyNumber";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import UserDashboard from "./pages/UserDashboard";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
