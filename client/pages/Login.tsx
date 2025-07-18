@@ -82,7 +82,7 @@ export default function Login() {
           <CardHeader className="text-center pb-4">
             <CardTitle className="text-2xl font-bold flex items-center justify-center gap-2">
               <Lock className="w-6 h-6 text-satta-gold" />
-              Admin Login
+              {isUserLogin ? "User Login" : "Admin Login"}
             </CardTitle>
           </CardHeader>
           <CardContent>
