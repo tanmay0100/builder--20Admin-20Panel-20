@@ -79,7 +79,7 @@ export default function Home() {
             :::SattaMatka:::
           </h1>
           <p className="text-xl md:text-2xl font-medium text-satta-gold-foreground mt-2 drop-shadow-md">
-            सबसे तेज़ और भरोसेमंद वेबसाइट
+            सबसे ��ेज़ और भरोसेमंद वेबसाइट
           </p>
         </div>
       </header>
@@ -104,7 +104,7 @@ export default function Home() {
               Welcome to SattaMatka Kingdom
             </h2>
             <p className="text-lg md:text-xl text-satta-gold-foreground leading-relaxed drop-shadow-md">
-              भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मटका वेबसाइट पर आपका स्वागत
+              भारत की सबसे ���ेज़ और भरोसेमंद सट्टा मट��ा वेबसाइट पर आपका स्वागत
               है। यहाँ आपको मिलेंगे सबसे सटीक परिणाम, एक्सपर्ट टिप्स, और 24/7
               सपोर्ट। अभी जुड़ें और अपनी किस्मत आजमाएं!
             </p>
@@ -169,10 +169,10 @@ export default function Home() {
         </Card>
 
         {/* Section 4 - Game Results */}
-        <Card className="border-2 border-satta-gold shadow-luxury">
+        <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
-              <TrendingUp className="w-6 h-6 text-satta-gold" />
+              <TrendingUp className="w-6 h-6 text-blue-600" />
               Game Results
             </CardTitle>
           </CardHeader>
@@ -180,13 +180,13 @@ export default function Home() {
             {gameResults.map((game, index) => (
               <div
                 key={index}
-                className="relative min-h-[120px] bg-gradient-light border-2 border-satta-amber rounded-lg p-4 hover:shadow-luxury transition-all duration-300"
+                className="relative min-h-[120px] bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-300"
               >
                 {/* Jodi Button - Left */}
                 <Button
                   variant="outline"
                   size="sm"
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-satta-gold hover:bg-satta-amber text-satta-gold-foreground border-satta-gold font-bold"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-orange-500 hover:bg-orange-600 text-white border-orange-500 font-bold"
                 >
                   Jodi
                 </Button>
@@ -208,7 +208,7 @@ export default function Home() {
                   >
                     {game.badge}
                   </Badge>
-                  <p className="text-2xl font-bold text-satta-royal mb-1">
+                  <p className="text-2xl font-bold text-indigo-600 mb-1">
                     {game.result}
                   </p>
                   <p className="text-sm text-muted-foreground">{game.time}</p>
@@ -218,7 +218,7 @@ export default function Home() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-satta-emerald hover:bg-satta-emerald/80 text-satta-emerald-foreground border-satta-emerald font-bold"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-500 hover:bg-green-600 text-white border-green-500 font-bold"
                 >
                   Panna
                 </Button>
@@ -228,10 +228,10 @@ export default function Home() {
         </Card>
 
         {/* Section 5 - Result Timing Information */}
-        <Card className="border-2 border-satta-royal shadow-luxury">
+        <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-xl">
-              <Clock className="w-6 h-6 text-satta-royal" />
+              <Clock className="w-6 h-6 text-purple-600" />
               Result Timing Information
             </CardTitle>
           </CardHeader>
@@ -240,12 +240,12 @@ export default function Home() {
               {timingResults.map((item, index) => (
                 <div
                   key={index}
-                  className="flex justify-between items-center p-3 bg-gradient-light rounded-lg border border-satta-royal/30"
+                  className="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-200"
                 >
                   <span className="font-semibold text-foreground">
                     {item.market}
                   </span>
-                  <span className="text-satta-royal font-medium">
+                  <span className="text-purple-600 font-medium">
                     {item.time}
                   </span>
                 </div>
@@ -350,7 +350,7 @@ export default function Home() {
               <Target className="w-12 h-12 text-satta-gold mx-auto mb-4" />
               <h4 className="text-xl font-bold mb-2">Game Guessing Zone</h4>
               <p className="text-muted-foreground mb-4">
-                एक्सपर्ट ��िप्स और गेम गेसिंग के लिए
+                एक्सपर्ट टिप्स और गेम गेसिंग के लिए
               </p>
               <Button className="w-full bg-gradient-satta text-white">
                 Enter Zone
@@ -398,7 +398,7 @@ export default function Home() {
                   <li>• यह वेबसाइट केवल मनोरंजन के उद्देश्य से है</li>
                   <li>• सट��टा खेलना कानूनी रूप से प्रतिबंधित हो सकता है</li>
                   <li>
-                    • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ���े सकते हैं
+                    • केवल 18 वर्ष से अधिक उम्र के व्यक्ति ही भाग ले सकते हैं
                   </li>
                   <li>• जिम्मेदारी से खेलें और अपनी सीमा जानें</li>
                   <li>• किसी भी नुकसान के ���िए वेबसाइट जिम्मेदार नहीं होगी</li>
